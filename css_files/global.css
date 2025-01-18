@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'GizaStencil';
+    src: url('../assets/giza_fonts/GizaStencil.woff2') format('woff2'),
+        url('../assets/giza_fonts/GizaStencil.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Global Colours */
+:root {
+    --blue: #1e90ff;
+    --white: #ffffff;
+    --red: #ff0000;
+    --lightgrey: #d3d3d3;
+    --black: #000000;
+    --purple: blueviolet;
+    --cream: cornsilk;
+}
+
+/* Button Styling */
+/* From Uiverse.io by SujitAdroja */ 
+.btn {
+  color: var(--purple);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--purple);
+  border-radius: 20px;
+  margin-top: 20px;
+  padding: 7px 15px;
+  font-size: 0.85rem;
+  background-color: transparent;
+  font-family: 'Avenir', sans-serif;
+  transition: color 0.6s ease;
+}
+  
+.btn:hover {
+  box-shadow: 0 4px 8px rgba(242, 0, 255, 0.471);
+}
+  
+/* ------------------------------- */
+/* Responsive Styling */
+@media only screen and (max-width: 768px){
+  .btn {
+
+  }
+}
+  

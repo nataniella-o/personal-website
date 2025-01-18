@@ -1,0 +1,113 @@
+@import url('./global.css');
+
+#project-cards {
+    padding-bottom: 4rem;
+    scroll-margin-top: 100px;
+}
+
+#project-cards h1 {
+    font-size: 3rem;
+    margin-top: 1.3rem;
+    padding-left: 3rem;
+    padding-top: 2rem;
+    font-family: 'GizaStencil';
+}
+
+.projects-grid {
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap; 
+    /* padding: 2rem; */
+}
+
+/* -------------- */
+.card {
+    background-color: #a5eddf;
+    border: 1px solid #dc19ee;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(242, 0, 255, 0.471);
+    width: 325px;
+    height: 450px;
+    margin: 10px 10px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(242, 0, 255, 0.471);
+}
+
+.card img, .card-disabled img {
+    height: 250px;
+    object-fit: contain;
+    justify-content: center;
+}
+
+.card h2, .card-disabled h2 {
+    font-size: 20px;
+    margin: 10px 15px;
+    text-decoration: none;
+}
+
+.card p, .card-disabled p {
+    font-size: 14px;
+    color: #666;
+    margin: 10px 15px;
+}
+
+.card a, .card a:visited, .card-disabled a, .card-disabled a:visited {
+    text-decoration: none;
+    color: var(--black);
+}
+
+/* ------------- */
+/* Disabled */
+.card-disabled {
+    background-color: #a5eddf;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 325px;
+    height: 450px;
+    margin: 10px 10px;
+    pointer-events: none; /* Disable clicking */
+}
+
+.card-disabled img, .card-disabled .tags {
+    pointer-events: none; /* Disable clicking */
+    filter: blur(10px); /* Apply blur effect */
+    opacity: 0.6; /* Reduce visibility */
+}
+
+/* ------------- */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 10px;
+    padding: 10px;
+}
+
+.tags span {
+    background-color: var(--black);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .projects-grid {
+        flex-direction: column; /* Stacks columns on smaller screens */
+        /* display: flex; */
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+        /* justify-content: center;
+        gap: 0; */
+    }
+
+}

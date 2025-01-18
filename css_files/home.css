@@ -1,0 +1,203 @@
+@import url('./global.css');
+
+#welcome-message {
+    background-color: lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 100px;
+}
+
+#wm-left {
+    display: flex;
+    width: 63%;
+    float: left;
+    margin-left: 7%;
+    white-space: normal;
+    display: grid;
+    justify-items: left; 
+    flex-direction: column;
+    width: 50%;
+}
+
+#wm-left > div {
+    margin: 5px; 
+}
+
+#greeting {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#name {
+    margin-top: 0px;
+    font-family: 'GizaStencil';
+    font-size: 6.5rem;
+    margin-bottom: 0;
+}
+
+.auto-type {
+    font-family: 'Avenir', sans-serif; 
+    margin-bottom: 0px;
+    color: var(--purple);
+    font-size: 2.5rem;
+}
+
+.lego-fig {
+    width: 300px; 
+    height: 300px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto;  
+}
+
+#wm-right {
+    padding: 20px 0px;
+    width: 30%;
+    float: right;
+}
+
+/* Self Introduction */
+#intro {
+    padding: 20px 50px;
+    /* height: 500px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Add gap between contact and brief sections */
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section horizontally */
+}
+
+
+#contact {
+    width: 25%;
+}
+
+#contact h4 {
+    font-family: 'GizaStencil';
+    font-size: 2.5rem;
+    color: #333;
+}
+
+#icons {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+#icons li {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px; 
+}
+
+#icons li i {
+    margin-right: 10px;
+    font-size: 1.8rem; /* Icon size */
+}
+
+#icons a {
+    text-decoration: none;
+    color: var(--black);
+    transition: color 0.3s ease;
+}
+
+#icons a:hover {
+    color: var(--blue); /* Change to your desired hover color */
+}
+
+#brief {
+    width: 70%;
+    float: right;
+    padding-top: 30px;
+}
+
+#brief .btn {
+    float: right;
+}
+
+
+/* ------------------------------- */
+/* Responsive Styling */
+@media only screen and (max-width: 768px) {
+    #welcome-message {
+        flex-direction: column; 
+        text-align: left;
+        gap: 20px;
+        align-items: left;
+        padding-left: 30px;
+    }
+
+    #wm-left {
+        width: 100%;
+        text-align: left;
+        margin-left: 30px;
+        margin-bottom: -35px;
+    }
+
+    #name {
+        margin-top: 20px;
+        font-family: 'GizaStencil';
+        font-size: 4rem;
+    }
+
+    #wm-left > div {
+        margin: -15px; 
+    }
+
+    #wm-right {
+        width: 100%; 
+        text-align: center; 
+    }
+
+    .lego-fig {
+        height: auto; 
+    }
+
+    #contact h4 {
+        font-size: 2.0rem;
+    }
+    
+    #icons {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0;
+    }
+    
+    #icons li {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        margin-bottom: 20px; 
+    }
+    
+    #icons li i {
+        margin-right: 10px;
+        font-size: 1.3rem; /* Icon size */
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    #name {
+        margin-top: 20px;
+        font-family: 'GizaStencil';
+        font-size: 5rem;
+    }
+
+    #welcome-message {
+        gap: 20px;
+        align-items: left;
+        padding-left: 30px;
+        padding-bottom: 30px;
+    }
+
+    #wm-left {
+        width: 80%;
+        text-align: left;
+        margin-left: 30px;
+        margin-bottom: -35px;
+    }
+
+}

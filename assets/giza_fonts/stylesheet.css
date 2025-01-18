@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'GizaStencil';
+    src: url('GizaStencil.woff2') format('woff2'),
+        url('GizaStencil.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
