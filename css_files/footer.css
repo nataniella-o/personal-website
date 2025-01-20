@@ -3,113 +3,46 @@
 /* Footer container styling */
 #footer {
     background-color: var(--grey);
-    padding: 10px 40px;
     font-family: 'Avenir', sans-serif; 
     border-top: 1px solid #e0e0e0;
 }
 
 #footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+} 
+
+
+/* Footer Social column */
+#footer-social{
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
-  gap: 50px;
+  gap: 30px;
+  padding-top: 50px;
 }
 
-#footer-container li {
-    /* display: flex; */
-    margin: 0;
-    padding: 0;
-}
-
-#footer-container h4 {
-  font-family: 'GizaStencil';
-  margin-bottom: 10px;
-}
-
-/* Footer Links column */
-#footer-links h4, #footer-contact h4 {
-  font-size: 1.8em;
-  /* margin-bottom: 15px; */
-  color: #333;
-}
-
-#footer-links {
-  width: 20%;
-}
-
-#footer-links ul , #footer-contact ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer-links ul li {
-  margin-bottom: 8px;
-}
-
-#footer-links ul li a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1em;
-  transition: color 0.3s;
-}
-
-#footer-links ul li a:hover {
-  color: var(--red);
-}
-
-/* Footer Contact column */
-#footer-contact{
-  width: 30%; /* Maintain the column width */
-  display: flex;
-  flex-direction: column;
-  /* justify-content: flex-start;  */
-  gap: 20px; 
-  text-align: left;
-}
-
-#footer-contact ul {
-  display: flex;
-  flex-direction: row; /* Arrange icons vertically */
-  gap: 30px; /* Add spacing between icons */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#footer-contact ul li {
-  display: block; /* Ensure each icon is treated as a block */
-}
-
-#footer-contact ul li a {
-  text-decoration: none;
-  font-size: 30px;
+#footer-social a {
   color: var(--black);
-  transition: color 0.3s;
+  font-size: 30px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-#footer-contact ul a:hover {
+#footer-social a:hover {
   color: var(--red);
+  transform: scale(1.1);
 }
 
 /* Logo column */
-.footer-logo {
-    width: 40%;
-    flex: 1;                /* allows the logo to adapt responsively */
-    text-align: center;     /* Centers the logo */
-    align-items: center;
-    margin-top: 50px;
-}
-
 .footer-logo img {
-    max-width: 300px; /* resize the logo to be much smaller */
-    height: auto;
-    display: block;
+    max-width: 250px; /* resize the logo to be much smaller */
     margin: 0 auto;
+    margin-top: 30px;
+    height: auto; /* Maintain aspect ratio */
     float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 /* Footer bottom */
@@ -127,14 +60,19 @@
 /* Responsive Styling */
 @media (max-width: 768px) {
     #footer-container {
-        flex-direction: column; /* Stacks columns on smaller screens */
-        text-align:left;
-        gap: 0px;
-        align-items: left;
+      flex-direction: column; /* Stack logo and icons vertically */
+      align-items: center;
+      text-align: center;
+      gap: 25px
+    }
+
+    .social-icons {
+        justify-content: center;
     }
 
     .footer-logo img {
         max-width: 200px; /* Resize the logo further for smaller screens */
+        float: center;
     }
 
 }

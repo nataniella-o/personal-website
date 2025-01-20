@@ -1,0 +1,141 @@
+@import url('./global.css');
+/* General Styles */
+#container {
+    font-family: 'Avenir', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--black);
+    max-width: 1200px; /* Limits the width of the content */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px; /* Adds some padding for spacing */
+}
+
+#profile-section {
+    background-color: lightgrey; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 100px;
+}
+
+#about-pic {
+    padding: 20px 10px;
+    width: 45%; 
+    text-align: right; 
+    /* padding-right: 100px; */
+}
+
+#about-pic img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#title {
+    width: 60%;
+    text-align: center;
+    /* padding-left: 50px; */
+}
+
+#title h1 {
+    font-family: "GizaStencil";
+    font-size: 4rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#title h4 {
+    font-size: 1.3rem;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+#title p {
+    margin-bottom: 35px ;
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--red);
+}
+
+#title a {
+    gap: 50px;
+    color: var(--black);
+    margin: 7px;
+    font-size: 30px;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#title a:hover {
+    color: var(--red);
+    transform: scale(1.1);
+}
+
+/* About Section */
+#about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-text {
+    flex: 1;
+    max-width: 60%;
+    padding-left: 200px;
+}
+
+h2 {
+    font-family: "GizaStencil";
+    font-size: 3rem;
+    text-align: center;
+}
+
+p, li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+#ransom-notes {
+    padding: 20px 10px;
+    width: 70%; 
+    text-align: left; 
+}
+
+#ransom-notes img {
+    width: 500px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Journey Section */
+#journey-section p {
+    /* max-width: 1000px; */
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* Aspirations Section */
+#aspirations-section {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#aspirations-section h2 {
+    padding-top: 0;
+}
+
+
+/* Interests Section */
+#interests-section {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    background-color: lightblue;
+}
