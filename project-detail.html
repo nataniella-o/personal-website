@@ -7,25 +7,51 @@
     <title>N.O. Project Details</title>
 
     <link rel = "stylesheet" href = "css_files/home.css">
-    <!-- <link rel = "stylesheet" href = "css_files/project-detail.css"> -->
+    <link rel = "stylesheet" href = "css_files/project-details.css">
 </head>
 
 <body>
     <section id = "header"></section>
 
-    <section class = "project-details">
-        <img id = "project-image" src = "./assets/long_logo.png" alt = "Project Image">
-        <h1 id = "project-title">Project Title</h1>
+    <section class = "project-container">
+        <!-- Sidebar -->
+        <aside id = "sidebar">
+            <img id = "project-image" src = "./assets/long_logo.png" alt = "Project Image">
+    
+            <h1 id = "project-title"> Project Title </h1>
+            <p id = "project-use"> Project Usage </p>
+            <p id = "project-date"><strong>Date:</strong> Project dates </p>
 
-        <div class = "project-info">
-            <h2> Overview</h2>
-            <p id = "project-description">Project description goes here...</p>
-            <h2> Technologies Used</h2>
+            <h4><strong>Languages:</strong></h4>
             <ul id = "project-technologies">
                 <!-- Technologies will be dynamically added here -->
             </ul>
-        </div>
-        <a href = "index.html#project-cards" class = "btn">Back to Projects</a>
+
+            <h4><strong> Project Links:</strong></h4>
+            <ul id = "project-links">
+                <li><a href = "https://example.com" target = "_blank">GitHub</a></li>
+                <li><a href = "https://example.com" target = "_blank">Live Demo</a></li>
+            </ul>
+
+            <a href = "index.html#project-cards" class = "btn">Back to Projects</a>
+        </aside>
+
+        <!-- Scrollable Content -->
+        <main id = "project-content">
+            <h2> Overview</h2>
+            <p id = "project-description">Project description goes here...</p>
+
+            <!-- fix the javascript for this -->
+            <div id = "project-details">
+                <p>Project description and details go here. This section will be scrollable if the content is long.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+            </div>
+
+            <div id = "project-images">
+                <img src = "./assets/black-splash.avif" alt = "Project Image">
+                <img src = "./assets/black-splash.avif" alt = "Project Image">
+            </div>
+        </main>
     </section>
 
     <section id = "footer"></section>

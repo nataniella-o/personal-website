@@ -1,4 +1,4 @@
-@import url('./global.css');
+@import url('global.css');
 
 #project-cards {
     padding-bottom: 4rem;
@@ -11,6 +11,7 @@
     padding-left: 3rem;
     padding-top: 2rem;
     font-family: 'GizaStencil';
+    color: var(--darkpurple);
 }
 
 .projects-grid {
@@ -25,37 +26,42 @@
 
 /* -------------- */
 .card {
-    background-color: #a5eddf;
-    border: 1px solid #dc19ee;
+    border: 1px solid var(--softgrey);
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(242, 0, 255, 0.471);
+    box-shadow: 0 2px 5px var(--softgrey);
     width: 325px;
     height: 450px;
     margin: 10px 10px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(242, 0, 255, 0.471);
+    /* transform: translateY(-5px); */
+    box-shadow: 0 4px 8px rgba(255, 143, 177, 0.7);
+    transform: scale(1.04);
+    /* background-color: var(--pink); */
 }
 
 .card img, .card-disabled img {
     height: 250px;
-    object-fit: contain;
-    justify-content: center;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto;
 }
 
 .card h2, .card-disabled h2 {
     font-size: 20px;
     margin: 10px 15px;
     text-decoration: none;
+    color: var(--darkpurple);
 }
 
 .card p, .card-disabled p {
     font-size: 14px;
     color: #666;
     margin: 10px 15px;
+    color: var(--darkgrey);
 }
 
 .card a, .card a:visited, .card-disabled a, .card-disabled a:visited {
@@ -64,21 +70,23 @@
 }
 
 /* ------------- */
-/* Disabled */
+/* Disabled Card */
 .card-disabled {
-    background-color: #a5eddf;
+    /* background-color: #a5eddf; */
+    border: 1px solid var(--softgrey);
     border-radius: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px var(--softgrey);
     width: 325px;
     height: 450px;
     margin: 10px 10px;
-    pointer-events: none; /* Disable clicking */
+    pointer-events: none;   /* disable clicking */
 }
 
 .card-disabled img, .card-disabled .tags {
-    pointer-events: none; /* Disable clicking */
-    filter: blur(10px); /* Apply blur effect */
-    opacity: 0.6; /* Reduce visibility */
+    pointer-events: none;   /* disable clicking */
+    filter: blur(3px);      /* blur effect */
+    opacity: 0.6;           /* reduce visibility */
 }
 
 /* ------------- */
@@ -91,8 +99,8 @@
 }
 
 .tags span {
-    background-color: var(--black);
-    color: #fff;
+    background-color: var(--blue);
+    color: var(--black);
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 12px;

@@ -1,7 +1,7 @@
 @import url('./global.css');
 
 #welcome-message {
-    background-color: lightgrey;
+    background-color: var(--softlavender);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,12 +28,13 @@
     font-family: 'GizaStencil';
     font-size: 6.5rem;
     margin-bottom: 0;
+    color: var(--darkgrey);
 }
 
 .auto-type {
     font-family: 'Avenir', sans-serif; 
     margin-bottom: 0px;
-    color: var(--purple);
+    color: var(--darkpurple);
     font-size: 2.5rem;
 }
 
@@ -72,12 +73,13 @@
 #contact h4 {
     font-family: 'GizaStencil';
     font-size: 2.5rem;
-    color: #333;
+    color: var(--darkpurple);
 }
 
 #icons {
     list-style: none;
-    padding: 0;
+    padding-top: 0;
+    padding-left: 10px;
     margin: 20px 0 0;
 }
 

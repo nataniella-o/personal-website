@@ -1,4 +1,4 @@
-@import url('./global.css');
+@import url('../global.css');
 
 body {
     font-family: 'Avenir', sans-serif;
@@ -10,7 +10,7 @@ body {
 #skills-tools {
     padding: 40px;
     padding-bottom: 1.2em;
-    background: #eaeaea;
+    background: var(--softlavender);
     scroll-margin-top: 100px;
 }
   
@@ -19,6 +19,7 @@ body {
     margin-top: 1.2rem;
     /* margin-bottom: 1.2rem; */
     font-family: 'GizaStencil';
+    color: var(--darkpurple);
 }
   
 /* Grid layout for icons */

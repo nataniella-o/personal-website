@@ -1,0 +1,126 @@
+@import url(global.css);
+
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 100px;
+    font-family: 'Avenir', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;   
+}
+
+/* Main Content Wrapper */
+/* Container Layout */
+.project-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    /* width: 100%; */
+}
+
+/* Sidebar */
+#sidebar {
+    width: 25%; /* Sidebar width */
+    background-color: var(--softlavender);
+    color: var(--darkgrey);
+    padding: 20px;
+    position: sticky;
+    top: 100px;;
+    height: calc(100vh - 100px);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+#sidebar h1 {
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    color: var(--darkpurple);
+}
+
+#sidebar h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--darkpurple);
+}
+
+#sidebar #project-use {
+    margin: 10px 0;
+    font-weight: bold;
+    line-height: 1.6;
+    font-size: 1.2rem;
+}
+
+#sidebar #project-date {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: var(--mutedgrey);
+    font-style: italic;
+}
+
+#sidebar img {
+    width: 250px;
+    height: auto;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+#sidebar ul li {
+    margin: 5px 0;
+}
+
+#sidebar ul li a {
+    color: var(--lightpurple); /* Accent color for links */
+    text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+#sidebar #project-links {
+    padding-bottom: 35px;
+}
+
+/* --------------------- */
+/* Main Content */
+#project-content {
+    flex: 1; /* Take the remaining width */
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column; /* Stack details and images vertically */
+    gap: 20px; /* Add spacing between sections */
+}
+
+#project-content h2 {
+    font-family: "GizaStencil";
+    font-size: 3rem;
+}
+
+/* Project Details */
+#project-details {
+    margin-bottom: 20px;
+}
+
+#project-images img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        height: calc(100vh - 60px); /* Adjust for a smaller header */
+        top: 60px; /* Offset for smaller header height */
+    }
+}
