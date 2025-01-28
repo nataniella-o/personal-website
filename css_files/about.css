@@ -129,10 +129,11 @@ html, body {
 /* Aspirations Section */
 #aspirations-section {
     text-align: center;
+    /* padding: 10px; */
     padding-bottom: 20px;
-    margin-top: 10px;
-    max-width: 1000px;
+    margin: 10px;
     margin: 0 auto;
+    /* background-color: var(--softlavender); */
 }
 
 
@@ -204,6 +205,10 @@ html, body {
         padding: 15px 0; /* Add spacing around sections */
     }
 
+    #aspirations-section {
+        background-color: var(--softlavender);
+    }
+
     #journey-section {
         text-align: center; /* Center-align all text */
         padding: 30px ; /* Add spacing around sections */
@@ -227,3 +232,8 @@ html, body {
     }
 }
 
+@media (max-width: 1024px) {
+    #container {
+        padding: 20px;
+    }
+}

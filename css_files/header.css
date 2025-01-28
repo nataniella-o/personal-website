@@ -46,11 +46,11 @@ header .nav-links ul a {
     transition: background-color 0.3s, color 0.3s; 
 }
 
-header ul a.active {
+/* header ul a.active {
     border-radius: 10px;
     background-color: var(--blue);
     color: var(--white);
-}
+} */
 
 header .nav-links ul a:hover {
     background-color: var(--lightgrey);

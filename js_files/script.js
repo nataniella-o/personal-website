@@ -10,7 +10,7 @@ function loadHTML(file, elementId) {
         .then(data => {
             document.getElementById(elementId).innerHTML = data;
         })
-        .catch(error => console.error(`Error loading ${file}:`, error));
+        .catch(error => console.error(`Error loading file:`, error));
 }
 
 // Load page contents when the page is ready

@@ -44,10 +44,13 @@
 
 .card img, .card-disabled img {
     height: 250px;
-    width: 100%;
+    width: 94%;
     display: block;
     object-fit: cover;
     margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+    /* float: left; */
 }
 
 .card h2, .card-disabled h2 {
