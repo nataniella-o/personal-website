@@ -8,32 +8,48 @@
     <!-- Global styles -->
     <link rel = "stylesheet" href = "css_files/header.css">
     <link href = "https://fonts.cdnfonts.com/css/avenir" rel = "stylesheet">
-                
 </head>
 
-<header>
-    <div class = "header-left">
-        <!-- Logo links to the homepage -->
-        <a href = "./index.html" class = "logo" >
-            <img src = "././assets/short_logo.png" alt = "Short Logo Icon" class = "logo-icon">
-        </a>
-    </div>
-
-    <nav>
-        <ul class = "nav-links">
-            <li><a class = "active" href = "index.html" class = "nav-link"> Home</a></li>
-            <li><a href = "about.html" class = "nav-link"> About</a></li>
-            <li><a href = "index.html#skills-tools" class = "nav-link">Skills & Tools</a></li>
-            <li><a href = "index.html#project-cards" class = "nav-link"> Projects</a></li>
-            <li><a href = "res.html" class = "nav-link"> Résumé</a></li>
-        </ul>
-
-        <!-- Hamburger Menu for Smaller Screens -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+<body>
+    <header>
+        <div class = "header-left">
+            <!-- Logo links to the homepage -->
+            <a href = "./index.html" class = "logo">
+                <img src = "./assets/short_logo.png" alt = "Short Logo Icon" class = "logo-icon">
+            </a>
         </div>
-    </nav>
-</header>
+
+        <nav>
+            <ul class = "nav-links">
+                <li class = "hideOnMobile"><a class = "active" href = "index.html">Home</a></li>
+                <li class = "hideOnMobile"><a href = "about.html">About</a></li>
+                <li class = "hideOnMobile"><a href = "index.html#skills-tools">Skills & Tools</a></li>
+                <li class = "hideOnMobile"><a href = "index.html#project-cards">Projects</a></li>
+                <li class = "hideOnMobile"><a href = "res.html">Résumé</a></li>
+                <!-- Menu button -->
+                <li class = "menu-button" onclick = "showSidebar()" id = "menu">
+                    <a href = "#">
+                        <svg xmlns = "http://www.w3.org/2000/svg" height = "40px" viewBox = "0 -960 960 960" width = "40px" fill = "#000000">
+                            <path d = "M111.87-228.28v-91h736.26v91H111.87Zm0-206.22v-91h736.26v91H111.87Zm0-206.22v-91h736.26v91H111.87Z" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sidebar -->
+            <ul class = "side-nav">
+                <li onclick = "hideSidebar()">
+                    <svg xmlns = "http://www.w3.org/2000/svg" height = "40px" width = "40px" viewBox = "0 -960 960 960" fill = "#000000">
+                        <path d = "M256-192.35 192.35-256l224-224-224-224L256-767.65l224 224 224-224L767.65-704l-224 224 224 224L704-192.35l-224-224-224 224Z" />
+                    </svg>
+                </li>
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "about.html">About</a></li>
+                <li><a href = "index.html#skills-tools">Skills & Tools</a></li>
+                <li><a href = "index.html#project-cards">Projects</a></li>
+                <li><a href = "res.html">Résumé</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
 </html>

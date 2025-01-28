@@ -1,19 +1,14 @@
 @font-face {
-    font-family: 'GizaStencil';
-    src: url('../assets/giza_fonts/GizaStencil.woff2') format('woff2'),
-        url('../assets/giza_fonts/GizaStencil.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'GizaStencil';
+  src: url('../assets/giza_fonts/GizaStencil.woff2') format('woff2'),
+      url('../assets/giza_fonts/GizaStencil.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* Global Colours */
 :root {
-    /* --blue: #1e90ff;
-    --red: #ff0000;
-    --lightgrey: #d3d3d3;
-    --cream: cornsilk; */
-
     --black: #000000;
     --white: #ffffff;         /* Pure white for clean sections */
     --softlavender:  #F4EFFF; /* Soft lavender with a hint of purple for alternating sections*/
@@ -21,13 +16,14 @@
     --lightpurple: #C084FC;    /* Lighter purple for accents or hover effect */
     --blue: #82DDF0;          /* Bright blue for calls-to-action, icons, or hover effects */
     --pink: #FF8FB1;          /* Vibrant pink for highlights, badges, or buttons */
+    --translucent: #82def0c5;
     --darkgrey: #333333;      /* Dark gray for main text */
     --mutedgrey: #666666;     /* Muted gray for less prominent text */
     --softgrey: #E0E0E0;      /* Dark gray for main text*/
   }
 
 /* Button Styling */
-/* From Uiverse.io by SujitAdroja */ 
+/* Adapted From Uiverse.io by SujitAdroja */ 
 .btn {
   color: var(--black);
   text-decoration: none;
@@ -48,12 +44,5 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 
               0 5px 10px rgba(130, 221, 240, 0.5); /* Light blue glow */
 }
-  
-/* ------------------------------- */
-/* Responsive Styling */
-@media only screen and (max-width: 768px){
-  .btn {
 
-  }
-}
   

@@ -1,8 +1,9 @@
-@import url('./global.css');
+@import url('global.css');
 
 #welcome-message {
     background-color: var(--softlavender);
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-top: 100px;
@@ -16,10 +17,11 @@
     justify-items: left; 
     flex-direction: column;
     width: 50%;
+    padding-bottom: 30px;
 }
 
 #greeting {
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 20px;
 }
 
@@ -38,7 +40,8 @@
     font-size: 2.5rem;
 }
 
-.lego-fig {
+
+#wm-right .lego-fig {
     width: 300px; 
     height: 300px; 
     border-radius: 50%; 
@@ -120,54 +123,87 @@
 /* Responsive Styling */
 @media only screen and (max-width: 768px) {
     #welcome-message {
+        display: flex;
         flex-direction: column; 
         text-align: left;
         gap: 20px;
         align-items: left;
-        padding-left: 30px;
+        padding-left: 20px;
+        padding-top: 70px;
     }
 
-    #wm-left {
-        width: 100%;
-        text-align: left;
-        margin-left: 30px;
-        margin-bottom: -35px;
-    }
+    /* #wm-left .btn{
+        position: relative;  
+        float: left;
+    } */
 
-    #name {
-        margin-top: 20px;
-        font-family: 'GizaStencil';
-        font-size: 4rem;
+    .auto-type {
+        font-size: 2rem;
     }
 
     #wm-left > div {
-        margin: -15px; 
+        margin-left: -55px; 
     }
 
-    .lego-fig {
+    #wm-right .lego-fig{
         height: auto; 
+        justify-content: center;
+        width: 250px; 
+        height: 250px; 
+        border-radius: 50%; 
+        object-fit: cover; 
+        /* margin: 0 auto;   */
     }
 
     #contact h4 {
-        font-size: 2.0rem;
+        font-size: 2.5rem;
     }
+
     
-    #icons {
-        list-style: none;
-        padding: 0;
-        margin: 20px 0 0;
+    #intro {
+        flex-direction: column; /* stack the contact and brief sections vertically */
+        align-items: center; 
+        padding: 20px; 
     }
-    
-    #icons li {
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
+
+    #contact {
+        width: 100%; 
+        text-align: center; 
         margin-bottom: 20px; 
     }
-    
-    #icons li i {
-        margin-right: 10px;
-        font-size: 1.3rem; /* Icon size */
+
+    #icons {
+        display: flex;
+        justify-content: center; /* center the icons horizontally */
+        gap: 15px; 
+        flex-wrap: wrap; 
+        margin: 0; /* reset margin for consistency */
+        padding: 0; 
+
+    }
+
+    #icons li {
+        display: inline-flex; 
+        margin-bottom: 10px; /* Reduce spacing for smaller screens */
+        font-size: 1rem; /* Adjust font size */
+
+    }
+
+    #icons a {
+        color: var(--mutedgrey);
+        transition: color 0.3s ease;
+    }
+
+    #brief {
+        width: 100%; /* Make the paragraph span the full width */
+        padding: 0 10px; /* Add padding for readability */
+        text-align: center; /* Center-align the text for smaller screens */
+    }
+
+    #brief .btn {
+        float: none; /* Remove floating */
+        display: block; /* Make the button appear as a block element */
+        margin: 20px auto 0; /* Center the button and add spacing */
     }
 }
 

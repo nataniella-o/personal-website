@@ -1,5 +1,3 @@
-// js/script.js
-
 // Function to load an external HTML file into a specified element
 function loadHTML(file, elementId) {
     fetch(file)
@@ -50,12 +48,16 @@ var typed = new Typed (".auto-type", {
     loop: true,
 }); 
 
-// JavaScript for Hamburger Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+// // JavaScript for Hamburger Menu Toggle
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle ('active');
-});
+ // Show the sidebar
+ function showSidebar() {
+    const sidebar = document.querySelector('.side-nav');
+    sidebar.style.display = 'flex'; // Show the sidebar
+}
 
-// ----- FOR TYPING EFFECT
+// Hide the sidebar
+function hideSidebar() {
+    const sidebar = document.querySelector('.side-nav');
+    sidebar.style.display = 'none'; // Hide the sidebar
+}

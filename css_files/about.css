@@ -121,7 +121,6 @@ html, body {
 
 /* Journey Section */
 #journey-section p {
-    /* max-width: 1000px; */
     text-align: left;
     margin: 0 auto;
 }
@@ -144,3 +143,87 @@ html, body {
     justify-content: space-between;
     padding-bottom: 50px;
 }
+
+
+@media (max-width: 768px) {
+    #container {
+        display: flex;
+        flex-direction: column; /* Stack all sections vertically */
+        gap: 20px; /* Add spacing between sections */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    #profile-section {
+        display: flex;
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center-align the content */
+        text-align: center; /* Center the text */
+    }
+
+    #profile-section #about-pic img {
+        max-width: 100%; /* Reduce the image size for smaller screens */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 20px; /* Add space below the image */
+    }
+
+    #profile-section #title {
+        text-align: center; /* Center the title and icons */
+        padding-bottom: 20px;
+    }
+
+    /* #profile-section #title h1,  */
+    #profile-section #title h4, 
+    #profile-section #title p {
+        margin-bottom: 15px; /* Add spacing between elements */
+    }
+
+    #profile-section #title a {
+        display: inline-block; /* Ensure icons align horizontally */
+        margin: 0 10px; /* Space between icons */
+        font-size: 1.8rem; /* Adjust icon size */
+    }
+
+    #about-section {
+        display: flex;
+        flex-direction: column; /* Stack text and image vertically */
+        align-items: center; /* Center-align content */
+        text-align: center; /* Center text */
+    }
+
+    #about-section #about-text {
+        margin-bottom: 20px; /* Add spacing below the paragraph */
+    }
+
+    #about-section #ransom-notes img {
+        max-width: 100%; /* Reduce image size */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    #aspirations-section, #interests-section {
+        text-align: center; /* Center-align all text */
+        padding: 15px 0; /* Add spacing around sections */
+    }
+
+    #journey-section {
+        text-align: center; /* Center-align all text */
+        padding: 30px ; /* Add spacing around sections */
+    }
+
+    #interests-section {
+        display: flex;
+        flex-direction: column; /* Stack CS and non-CS interests */
+        align-items: center; /* Center-align content */
+        gap: 20px; /* Add spacing between interests */
+    }
+
+    #cs-interests, #non-cs-interests {
+        text-align: left; 
+        text-decoration:antiquewhite;
+    }
+
+    #cs-interests li, #non-cs-interests li {
+        list-style: disc ;
+        margin: 5px 0; /* Add spacing between list items */
+    }
+}
+

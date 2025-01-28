@@ -118,9 +118,47 @@ body {
 
 
 /* Responsive design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .sidebar {
+
         height: calc(100vh - 60px); /* Adjust for a smaller header */
-        top: 60px; /* Offset for smaller header height */
+        /* top: 60px; Offset for smaller header height */
+    /* } */
+/* } */ 
+
+/* Responsive Design */
+/* @media (max-width: 1024px) {
+    #sidebar {
+        width: 30%; 
+    }
+
+    #sidebar h1 {
+        font-size: 1.6rem;
+    }
+
+    #sidebar h4 {
+        font-size: 1.2rem;
+    }
+
+    #sidebar img {
+        max-width: 200px; 
+    }
+} */
+
+@media (max-width: 768px) {
+    #sidebar {
+        /* padding: 15px; */
+        font-size: 0.9rem;
+        width: 30%;
+    height: auto;
+    /* position: relative; */
+    }
+
+    #sidebar img {
+        max-width: 150px; /* Reduce image size on smaller screens */
+    }
+
+    #sidebar ul li a {
+        font-size: 0.85rem; /* Smaller font size for links */
     }
 }
