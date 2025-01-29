@@ -48,9 +48,9 @@ var typed = new Typed (".auto-type", {
     loop: true,
 }); 
 
-// // JavaScript for Hamburger Menu Toggle
+//------ JavaScript for Hamburger Menu Toggle
 
- // Show the sidebar
+// Show the sidebar
  function showSidebar() {
     const sidebar = document.querySelector('.side-nav');
     sidebar.style.display = 'flex'; // Show the sidebar

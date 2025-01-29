@@ -145,13 +145,26 @@ html, body {
     padding-bottom: 50px;
 }
 
+@media only screen and (max-width: 450px) {
+    #profile-section h1 {
+        font-size: 3.5rem;
+    }
 
-@media (max-width: 768px) {
+    #profile-section h4 {
+        font-size: 1.2rem;
+    }
+
+    #profile-section p {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
     #container {
         display: flex;
-        flex-direction: column; /* Stack all sections vertically */
-        gap: 20px; /* Add spacing between sections */
-        padding: 10px; /* Adjust padding for smaller screens */
+        flex-direction: column;     /* stack all sections vertically */
+        gap: 10px;                  
+        padding: 10px;              /* Adjust more padding */
     }
 
     #profile-section {
@@ -229,6 +242,7 @@ html, body {
     #cs-interests li, #non-cs-interests li {
         list-style: disc ;
         margin: 5px 0; /* Add spacing between list items */
+        margin-left: 20px;
     }
 }
 

@@ -31,7 +31,7 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 2px 5px var(--softgrey);
     width: 325px;
-    height: 450px;
+    /* height: 450px; */
     margin: 10px 10px;
 }
 
@@ -111,7 +111,7 @@
 
 
 /* Responsive Styling */
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
     .projects-grid {
         flex-direction: row; /* Stacks columns on smaller screens */
         grid-template-columns: repeat(1, 1fr);
