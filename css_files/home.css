@@ -132,34 +132,32 @@
         padding-top: 70px;
     }
 
-    /* #wm-left .btn{
-        position: relative;  
-        float: left;
-    } */
-
     .auto-type {
         font-size: 2rem;
+    }
+
+    #name {
+        font-size: 5rem
     }
 
     #wm-left > div {
         margin-left: -55px; 
     }
 
-    #wm-right .lego-fig{
+    /* #wm-right .lego-fig{
         height: auto; 
         justify-content: center;
         width: 250px; 
         height: 250px; 
         border-radius: 50%; 
         object-fit: cover; 
-        /* margin: 0 auto;   */
-    }
+        margin: 0 auto;   
+    } */
 
     #contact h4 {
         font-size: 2.5rem;
     }
 
-    
     #intro {
         flex-direction: column; /* stack the contact and brief sections vertically */
         align-items: center; 
@@ -208,11 +206,11 @@
 }
 
 @media only screen and (max-width: 1150px) {
-    #name {
+    /* #name {
         margin-top: 20px;
         font-family: 'GizaStencil';
         font-size: 5rem;
-    }
+    } */
 
     #welcome-message {
         gap: 20px;
