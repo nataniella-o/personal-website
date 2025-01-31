@@ -26,18 +26,6 @@ const projects = [
         image: "assets/black-splash.avif"
         
     },
-    // {
-    //     id: 3,
-    //     title: "OvaTech AI App Demo",
-    //     for: "AI4Good Lab",
-    //     date: "May - June 2024",
-    //     technologies: ["Figma"],
-    //     links: [
-
-    //     ],
-    //     description: "gonna talk about the app",
-    //     image: "assets/black-splash.avif"
-    // },
     {
         id: 3,
         title: "World Hub E-commerce Website",
@@ -61,18 +49,33 @@ const projects = [
         ],
         description: "An e-commerce platform designed to enhance user experience, focusing on usability and accessibility.",
         image: "assets/black-splash.avif"
+    },
+    {
+        id: 5,
+        title: "UofM WICS Website",
+        for: "AI4Good Lab",
+        date: "May - June 2024",
+        technologies: ["Figma"],
+        links: [
+
+        ],
+        description: "gonna talk about the website laterrr",
+        image: "assets/black-splash.avif"
     }
 ];
-// Function to get URL parameters
+// Function to get a query parameter by name
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
 
-// Load project details dynamically
+// Function to load project details dynamically
 function loadProjectDetails() {
-    const projectId = parseInt (getQueryParam('id'));
-    const project = projects.find (p => p.id === projectId);
+    // getting the project ID from the query parameter
+    const projectId = getQueryParam('id') ? parseInt(getQueryParam('id')) : null;
+
+    // find the project with the matching ID
+    const project = projects.find(p => p.id === projectId);
 
     if (project) {
         document.getElementById ('project-title').textContent = project.title;
@@ -89,7 +92,10 @@ function loadProjectDetails() {
             techList.appendChild (li);
         });
     } else {
-        document.body.innerHTML = "<h1>Project not found</h1>";
+        // document.body.innerHTML = "<h1>Project not found</h1>";
+        
+        // Redirect to 404.html if the project is not found
+        console.log("Project not found. Redirecting to 404.html");
     }
 }
 
