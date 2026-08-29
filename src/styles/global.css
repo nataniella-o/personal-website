@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Global tokens + base styles
+   Palette + type decisions: design/decisions.md
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Giza';
+  src: url('/assets/giza_fonts/Giza.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Avenir Next is not a free/webfont; rely on the Apple system copy with a
+   graceful fallback stack. (Revisit if a licensed webfont is added.) */
+
+:root {
+  /* --- Palette (design/colour-palette.jpeg) --- */
+  --champagne: #ede3d0;
+  --mauve: #ca9baa;
+  --moss: #827c34;
+  --babyblue: #cfdaff;
+  --cabernet: #5b3c45;
+  --offwhite: #f7f3ec;
+
+  /* --- Roles --- */
+  --bg-rail: var(--champagne);
+  --bg-column: var(--offwhite);
+  --text: var(--cabernet);
+  --link: var(--cabernet);
+  --rule: rgba(91, 60, 69, 0.25);
+
+  /* --- Type --- */
+  --font-hello: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Giza', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* --- Layout --- */
+  --header-h: 64px;
+  --rail-w: 40%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--bg-column);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+}
+
+img {
+  max-width: 100%;
+}

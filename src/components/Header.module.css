@@ -1,0 +1,38 @@
+/* Fixed full-width bar above both columns — see design/decisions.md (Layout).
+   Visual polish (champagne/off-white split, divider through the bar) lands in
+   step 3 with the split-screen shell. */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: var(--bg-column);
+  border-bottom: 1px solid var(--rule);
+}
+
+.logo img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  gap: 22px;
+  font-size: 0.95rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav a:hover,
+.active {
+  text-decoration: underline;
+}
