@@ -1,6 +1,7 @@
-/* Fixed full-width bar above both columns — see design/decisions.md (Layout).
-   Visual polish (champagne/off-white split, divider through the bar) lands in
-   step 3 with the split-screen shell. */
+/* A fixed full-width bar above both columns — see design/decisions.md (Layout).
+   The bar spans the viewport; a ::before panel mirrors the left rail
+   (champagne + the column divider) so the divider line reads as continuous
+   from the header down through the page. */
 
 .header {
   position: fixed;
@@ -10,14 +11,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 32px;
   background: var(--bg-column);
   border-bottom: 1px solid var(--rule);
 }
 
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--rail-w);
+  background: var(--bg-rail);
+  border-right: 1px solid var(--rule);
+  z-index: -1;
+}
+
+.logo {
+  display: inline-flex;
+  /* nudge the mark to sit under the rail's content padding */
+  margin-left: calc(var(--rail-pad-x) - 32px);
+}
+
 .logo img {
   display: block;
-  height: 28px;
+  height: 26px;
   width: auto;
 }
 
@@ -35,4 +52,24 @@
 .nav a:hover,
 .active {
   text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .header::before {
+    display: none;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .nav {
+    gap: 14px;
+    font-size: 0.85rem;
+  }
 }

@@ -43,6 +43,9 @@
   /* --- Layout --- */
   --header-h: 64px;
   --rail-w: 40%;
+  --rail-pad-x: 48px;
+  --col-pad-x: 64px;
+  --bp-stack: 768px;
 }
 
 *,

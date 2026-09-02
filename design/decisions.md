@@ -130,3 +130,13 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 - `public/assets/giza_fonts/Giza.woff2` generated from `Giza.otf` (fonttools, 306 kB → 127 kB). `@font-face` in `global.css` now lists woff2 first, otf as fallback.
 - `main.jsx` imports trimmed to `@fontsource/space-mono/latin-400.css` + `latin-700.css` (was pulling latin-ext + vietnamese subsets too).
 - **Avenir Next: accepting the system-font approach** (not licensing a webfont for now). It ships on macOS/iOS so Apple visitors get it; others fall back (Segoe UI → generic geometric sans). `--font-hello` / `--font-body` stacks in `global.css`. Can revisit if El wants a hosted webfont.
+
+### Step 3 — Layout shell ✅ (done)
+
+- `src/components/Header.module.css` — fixed full-width bar (`--header-h` 64px). A `::before` panel spans `--rail-w` in champagne with a right border, so the column divider reads as continuous from the header down the page. Bottom hairline border. Logo left, nav right.
+- `src/pages/Home.jsx` + `Home.module.css` — the split:
+  - `.rail` — `position: fixed`, `--rail-w` (40%), full height below the header, `overflow: hidden` (does not scroll), champagne, right divider, `56px / --rail-pad-x` padding. Placeholder text only (step 4 fills it).
+  - `.column` — `margin-left: --rail-w`, off-white, scrolls with the page (only scrolling region). Placeholder text only (steps 5–8).
+- New layout tokens in `global.css`: `--rail-pad-x` 48px, `--col-pad-x` 64px, `--bp-stack` 768px.
+- Basic `< 768px` stacking already stubbed in both stylesheets (rail becomes static, full-width, bottom border) — step 9 refines it, incl. dropping the boarding-pass card on mobile.
+- Verified on the Vite dev server + a clean production build.
