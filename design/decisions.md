@@ -123,7 +123,10 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 
 **Follow-ups (not blocking):**
 - After merge to `main`: switch the repo's GitHub Pages "Source" to **GitHub Actions**.
-- Convert `Giza.otf` → woff2.
-- Trim `@fontsource/space-mono` to the `latin` subset only (currently bundles latin-ext + vietnamese too).
 - Clean junk in `public/assets/` (`.DS_Store`, `2 copy.png`, `command-line` extensionless, `css.png.webp`).
-- "Avenir Next" is not a free webfont — `global.css` currently falls back to a system stack. Decide whether to license/host it or accept the fallback.
+
+### Step 2 — Global tokens + fonts polish ✅ (done)
+
+- `public/assets/giza_fonts/Giza.woff2` generated from `Giza.otf` (fonttools, 306 kB → 127 kB). `@font-face` in `global.css` now lists woff2 first, otf as fallback.
+- `main.jsx` imports trimmed to `@fontsource/space-mono/latin-400.css` + `latin-700.css` (was pulling latin-ext + vietnamese subsets too).
+- **Avenir Next: accepting the system-font approach** (not licensing a webfont for now). It ships on macOS/iOS so Apple visitors get it; others fall back (Segoe UI → generic geometric sans). `--font-hello` / `--font-body` stacks in `global.css`. Can revisit if El wants a hosted webfont.

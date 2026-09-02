@@ -5,14 +5,18 @@
 
 @font-face {
   font-family: 'Giza';
-  src: url('/assets/giza_fonts/Giza.otf') format('opentype');
+  src:
+    url('/assets/giza_fonts/Giza.woff2') format('woff2'),
+    url('/assets/giza_fonts/Giza.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
-/* Avenir Next is not a free/webfont; rely on the Apple system copy with a
-   graceful fallback stack. (Revisit if a licensed webfont is added.) */
+/* Avenir Next is not a free/licensable webfont. It ships with macOS/iOS, so
+   Apple visitors get the real thing; everyone else falls back down the stack
+   (Segoe UI on Windows, then a generic geometric sans). Revisit only if El
+   licenses a hosted webfont — see design/decisions.md. */
 
 :root {
   /* --- Palette (design/colour-palette.jpeg) --- */

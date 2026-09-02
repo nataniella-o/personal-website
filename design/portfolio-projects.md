@@ -107,7 +107,7 @@
 
 ## Open Items Before Case Studies Can Be Written
 
-1. **"The interesting part" is filled on all 5 projects.** Netflix DB and QDog now use technical-decision hooks suggested by Claude (data-cleaning judgment call; decoupled frontend/backend requirement) rather than the original personal-milestone framing — El should restate these in her own voice when writing final copy, not paste them verbatim.
+1. **"The interesting part" is filled on all 5 projects.** Netflix DB and QDog now use technical-decision hooks suggested by Claude (data-cleaning judgment call; decoupled frontend/backend requirement) rather than the original personal-milestone framing
 2. ~~OvaTech's self-assessment may undersell dev work~~ **Resolved:** confirmed as both design and dev.
 3. ~~KAHYAH's inclusion undecided~~ **Resolved:** yes, on site — shape (short entry vs. full case study) still to be decided.
 4. All course projects need honest status framing in actual copy — "finished and graded," not implied as shipped/live. **Confirmed as the approach.**
