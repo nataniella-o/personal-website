@@ -30,9 +30,12 @@
   /* --- Roles --- */
   --bg-rail: var(--champagne);
   --bg-column: var(--offwhite);
+  --bg-header: var(--mauve);
+  --bg-card: #fffdf9;
   --text: var(--cabernet);
   --link: var(--cabernet);
   --rule: rgba(91, 60, 69, 0.25);
+  --rule-dash: rgba(91, 60, 69, 0.35);
 
   /* --- Type --- */
   --font-hello: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -42,8 +45,8 @@
 
   /* --- Layout --- */
   --header-h: 64px;
-  --rail-w: 40%;
-  --rail-pad-x: 48px;
+  --rail-w: 30%;
+  --rail-pad-x: 40px;
   --col-pad-x: 64px;
   --bp-stack: 768px;
 }

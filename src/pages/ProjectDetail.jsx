@@ -6,7 +6,7 @@ export default function ProjectDetail() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: 'var(--header-h)', padding: 24 }}>
+      <main style={{ padding: 24, paddingTop: 'calc(var(--header-h) + 24px)' }}>
         {/* Ported from legacy/project-detail.html in a later phase — see design/decisions.md */}
         <p>Project detail — placeholder ({id}).</p>
       </main>

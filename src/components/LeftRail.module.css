@@ -1,0 +1,67 @@
+/* Left-rail content flow. The fixed/positioned shell (bg, size, overflow,
+   outer padding) is Home.module.css .rail — this file owns the stack of
+   pieces inside it. See design/decisions.md (Left rail content). */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(16px, 3.2vh, 30px);
+  /* fills the rail's content box (Home .rail padding = --rail-pad-x) */
+  width: 100%;
+}
+
+/* --- typed "Hello," --- */
+.greeting {
+  margin: 0;
+  font-family: var(--font-hello);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  color: color-mix(in srgb, var(--cabernet) 75%, transparent);
+}
+
+.greeting :global(.typed-cursor) {
+  color: var(--mauve);
+  font-weight: 400;
+}
+
+/* --- portrait --- */
+.portrait {
+  width: min(78%, 280px);
+  aspect-ratio: 4 / 5;
+  max-height: 38vh;
+  border-radius: 14px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--cabernet) 8%, transparent);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- "I'm Nataniella" --- */
+.name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* min / scales-with-viewport / max — raise the last number to go bigger */
+  font-size: clamp(3.2rem, 9vw, 5rem);
+  line-height: 1.02;
+  color: var(--cabernet);
+}
+
+@media (max-width: 768px) {
+  .stack {
+    max-width: none;
+    gap: 22px;
+  }
+
+  .portrait {
+    width: min(55%, 240px);
+    max-height: none;
+  }
+}

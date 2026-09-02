@@ -1,0 +1,70 @@
+/* Boarding-pass card — the rail's deliberate "whimsical" moment.
+   Monospace, white panel on the champagne rail. See design/decisions.md. */
+
+.card {
+  width: 100%;
+  font-family: var(--font-mono);
+  color: var(--cabernet);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 16px 18px 14px;
+}
+
+.head {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--rule-dash);
+}
+
+.rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 10px;
+  margin: 0;
+  padding: 12px 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.field dt {
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--cabernet) 55%, transparent);
+}
+
+.field dd {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--rule-dash);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+.links a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+
+.links a:hover {
+  color: var(--moss);
+}

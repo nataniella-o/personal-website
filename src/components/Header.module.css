@@ -1,7 +1,5 @@
-/* A fixed full-width bar above both columns — see design/decisions.md (Layout).
-   The bar spans the viewport; a ::before panel mirrors the left rail
-   (champagne + the column divider) so the divider line reads as continuous
-   from the header down through the page. */
+/* Fixed full-width bar above both columns — see design/decisions.md (Layout).
+   A solid mauve accent bar. No vertical divider through it (El's call). */
 
 .header {
   position: fixed;
@@ -12,18 +10,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32px;
-  background: var(--bg-column);
+  background: var(--bg-header);
   border-bottom: 1px solid var(--rule);
-}
-
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: var(--rail-w);
-  background: var(--bg-rail);
-  border-right: 1px solid var(--rule);
-  z-index: -1;
 }
 
 .logo {
@@ -58,10 +46,6 @@
 @media (max-width: 768px) {
   .header {
     padding: 0 20px;
-  }
-
-  .header::before {
-    display: none;
   }
 
   .logo {

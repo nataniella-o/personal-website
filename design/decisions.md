@@ -18,10 +18,10 @@ Every entry: what was decided + any context needed to act on it later.
 
 ## Layout
 
-- Homepage is a **two-column split**: fixed non-scrolling left rail (~40%), independently scrolling right column (~60%). Page scroll = right column only.
+- Homepage is a **two-column split**: fixed non-scrolling left rail (**30%**), independently scrolling right column (**70%**). Page scroll = right column only. (`--rail-w`; started at 40/60, El changed to 30/70.)
 - **Keep a header** (reverses the earlier "remove the global header" decision). See updated prototype `design/homepage-prototype.png`.
   - **Full-width bar** across the top, above both columns. **`position: fixed` — stays pinned on scroll (confirmed).** The left rail and right column both start *below* the header. Layout per updated `design/homepage-prototype.png`.
-  - Light background matching the columns beneath (champagne-tinted left portion, off-white right), thin bottom border; the column divider line continues up through it.
+  - **Solid mauve bar** (El's override — the prototype had it match the columns). Thin bottom border. **No vertical divider through the header** (removed).
   - **Left of header:** the monogram logo — `assets/short_logo.png` (the "NO" mark: N + O with star accents, black), links to `/`. **Confirmed.** *(verify the PNG has a transparent background so it sits cleanly on the champagne header; if not, get a transparent export.)*
   - **Right of header:** the nav — `About · Experience · Projects · Resume`. This is the *only* nav area; the previously-planned "nav pinned top-right inside the right column" is dropped in favour of this header.
   - The old hamburger `.side-nav` + `showSidebar()` are still removed.
@@ -140,3 +140,17 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 - New layout tokens in `global.css`: `--rail-pad-x` 48px, `--col-pad-x` 64px, `--bp-stack` 768px.
 - Basic `< 768px` stacking already stubbed in both stylesheets (rail becomes static, full-width, bottom border) — step 9 refines it, incl. dropping the boarding-pass card on mobile.
 - Verified on the Vite dev server + a clean production build.
+
+### Step 4 — Left rail (styled) ✅ (done)
+
+- `src/components/LeftRail.jsx` — composes the rail: typed greeting → portrait → "I'm Nataniella" → boarding-pass card. Wrapper is a flex column with `clamp()` gaps, `max-width: 440px`.
+- `src/components/TypedGreeting.jsx` — `typed.js` in a `useEffect` (destroy on cleanup, StrictMode-safe). Greeting list carried over from `legacy/js_files/script.js`. Renders into an `<h1>`.
+- `src/components/BoardingPass.jsx` + `.module.css` — mono card, white (`--bg-card`), dashed section rules. `<dl>` grid of the 6 fields; link row (EMAIL / LINKEDIN / GITHUB / RESUME). Email = **`nataniellaog@gmail.com`** (confirmed by El). Link hover → moss.
+- `src/components/LeftRail.module.css` — `.stack` is full rail-content width (`align-items: stretch`, no max-width), so the boarding-pass card spans the rail (inside Home `.rail`'s `--rail-pad-x` padding). Greeting: Avenir-Next stack, 700, muted cabernet (`color-mix` 52%), cursor tinted mauve. Portrait: `width: min(78%, 280px)`, `aspect-ratio 4/5`, `max-height 38vh`, rounded 14px, `object-fit: cover` on `headshot.jpeg`. Name: Giza, cabernet.
+- **Header colour → mauve** (El's call; deviates from the prototype which had the header match the columns). `--bg-header: var(--mauve)` token. **No vertical divider through the header** — the `::before` panel was removed entirely. The rail↔column divider still runs below the header (Home `.rail` border-right). Logged as a deliberate override.
+- New tokens: `--bg-header`, `--bg-card` (#fffdf9), `--rule-dash`.
+- Rail still `overflow: hidden` (non-scrolling per decision) — content sized conservatively to fit; portrait capped at 40vh.
+
+**Step 4 follow-ups (from /btw reports):**
+- Header logo routing: React Router v7 doesn't reset scroll on navigation. Added `src/components/ScrollToTop.jsx` (mounted in `App.jsx`) to reset scroll on route change, and a logo `onClick` that smooth-scrolls to top when already on `/`.
+- Fixed the placeholder pages (`About` / `Projects` / `ProjectDetail` / `NotFound`): the inline `padding: 24` shorthand was overriding `paddingTop`, so content sat under the fixed header. Now `padding: 24` + `paddingTop: calc(var(--header-h) + 24px)`.

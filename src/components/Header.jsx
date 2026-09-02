@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import styles from './Header.module.css'
 
 const NAV = [
@@ -9,9 +9,25 @@ const NAV = [
 ]
 
 export default function Header() {
+  const { pathname } = useLocation()
+
+  // From another route, <Link> navigates and ScrollToTop resets scroll.
+  // When already on the landing page, just scroll back to the top.
+  const handleLogoClick = (e) => {
+    if (pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.logo} aria-label="Home">
+      <Link
+        to="/"
+        className={styles.logo}
+        aria-label="Home"
+        onClick={handleLogoClick}
+      >
         <img src="/assets/short_logo.png" alt="Nataniella Ogogo" />
       </Link>
 
