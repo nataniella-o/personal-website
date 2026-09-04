@@ -25,7 +25,7 @@ export default function TypedGreeting({ className }) {
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: GREETINGS,
-      typeSpeed: 90,
+      typeSpeed: 60,
       backSpeed: 45,
       backDelay: 1900,
       startDelay: 300,

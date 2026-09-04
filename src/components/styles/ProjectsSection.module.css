@@ -8,5 +8,7 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
+    max-width: 380px;
+    margin-inline: auto;
   }
 }

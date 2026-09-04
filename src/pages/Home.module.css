@@ -26,7 +26,7 @@
   width: calc(100% - var(--rail-w));
   min-height: calc(100vh - var(--header-h));
   background: var(--bg-column);
-  padding: 56px var(--col-pad-x) 80px;
+  padding: 56px var(--col-pad-x) var(--col-pad-bottom);
   display: flex;
   flex-direction: column;
   gap: clamp(48px, 8vh, 84px);
@@ -50,6 +50,6 @@
   .column {
     margin-left: 0;
     width: 100%;
-    padding: 32px 24px;
+    padding: 32px var(--col-pad-x) var(--col-pad-bottom);
   }
 }

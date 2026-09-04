@@ -30,13 +30,14 @@
   /* --- Roles --- */
   --bg-rail: var(--champagne);
   --bg-column: var(--offwhite);
-  --bg-header: var(--mauve);
+  --bg-header: color-mix(in srgb, var(--mauve) 85%, transparent); /* mauve at 85% */
   --bg-card: #fffdf9;
   --text: var(--cabernet);
   --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted cabernet */
   --link: var(--cabernet);
   --rule: rgba(91, 60, 69, 0.25);
   --rule-dash: rgba(91, 60, 69, 0.35);
+  --bg-footer: color-mix(in srgb, var(--babyblue) 85%, transparent); /* babyblue at 85% */
 
   /* --- Type --- */
   --font-hello: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -44,21 +45,24 @@
   --font-display: 'Giza', Georgia, 'Times New Roman', serif;
   --font-mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
+  /* type scale */
+  --fs-section: clamp(1.3rem, 2vw, 1.55rem); /* numbered section headings (§01–§03) */
+  --fw-section: 700;
+
   /* --- Layout --- */
   --header-h: 64px;
   --rail-w: 30%;
   --rail-pad-x: 40px;
   --col-pad-x: 64px;
+  --col-pad-bottom: 80px;
   --measure: 100ch; /* max line length for body copy in the right column */
   --bp-stack: 768px;
 }
 
-/* On mobile the header stacks (logo row + wrapping nav row), so it needs
-   more height. Everything keys off --header-h, so overriding it here keeps
-   the split offsets in sync. */
 @media (max-width: 768px) {
   :root {
-    --header-h: 96px;
+    --col-pad-x: 24px;
+    --col-pad-bottom: 32px;
   }
 }
 

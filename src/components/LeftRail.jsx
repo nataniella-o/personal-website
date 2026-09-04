@@ -8,7 +8,7 @@ export default function LeftRail() {
       <TypedGreeting className={styles.greeting} />
 
       <div className={styles.portrait}>
-        <img src="/assets/headshot.jpeg" alt="Nataniella Ogogo" />
+        <img src="/assets/notion-avatar.png" alt="Nataniella Ogogo" />
       </div>
 
       <p className={styles.name}>I&rsquo;m Nataniella</p>

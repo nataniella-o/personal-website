@@ -8,3 +8,9 @@
 .para:last-of-type {
   margin-bottom: 1.7em;
 }
+
+@media (max-width: 768px) {
+  .para {
+    font-size: 0.9rem;
+  }
+}

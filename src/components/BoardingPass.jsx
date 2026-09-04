@@ -2,11 +2,11 @@ import styles from './styles/BoardingPass.module.css'
 
 const FIELDS = [
   { label: 'FROM', value: 'WINNIPEG/YWG' },
-  { label: 'TO', value: 'ANYWHERE/!!!' },
+  { label: 'TO', value: 'WORLD/TBD' },
   { label: 'STATUS', value: 'OPEN TO WORK' },
   { label: 'FIELD', value: 'CS + DESIGN' },
   { label: 'SEAT', value: '1A' },
-  { label: 'GATE', value: 'NOW' },
+  { label: 'GATE', value: 'TBD' },
 ]
 
 const LINKS = [

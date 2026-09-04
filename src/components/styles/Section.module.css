@@ -3,8 +3,8 @@
   padding-bottom: 14px;
   border-bottom: 1px solid var(--rule);
   font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  font-weight: var(--fw-section);
+  font-size: var(--fs-section);
   letter-spacing: 0.01em;
   color: var(--text);
 }

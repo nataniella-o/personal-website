@@ -1,5 +1,6 @@
 /* Fixed full-width bar above both columns — see design/decisions.md (Layout).
-   A solid mauve accent bar. No vertical divider through it (El's call). */
+   Mauve at 85% (--bg-header). No vertical divider through it (El's call).
+   Below --bp-stack the nav links collapse into a hamburger menu. */
 
 .header {
   position: fixed;
@@ -11,6 +12,7 @@
   justify-content: space-between;
   padding: 0 32px;
   background: var(--bg-header);
+  backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -30,27 +32,57 @@
   display: flex;
   gap: 22px;
   font-size: 0.95rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 
-.nav a {
+.nav a,
+.menu a {
   text-decoration: none;
   color: var(--text);
 }
 
 .nav a:hover,
+.menu a:hover,
 .active {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+/* hamburger — hidden until the breakpoint */
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* dropdown panel under the fixed bar */
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 20px 18px;
+  background: var(--bg-header);
+  border-bottom: 1px solid var(--rule);
+}
+
+.menu a {
+  padding: 8px 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
-  /* stack: logo row above a wrapping nav row (no hamburger) */
   .header {
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 8px;
     padding: 0 20px;
   }
 
@@ -59,12 +91,14 @@
   }
 
   .logo img {
-    height: 22px;
+    height: 24px;
   }
 
   .nav {
-    flex-wrap: wrap;
-    gap: 6px 16px;
-    font-size: 0.8rem;
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
   }
 }

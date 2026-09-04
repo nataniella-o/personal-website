@@ -1,6 +1,10 @@
 .footer {
+  /* full-bleed within the right column — cancel its padding so the
+     background reaches the column edges instead of sitting in a box */
+  margin: 0 calc(-1 * var(--col-pad-x)) calc(-1 * var(--col-pad-bottom));
+  padding: 34px var(--col-pad-x) var(--col-pad-bottom);
   border-top: 1px solid var(--rule);
-  padding-top: 34px;
+  background-color: var(--bg-footer);
 }
 
 .top {
@@ -16,6 +20,7 @@
   max-width: 44ch;
   font-style: italic;
   font-size: 0.95rem;
+  font-weight: 420;
   line-height: 1.5;
   color: var(--text-body);
 }
@@ -39,6 +44,10 @@
 
 .socials a {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* equal box so the gaps read evenly despite the icons' differing widths */
+  width: 1.4em;
   color: var(--text);
   transition:
     transform 0.16s ease,
@@ -51,12 +60,28 @@
 }
 
 @media (max-width: 768px) {
-  .top {
-    align-items: flex-start;
+  .footer {
+    text-align: center;
   }
 
+  .top {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* wordmark first (top), then the thank-you note */
   .wordmark {
-  height: 75px;
-  
-}
+    order: -1;
+  }
+
+  .note p {
+    max-width: 40ch;
+    /* clearly secondary to the wordmark — matches ProjectCard .desc */
+    font-size: 0.85rem;
+  }
+
+  .socials {
+    justify-content: center;
+  }
 }

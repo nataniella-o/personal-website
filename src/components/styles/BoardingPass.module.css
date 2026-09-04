@@ -12,7 +12,7 @@
 }
 
 .head {
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   padding-bottom: 10px;
@@ -35,14 +35,14 @@
 }
 
 .field dt {
-  font-size: 0.52rem;
+  font-size: 0.65rem;
   letter-spacing: 0.1em;
   color: color-mix(in srgb, var(--cabernet) 55%, transparent);
 }
 
 .field dd {
   margin: 0;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   overflow-wrap: anywhere;
@@ -54,7 +54,7 @@
   gap: 6px 14px;
   padding-top: 11px;
   border-top: 1px dashed var(--rule-dash);
-  font-size: 0.6rem;
+  font-size: 0.70rem;
   letter-spacing: 0.08em;
 }
 

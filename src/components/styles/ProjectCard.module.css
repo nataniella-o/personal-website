@@ -80,12 +80,40 @@
 }
 
 @media (hover: none) {
-  /* no hover on touch — keep caption+title visible, hide the desc layer */
-  .card:hover .meta {
+  /* No hover on touch, so the crossfade can't fire — un-stack the cell and
+     show caption+title AND the description together, statically. */
+  .text {
+    display: block;
+  }
+
+  .meta,
+  .desc {
+    grid-area: auto;
     opacity: 1;
   }
 
-  .card:hover .desc {
-    opacity: 0;
+  .desc {
+    margin-top: 10px;
+  }
+
+  .card:active {
+    transform: none;
+    background: color-mix(in srgb, var(--cabernet) 16%, transparent);
+  }
+}
+
+@media (max-width: 768px) {
+  /* trim the cards down a little in the stacked view */
+  .card {
+    padding: 12px;
+  }
+
+  .thumb {
+    aspect-ratio: 16 / 10;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 1.02rem;
   }
 }
