@@ -20,7 +20,7 @@ const PROJECTS = [
     title: 'QDog',
     caption: 'FALL 2025  |  FRONTEND DEV & DESIGN LEAD',
     description:
-      'A virtual veterinary app for remote pet care access — appointments, prescriptions, vet notes, and a health tracker.',
+      'A virtual veterinary app for remote pet care access for appointments, prescriptions, vet notes, and a health tracker.',
   },
   {
     slug: 'outfitly',

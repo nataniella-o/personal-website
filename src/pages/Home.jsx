@@ -2,6 +2,7 @@ import Header from '../components/Header.jsx'
 import LeftRail from '../components/LeftRail.jsx'
 import AboutSection from '../components/AboutSection.jsx'
 import ProjectsSection from '../components/ProjectsSection.jsx'
+import ToolkitSection from '../components/ToolkitSection.jsx'
 import styles from './Home.module.css'
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
         <main className={styles.column}>
           <AboutSection />
           <ProjectsSection />
-          {/* Steps 7–8: §03 My Toolkit · footer */}
+          <ToolkitSection />
+          {/* Step 8: footer */}
         </main>
       </div>
     </>

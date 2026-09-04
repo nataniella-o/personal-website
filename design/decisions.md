@@ -170,3 +170,13 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
   - Cards link to `/project/<slug>` (`kahyah`, `qdog`, `outfitly`, `ovatech-ai`) — the route resolves to the placeholder `ProjectDetail` for now; real case-study pages are a later content-dependent phase.
   - Captions use ` | ` separators per the prototype (decisions table had `·`).
 - Netflix project stays off the homepage grid (still destined for `/projects`).
+
+### Step 7 — Right column §03 "My Toolkit" ✅ (done)
+
+- Added `react-icons` dependency (was in the step-1 plan). Icons render as inline SVG, monochrome via `currentColor` → `var(--text)`.
+- `src/components/ToolkitSection.jsx` + `.module.css` — §03: a `repeat(6,1fr)` icon grid (5 then 4 cols on smaller screens), no labels. Icons lift + go opaque on hover.
+- Icon sourcing for the 14 tools (Java, JS, Python, CSS, SQL, HTML5, Notion, Git, Figma, VS Code, Office, Prettier, C, C++):
+  - Simple Icons (`Si*`): JS, Python, Notion, Git, Figma, Prettier, C, C++
+  - Font Awesome (`Fa*`): Java, HTML5, CSS (`FaCss3Alt` — Simple Icons has no `SiCss3`)
+  - Tabler (`Tb*`): **SQL** (`TbSql`, a text mark — SQL isn't a brand), **VS Code** (`TbBrandVscode`), **Office** (`TbBrandOffice`) — Simple Icons dropped the latter two over trademark.
+  - Legacy colored PNGs in `public/assets/icons/` are now unused (cleanup later).
