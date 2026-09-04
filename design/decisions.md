@@ -154,3 +154,10 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 **Step 4 follow-ups (from /btw reports):**
 - Header logo routing: React Router v7 doesn't reset scroll on navigation. Added `src/components/ScrollToTop.jsx` (mounted in `App.jsx`) to reset scroll on route change, and a logo `onClick` that smooth-scrolls to top when already on `/`.
 - Fixed the placeholder pages (`About` / `Projects` / `ProjectDetail` / `NotFound`): the inline `padding: 24` shorthand was overriding `paddingTop`, so content sat under the fixed header. Now `padding: 24` + `paddingTop: calc(var(--header-h) + 24px)`.
+
+### Step 5 — Right column §01 "Who's Typing?" ✅ (done)
+
+- `src/components/Section.jsx` + `.module.css` — reusable numbered-section pattern (`NN – Title` heading with a full-width bottom rule, `.body` capped at 620px). Will also carry §02 and §03.
+- `src/components/ArrowLink.jsx` + `.module.css` — the "MORE ABOUT ME →" link style (uppercase, letter-spaced, underlined; arrow nudges right on hover). Reused for §02's "MORE PROJECTS →".
+- `src/components/AboutSection.jsx` + `.module.css` — §01: the three bio paragraphs (verbatim from El, casing intentional) + `ArrowLink` → `/about`.
+- `src/pages/Home.jsx` / `Home.module.css` — column is now a flex column with `clamp(48px, 8vh, 84px)` gap between sections; placeholder removed.

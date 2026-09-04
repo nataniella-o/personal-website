@@ -1,0 +1,10 @@
+.para {
+  margin: 0 0 1.1em;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.para:last-of-type {
+  margin-bottom: 1.7em;
+}

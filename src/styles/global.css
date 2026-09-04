@@ -33,6 +33,7 @@
   --bg-header: var(--mauve);
   --bg-card: #fffdf9;
   --text: var(--cabernet);
+  --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted cabernet */
   --link: var(--cabernet);
   --rule: rgba(91, 60, 69, 0.25);
   --rule-dash: rgba(91, 60, 69, 0.35);
@@ -48,6 +49,7 @@
   --rail-w: 30%;
   --rail-pad-x: 40px;
   --col-pad-x: 64px;
+  --measure: 100ch; /* max line length for body copy in the right column */
   --bp-stack: 768px;
 }
 

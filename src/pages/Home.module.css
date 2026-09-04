@@ -26,15 +26,10 @@
   width: calc(100% - var(--rail-w));
   min-height: calc(100vh - var(--header-h));
   background: var(--bg-column);
-  padding: 56px var(--col-pad-x);
-}
-
-/* placeholder styling — removed as steps 4–8 land */
-.placeholder {
-  color: var(--rule);
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  padding: 56px var(--col-pad-x) 80px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 8vh, 84px);
 }
 
 @media (max-width: 768px) {

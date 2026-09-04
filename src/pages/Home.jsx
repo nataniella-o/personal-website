@@ -1,5 +1,6 @@
 import Header from '../components/Header.jsx'
 import LeftRail from '../components/LeftRail.jsx'
+import AboutSection from '../components/AboutSection.jsx'
 import styles from './Home.module.css'
 
 export default function Home() {
@@ -12,8 +13,8 @@ export default function Home() {
         </aside>
 
         <main className={styles.column}>
-          {/* Steps 5–8: §01 Who's Typing? · §02 My Projects · §03 My Toolkit · footer */}
-          <p className={styles.placeholder}>Right column — steps 5–8</p>
+          <AboutSection />
+          {/* Steps 6–8: §02 My Projects · §03 My Toolkit · footer */}
         </main>
       </div>
     </>
