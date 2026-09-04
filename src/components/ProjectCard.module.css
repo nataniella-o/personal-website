@@ -1,0 +1,91 @@
+.card {
+  display: block;
+  padding: 14px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--cabernet) 10%, transparent);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--moss) 20%, transparent);
+}
+
+.thumb {
+  aspect-ratio: 4 / 3;
+  border-radius: 9px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--cabernet) 9%, transparent);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* caption+title and description are stacked in the same grid cell so the
+   card height is stable and the two crossfade on hover with no jump. */
+.text {
+  display: grid;
+}
+
+.meta,
+.desc {
+  grid-area: 1 / 1;
+  transition: opacity 0.18s ease;
+}
+
+.meta {
+  opacity: 1;
+}
+
+.desc {
+  margin: 0;
+  align-self: start;
+  opacity: 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-body);
+}
+
+.card:hover .meta {
+  opacity: 0;
+}
+
+.card:hover .desc {
+  opacity: 1;
+}
+
+.caption {
+  margin: 0 0 5px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+@media (hover: none) {
+  /* no hover on touch — keep caption+title visible, hide the desc layer */
+  .card:hover .meta {
+    opacity: 1;
+  }
+
+  .card:hover .desc {
+    opacity: 0;
+  }
+}

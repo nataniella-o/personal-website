@@ -161,3 +161,12 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 - `src/components/ArrowLink.jsx` + `.module.css` — the "MORE ABOUT ME →" link style (uppercase, letter-spaced, underlined; arrow nudges right on hover). Reused for §02's "MORE PROJECTS →".
 - `src/components/AboutSection.jsx` + `.module.css` — §01: the three bio paragraphs (verbatim from El, casing intentional) + `ArrowLink` → `/about`.
 - `src/pages/Home.jsx` / `Home.module.css` — column is now a flex column with `clamp(48px, 8vh, 84px)` gap between sections; placeholder removed.
+
+### Step 6 — Right column §02 "My Projects" ✅ (done)
+
+- `src/components/ProjectCard.jsx` + `.module.css` — a card = tinted rounded panel → 4:3 thumb (empty tinted block until real images are added) → uppercase caption → bold title. Whole card is a `<Link>`; hover lifts it slightly.
+  - **Hover crossfades caption+title → a short description** (per `design/project-card-hover.png`). Both layers are stacked in one CSS-grid cell so card height stays put and there's no jump. `@media (hover: none)` keeps caption+title on touch. Descriptions trimmed from the "what it is" notes in `design/portfolio-projects.md` (in `ProjectsSection.jsx`) — **draft copy, confirm wording with El**.
+- `src/components/ProjectsSection.jsx` + `.module.css` — §02: 2×2 grid (1-col under 768px) of the 4 featured projects + `ArrowLink` → `/projects`.
+  - Cards link to `/project/<slug>` (`kahyah`, `qdog`, `outfitly`, `ovatech-ai`) — the route resolves to the placeholder `ProjectDetail` for now; real case-study pages are a later content-dependent phase.
+  - Captions use ` | ` separators per the prototype (decisions table had `·`).
+- Netflix project stays off the homepage grid (still destined for `/projects`).

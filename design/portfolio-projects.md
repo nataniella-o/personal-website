@@ -55,7 +55,7 @@
 
 ## 3. QDog — Virtual Vet App
 
-**What it is:** COMP 4350 (Software Engineering 2) project. A virtual veterinary app for remote pet care access — stores appointment details, prescriptions, vet notes, and past logs, plus a pet health tracker.
+**What it is:** COMP 4350 (Software Engineering 2) project. A virtual veterinary app for remote pet care access: stores appointment details, prescriptions, vet notes, and past logs, plus a pet health tracker.
 
 **Tools:** Jira, Confluence, Figma, Jest
 
