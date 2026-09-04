@@ -51,17 +51,31 @@
   /* min / scales-with-viewport / max — raise the last number to go bigger */
   font-size: clamp(3.2rem, 9vw, 5rem);
   line-height: 1.02;
+  overflow-wrap: break-word;
   color: var(--cabernet);
+}
+
+/* --- boarding-pass wrapper (hidden on mobile) --- */
+.pass {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .stack {
     max-width: none;
-    gap: 22px;
+    gap: 20px;
   }
 
   .portrait {
-    width: min(55%, 240px);
+    width: min(62%, 260px);
     max-height: none;
+  }
+
+  .name {
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
+  }
+
+  .pass {
+    display: none;
   }
 }

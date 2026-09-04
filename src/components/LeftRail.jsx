@@ -13,7 +13,10 @@ export default function LeftRail() {
 
       <p className={styles.name}>I&rsquo;m Nataniella</p>
 
-      <BoardingPass />
+      {/* hidden below --bp-stack — see design/decisions.md (Responsive) */}
+      <div className={styles.pass}>
+        <BoardingPass />
+      </div>
     </div>
   )
 }

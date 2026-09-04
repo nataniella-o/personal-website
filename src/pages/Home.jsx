@@ -3,6 +3,7 @@ import LeftRail from '../components/LeftRail.jsx'
 import AboutSection from '../components/AboutSection.jsx'
 import ProjectsSection from '../components/ProjectsSection.jsx'
 import ToolkitSection from '../components/ToolkitSection.jsx'
+import Footer from '../components/Footer.jsx'
 import styles from './Home.module.css'
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
           <AboutSection />
           <ProjectsSection />
           <ToolkitSection />
-          {/* Step 8: footer */}
+          <Footer />
         </main>
       </div>
     </>

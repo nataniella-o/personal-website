@@ -180,3 +180,21 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
   - Font Awesome (`Fa*`): Java, HTML5, CSS (`FaCss3Alt` — Simple Icons has no `SiCss3`)
   - Tabler (`Tb*`): **SQL** (`TbSql`, a text mark — SQL isn't a brand), **VS Code** (`TbBrandVscode`), **Office** (`TbBrandOffice`) — Simple Icons dropped the latter two over trademark.
   - Legacy colored PNGs in `public/assets/icons/` are now unused (cleanup later).
+
+### Step 8 — Footer ✅ (done)
+
+- `src/components/Footer.jsx` + `styles/Footer.module.css` — inline at the end of the right column, top rule. Row: italic thank-you copy (left) + `long_logo.png` wordmark (right, `align-items: flex-end`); social row below (LinkedIn / GitHub / Email via `react-icons/fa`, hover lifts + goes moss).
+- Social links match the boarding-pass card (linkedin `/in/nataniella-ogogo`, github `nataniella-o`, email `nataniellaog@gmail.com`).
+- **`long_logo.png` and `short_logo.png` both have alpha** (`sips hasAlpha: yes`) — the earlier transparency concern is resolved; they sit cleanly on their backgrounds.
+
+### Component styles folder
+
+- All component CSS modules live in `src/components/styles/` (moved after step 7). `src/pages/Home.module.css` and `src/styles/global.css` unchanged.
+
+### Step 9 — Responsive ✅ (done)
+
+- Breakpoint is `768px` (literal in `@media` — `--bp-stack` is just documentation).
+- **Split collapses** to one column: `.split` → `flex-direction: column`; `.rail` → `position: static`, full width, `overflow: visible`, bottom border instead of right; `.column` → full width, no left margin.
+- **Boarding-pass card hidden on mobile** — `<BoardingPass>` wrapped in `.pass` in `LeftRail`, `display: none` under 768.
+- **Header stacks on mobile** — logo row above a wrapping nav row (no hamburger). `--header-h` is overridden to `96px` under 768 in `global.css` so every split offset stays in sync. Logo/nav left-aligned, nav `flex-wrap: wrap`. *(layout is my call — flag if you want it different)*
+- Mobile tweaks: `.name` gets a gentler clamp + `overflow-wrap: break-word`; portrait a touch larger; existing per-component 768 breakpoints (projects grid → 1 col, toolkit → 4–5 cols, section body full width, footer stacks) left as tuned.

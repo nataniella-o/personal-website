@@ -45,7 +45,12 @@
 }
 
 @media (max-width: 768px) {
+  /* stack: logo row above a wrapping nav row (no hamburger) */
   .header {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
     padding: 0 20px;
   }
 
@@ -53,8 +58,13 @@
     margin-left: 0;
   }
 
+  .logo img {
+    height: 22px;
+  }
+
   .nav {
-    gap: 14px;
-    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    font-size: 0.8rem;
   }
 }

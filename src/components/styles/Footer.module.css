@@ -1,0 +1,62 @@
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 34px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.note p {
+  margin: 0 0 0.55em;
+  max-width: 44ch;
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.note p:last-child {
+  margin-bottom: 0;
+}
+
+.wordmark {
+  height: 75px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 30px;
+  font-size: 1.3rem;
+}
+
+.socials a {
+  display: inline-flex;
+  color: var(--text);
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
+}
+
+.socials a:hover {
+  color: var(--moss);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .top {
+    align-items: flex-start;
+  }
+
+  .wordmark {
+  height: 75px;
+  
+}
+}

@@ -53,6 +53,15 @@
   --bp-stack: 768px;
 }
 
+/* On mobile the header stacks (logo row + wrapping nav row), so it needs
+   more height. Everything keys off --header-h, so overriding it here keeps
+   the split offsets in sync. */
+@media (max-width: 768px) {
+  :root {
+    --header-h: 96px;
+  }
+}
+
 *,
 *::before,
 *::after {

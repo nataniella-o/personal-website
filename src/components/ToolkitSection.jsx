@@ -20,6 +20,8 @@ const TOOLS = [
   { name: 'Java', Icon: FaJava },
   { name: 'JavaScript', Icon: SiJavascript },
   { name: 'Python', Icon: SiPython },
+  { name: 'C', Icon: SiC },
+  { name: 'C++', Icon: SiCplusplus },
   { name: 'CSS', Icon: FaCss3Alt },
   { name: 'SQL', Icon: TbSql },
   { name: 'HTML5', Icon: FaHtml5 },
@@ -29,8 +31,6 @@ const TOOLS = [
   { name: 'VS Code', Icon: TbBrandVscode },
   { name: 'Microsoft Office', Icon: TbBrandOffice },
   { name: 'Prettier', Icon: SiPrettier },
-  { name: 'C', Icon: SiC },
-  { name: 'C++', Icon: SiCplusplus },
 ]
 
 export default function ToolkitSection() {
