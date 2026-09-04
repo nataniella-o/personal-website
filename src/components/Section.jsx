@@ -1,4 +1,4 @@
-import styles from './Section.module.css'
+import styles from './styles/Section.module.css'
 
 // Numbered section with a full-width rule under the heading.
 // Shared by the right-column sections (§01–§03). See design/decisions.md.

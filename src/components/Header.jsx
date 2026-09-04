@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import styles from './Header.module.css'
+import styles from './styles/Header.module.css'
 
 const NAV = [
   { label: 'About', to: '/about' },

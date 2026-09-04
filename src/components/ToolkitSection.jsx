@@ -11,7 +11,7 @@ import {
 } from 'react-icons/si'
 import { TbSql, TbBrandVscode, TbBrandOffice } from 'react-icons/tb'
 import Section from './Section.jsx'
-import styles from './ToolkitSection.module.css'
+import styles from './styles/ToolkitSection.module.css'
 
 // Icon set per design/decisions.md. Monochrome via currentColor.
 // A couple of marks come from Tabler (Tb*) because Simple Icons dropped

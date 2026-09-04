@@ -1,7 +1,7 @@
 import Section from './Section.jsx'
 import ArrowLink from './ArrowLink.jsx'
 import ProjectCard from './ProjectCard.jsx'
-import styles from './ProjectsSection.module.css'
+import styles from './styles/ProjectsSection.module.css'
 
 // 4 featured projects — titles + captions per design/decisions.md.
 // Descriptions trimmed from the "what it is" notes in

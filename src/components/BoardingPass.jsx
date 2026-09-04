@@ -1,4 +1,4 @@
-import styles from './BoardingPass.module.css'
+import styles from './styles/BoardingPass.module.css'
 
 const FIELDS = [
   { label: 'FROM', value: 'WINNIPEG/YWG' },

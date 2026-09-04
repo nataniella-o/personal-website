@@ -133,7 +133,7 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 
 ### Step 3 — Layout shell ✅ (done)
 
-- `src/components/Header.module.css` — fixed full-width bar (`--header-h` 64px). A `::before` panel spans `--rail-w` in champagne with a right border, so the column divider reads as continuous from the header down the page. Bottom hairline border. Logo left, nav right.
+- `src/components/styles/Header.module.css` — fixed full-width bar (`--header-h` 64px). A `::before` panel spans `--rail-w` in champagne with a right border, so the column divider reads as continuous from the header down the page. Bottom hairline border. Logo left, nav right.
 - `src/pages/Home.jsx` + `Home.module.css` — the split:
   - `.rail` — `position: fixed`, `--rail-w` (40%), full height below the header, `overflow: hidden` (does not scroll), champagne, right divider, `56px / --rail-pad-x` padding. Placeholder text only (step 4 fills it).
   - `.column` — `margin-left: --rail-w`, off-white, scrolls with the page (only scrolling region). Placeholder text only (steps 5–8).
@@ -146,7 +146,7 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 - `src/components/LeftRail.jsx` — composes the rail: typed greeting → portrait → "I'm Nataniella" → boarding-pass card. Wrapper is a flex column with `clamp()` gaps, `max-width: 440px`.
 - `src/components/TypedGreeting.jsx` — `typed.js` in a `useEffect` (destroy on cleanup, StrictMode-safe). Greeting list carried over from `legacy/js_files/script.js`. Renders into an `<h1>`.
 - `src/components/BoardingPass.jsx` + `.module.css` — mono card, white (`--bg-card`), dashed section rules. `<dl>` grid of the 6 fields; link row (EMAIL / LINKEDIN / GITHUB / RESUME). Email = **`nataniellaog@gmail.com`** (confirmed by El). Link hover → moss.
-- `src/components/LeftRail.module.css` — `.stack` is full rail-content width (`align-items: stretch`, no max-width), so the boarding-pass card spans the rail (inside Home `.rail`'s `--rail-pad-x` padding). Greeting: Avenir-Next stack, 700, muted cabernet (`color-mix` 52%), cursor tinted mauve. Portrait: `width: min(78%, 280px)`, `aspect-ratio 4/5`, `max-height 38vh`, rounded 14px, `object-fit: cover` on `headshot.jpeg`. Name: Giza, cabernet.
+- `src/components/styles/LeftRail.module.css` — `.stack` is full rail-content width (`align-items: stretch`, no max-width), so the boarding-pass card spans the rail (inside Home `.rail`'s `--rail-pad-x` padding). Greeting: Avenir-Next stack, 700, muted cabernet (`color-mix` 52%), cursor tinted mauve. Portrait: `width: min(78%, 280px)`, `aspect-ratio 4/5`, `max-height 38vh`, rounded 14px, `object-fit: cover` on `headshot.jpeg`. Name: Giza, cabernet.
 - **Header colour → mauve** (El's call; deviates from the prototype which had the header match the columns). `--bg-header: var(--mauve)` token. **No vertical divider through the header** — the `::before` panel was removed entirely. The rail↔column divider still runs below the header (Home `.rail` border-right). Logged as a deliberate override.
 - New tokens: `--bg-header`, `--bg-card` (#fffdf9), `--rule-dash`.
 - Rail still `overflow: hidden` (non-scrolling per decision) — content sized conservatively to fit; portrait capped at 40vh.

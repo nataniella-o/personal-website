@@ -1,6 +1,6 @@
 import TypedGreeting from './TypedGreeting.jsx'
 import BoardingPass from './BoardingPass.jsx'
-import styles from './LeftRail.module.css'
+import styles from './styles/LeftRail.module.css'
 
 export default function LeftRail() {
   return (
