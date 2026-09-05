@@ -26,13 +26,16 @@
   font-weight: 400;
 }
 
-/* --- portrait --- */
+/* --- portrait ---
+   width also caps against vh (not just max-height) so the box stays
+   perfectly square — max-height alone would let width and height
+   diverge and turn the circle into an oval. */
 .portrait {
-  width: min(78%, 280px);
-  aspect-ratio: 4 / 5;
-  max-height: 38vh;
-  border-radius: 14px;
+  width: min(78%, 280px, 38vh);
+  aspect-ratio: 1 / 1;
+  border-radius: 60%;
   overflow: hidden;
+  align-self: center;
   background: color-mix(in srgb, var(--cabernet) 8%, transparent);
 }
 
@@ -69,8 +72,8 @@
   }
 
   .portrait {
+    /* rail isn't fixed-height on mobile, so no vh cap needed here */
     width: min(62%, 260px);
-    max-height: none;
   }
 
   .name {

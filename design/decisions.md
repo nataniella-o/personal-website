@@ -63,6 +63,10 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 - Boarding-pass card → monospace, **Space Mono** (Google Fonts). **Confirmed.**
 - "Nataniella OGOGO" footer wordmark → use the image asset **`assets/long_logo.png`** (not a web font). **Confirmed.** *(verify transparent background.)*
 
+## Left rail content — later edits
+
+- Portrait is now a **circle, centered** (all viewports): `aspect-ratio: 1/1`, `border-radius: 50%`, `align-self: center`. Width caps against `min(78%, 280px, 38vh)` on desktop (the `38vh` term keeps it perfectly square instead of a `max-height` that could stretch it into an oval); mobile drops the `vh` term since the rail isn't fixed-height there.
+
 ## Left rail content
 
 - Typed greeting cycles the existing greeting array (`Hello, / Bonjour, / …`) with a visible blinking cursor.
