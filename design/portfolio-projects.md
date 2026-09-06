@@ -10,7 +10,13 @@
 
 **What it is:** AI/computer vision tool to aid PCOS diagnosis from symptoms and ultrasound images, plus condition-monitoring support for people already diagnosed. Built to support, not replace, medical professionals. Built during a 3-week machine learning fellowship at the AI4Good Lab (2024), sponsored by Google DeepMind, Mila Institute, and AMII.
 
-**Tools:** Python, Vite, React, Git, Figma, TypeScript
+**Title:** Machine Learning Model & Frontend Developer
+
+**Project Type:** Internship
+
+**Time period:** SUMMER 2024
+
+**Tools:** Python, Vite, React, Git, Figma, TypeScript, PyTorch, NumPhy
 
 **What she did:**
 - Built the CNN model that scans ultrasound images to detect ovarian cysts
@@ -33,6 +39,12 @@
 ## 2. Netflix Modelling & Query System
 
 **What it is:** Database design/implementation project for COMP 3380 (Database Concepts & Usages). Modeled a database from public Netflix-related data and built SQL queries against it.
+
+**Title:** Database Engineer
+
+**Project Type:** Course Project
+
+**Time period:** WINTER 2024
 
 **Tools:** Java, SQL, command line
 
@@ -57,7 +69,13 @@
 
 **What it is:** COMP 4350 (Software Engineering 2) project. A virtual veterinary app for remote pet care access: stores appointment details, prescriptions, vet notes, and past logs, plus a pet health tracker.
 
-**Tools:** Jira, Confluence, Figma, Jest
+**Title:** Design Lead & Frontend Developer
+
+**Project Type:** Course project
+
+**Time period:** Fall 2025
+
+**Tools:** Jira, Confluence, Figma, Jest, Typescript, SCSS
 
 **What she did:**
 - Design lead + frontend development
@@ -76,9 +94,17 @@
 
 ---
 
-## 4. Closetly
+## 4. Outfitly
 
 **What it is:** COMP 4020 (Human-Computer Interaction 2) project. Research-heavy, structured across three milestones: field study + requirements + design alternatives → low-fidelity prototype + cognitive walkthrough + experiment design → running the study + analysis + recommendations. A wardrobe digitization app: reduces daily outfit-decision fatigue, encourages sustainable use of existing wardrobe items, and gives context-aware outfit recommendations (weather, preferences, events).
+
+**Title:** Design Lead & Ui/Ux Researcher
+
+**Project Type:** Course Project
+
+**Time period:** Winter 2025
+
+**Tools:** Figma
 
 **What she did:**
 - Originated the initial idea
@@ -98,6 +124,12 @@
 ## 5. KAHYAH (continuation of Closetly)
 
 **What it is:** A real, ongoing continuation of the Closetly concept, now being built with a friend outside of coursework.
+
+**Title:** Full Stack Developer
+
+**Project Type:** Side Project
+
+**Time period:** Ongoing
 
 **Status:** In progress — early stages. Not finished, not graded, not a course project. Different category from the four above.
 

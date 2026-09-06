@@ -1,0 +1,41 @@
+/* /projects — full-width single column (not the homepage split).
+   See design/projects-prototype.png. The side + bottom padding here
+   provide the context for <Footer>'s full-bleed negative margins. */
+
+.page {
+  padding: 0 var(--col-pad-x) var(--col-pad-bottom);
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-top: calc(var(--header-h) + clamp(36px, 7vh, 72px));
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: clamp(32px, 6vh, 56px);
+}
+
+.title {
+  margin: 0 0 18px;
+  font-family: var(--font-display); /* Giza */
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6.5vw, 4.6rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.lede {
+  margin: 0 auto;
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.list {
+  list-style: none;
+  margin: 0 0 clamp(56px, 10vh, 100px);
+  padding: 0;
+}

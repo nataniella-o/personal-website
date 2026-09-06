@@ -110,7 +110,25 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 
 ## Other pages
 
-- `about.html`, `projects.html`, `404.html`, `project-detail.html` get ported to components with minimal restyle for now — full redesign is a later phase.
+- `about.html`, `404.html`, `project-detail.html` get ported to components with minimal restyle for now — full redesign is a later phase.
+
+### /projects page ✅ (built)
+
+Per `design/projects-prototype.png`: shared `<Header>` + centered "Projects" title + lede, then a stack of full-width `<ProjectRow>`s (time period | image | text with role/type caption, name, description, tool pills), then shared `<Footer>`.
+
+- `src/data/projects.js` — single source, **5 projects, ordered ongoing/most-recent first**: KAHYAH → QDog → Closetly → OvaTech AI → Netflix. (Homepage `ProjectsSection` still has its own separate 4-item array — could be unified later.)
+- `src/components/ProjectRow.jsx` + `.module.css`; `src/pages/Projects.jsx` + `.module.css`.
+- `.page` carries `--col-pad-x` / `--col-pad-bottom` padding so `<Footer>`'s full-bleed negative margins work here too.
+
+Resolved with El:
+- **Name is "Outfitly"** (not Closetly) — `slug: 'outfitly'`. Matches the homepage card.
+- KAHYAH tool pill: **"In Development"** for now.
+- OvaTech "NumPhy" → **"NumPy"** confirmed.
+- Descriptions: El tweaked; keeping her wording.
+- "Projects" heading → **Giza** (`--font-display`).
+- Rows stay unlinked — detail pages come later.
+
+Still pending: real project images (placeholders for now).
 
 ---
 

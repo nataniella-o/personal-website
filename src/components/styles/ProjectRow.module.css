@@ -1,0 +1,99 @@
+.row {
+  display: grid;
+  grid-template-columns: 130px minmax(240px, 320px) 1fr;
+  gap: 34px;
+  align-items: start;
+  padding: clamp(28px, 5vh, 48px) 0;
+  border-top: 1px solid var(--rule);
+}
+
+.period {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+}
+
+.media {
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--cabernet) 9%, transparent);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.body {
+  min-width: 0;
+}
+
+.caption {
+  margin: 0 0 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+}
+
+.caption .sep {
+  margin: 0 4px;
+  opacity: 0.5;
+}
+
+.name {
+  margin: 0 0 10px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  color: var(--text);
+}
+
+.desc {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+.tools {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tools li {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--cabernet);
+  color: var(--offwhite);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .media {
+    aspect-ratio: 16 / 10;
+    max-width: 420px;
+  }
+
+  .desc {
+    max-width: none;
+  }
+}
