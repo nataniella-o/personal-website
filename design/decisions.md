@@ -65,7 +65,8 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 
 ## Left rail content — later edits
 
-- Portrait is now a **circle, centered** (all viewports): `aspect-ratio: 1/1`, `border-radius: 50%`, `align-self: center`. Width caps against `min(78%, 280px, 38vh)` on desktop (the `38vh` term keeps it perfectly square instead of a `max-height` that could stretch it into an oval); mobile drops the `vh` term since the rail isn't fixed-height there.
+- Portrait is now a **circle, centered** (all viewports): `aspect-ratio: 1/1`, `border-radius: 50-60%` (equivalent on a square), `align-self: center`. Width caps against `min(78%, 280px, 38vh)` on desktop (the `38vh` term keeps it perfectly square instead of a `max-height` that could stretch it into an oval); mobile drops the `vh` term since the rail isn't fixed-height there.
+- **Doodle accent** (`assets/pic-doodle.jpeg`, black line art on a white JPEG — no alpha): sits behind the circle in a new `.portraitWrap`, `mix-blend-mode: multiply` to drop the white against the champagne rail. First-pass placement (`width: 55%`, bottom-right, peeking from behind the circle) — flagged as needing a visual tuning pass from the browser, not a final position.
 
 ## Left rail content
 

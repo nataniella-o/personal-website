@@ -29,13 +29,39 @@
 /* --- portrait ---
    width also caps against vh (not just max-height) so the box stays
    perfectly square — max-height alone would let width and height
-   diverge and turn the circle into an oval. */
+   diverge and turn the circle into an oval. Sizing lives on the wrap;
+   .portrait itself just fills it. */
+.portraitWrap {
+  position: relative;
+  width: min(78%, 300px, 38vh);
+  align-self: center;
+}
+
+/* pic-doodle.jpeg is black line art on a white JPEG background (no
+   alpha) — multiply drops the white out against the champagne rail,
+   leaving just the line art. Sits behind the circle, peeking out from
+   one edge. First-pass placement — tune from the browser. */
+.doodle {
+  position: absolute;
+  z-index: 0;
+  width: 55%;
+  bottom: -5%;
+  right: -10%;
+  /* mirror the artwork so its weight sits on the right half, then keep
+     the same -15deg tilt as before */
+  transform: scaleX(-1) rotate(-15deg);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
 .portrait {
-  width: min(78%, 280px, 38vh);
+  position: relative;
+  z-index: 1;
+  width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 60%;
   overflow: hidden;
-  align-self: center;
   background: color-mix(in srgb, var(--cabernet) 8%, transparent);
 }
 
@@ -71,7 +97,7 @@
     text-align: center;
   }
 
-  .portrait {
+  .portraitWrap {
     /* rail isn't fixed-height on mobile, so no vh cap needed here */
     width: min(62%, 260px);
   }
