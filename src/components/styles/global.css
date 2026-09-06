@@ -20,24 +20,22 @@
 
 :root {
   /* --- Palette (design/colour-palette.jpeg) --- */
-  --champagne: #ede3d0;
   --mauve: #ca9baa;
-  --moss: #827c34;
-  --babyblue: #cfdaff;
-  --cabernet: #5b3c45;
+  --sage: #98A869;
+  --burgundy: #6b3f52;
   --offwhite: #f7f3ec;
 
   /* --- Roles --- */
-  --bg-rail: var(--champagne);
+  --bg-rail: color-mix(in srgb, var(--mauve) 40%, transparent);
   --bg-column: var(--offwhite);
   --bg-header: color-mix(in srgb, var(--mauve) 85%, transparent); /* mauve at 85% */
   --bg-card: #fffdf9;
-  --text: var(--cabernet);
-  --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted cabernet */
-  --link: var(--cabernet);
+  --text: var(--burgundy);
+  --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted burgundy */
+  --link: var(--burgundy);
   --rule: rgba(91, 60, 69, 0.25);
   --rule-dash: rgba(91, 60, 69, 0.35);
-  --bg-footer: color-mix(in srgb, var(--babyblue) 85%, transparent); /* babyblue at 85% */
+  --bg-footer: color-mix(in srgb, var(--sage) 50%, transparent); /* sage at 85% */
 
   /* --- Type --- */
   --font-hello: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;

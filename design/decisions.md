@@ -37,23 +37,25 @@ Every entry: what was decided + any context needed to act on it later.
 
 Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is the agreed application.
 
+**Rename (El):** `--cabernet` → `--burgundy` (also new hex `#6b3f52`), `--moss` → `--sage` (also new hex `#98a869`), project-wide (tokens + all `var()` uses + this doc). `--mauve` is unchanged. Champagne and babyblue are commented out in `global.css` for now; `--bg-rail` and `--bg-header` currently use `--mauve`, `--bg-footer` uses `--sage`.
+
 | Token | Hex |
 |---|---|
 | Champagne | `#EDE3D0` |
-| Mauve | `#CA9BAA` |
-| Moss | `#827C34` |
+| Mauve | `#ca9baa` |
+| Sage | `#98a869` |
 | Babyblue | `#CFDAFF` |
-| Cabernet | `#5B3C45` |
+| Burgundy | `#6b3f52` |
 | Off-white ground | `#F7F3EC` |
 
 - Left rail background → **Champagne**
 - Right column background → **off-white** (`#F7F3EC`)
-- Body text + headings → **Cabernet**
-- Links (rail card, "MORE ABOUT ME →", nav) → **Cabernet**, underlined
-- Section-header rules / card borders → Cabernet, low opacity
+- Body text + headings → **Burgundy**
+- Links (rail card, "MORE ABOUT ME →", nav) → **Burgundy**, underlined
+- Section-header rules / card borders → Burgundy, low opacity
 - Boarding-pass card → white panel on the champagne rail
-- Whimsical accents only (typed cursor, project-card hover, link hover, active nav) → **Mauve / Moss / Babyblue**
-- Toolkit icons → monochrome **Cabernet**
+- Whimsical accents only (typed cursor, project-card hover, link hover, active nav) → **Mauve / Sage / Babyblue**
+- Toolkit icons → monochrome **Burgundy**
 
 ## Typography
 
@@ -130,6 +132,13 @@ Resolved with El:
 
 Still pending: real project images (placeholders for now).
 
+**Whimsy accents added to /projects** (each ties to an existing motif, kept small):
+- Pulsing `●` dot on the "Ongoing" row's time period — echoes the boarding-pass live clock. Sage. Guarded by `prefers-reduced-motion`.
+- Project name nudges `translateX(6px)` on row hover — echoes the `MORE PROJECTS →` arrow slide.
+- Row dividers are **dashed** (was solid) — echoes the boarding-pass card's section rules; list gets a closing dashed bottom border.
+- Oversized faint Giza numerals `01`–`05` in the time-period column — echoes the homepage `01 – …` section numbering.
+- Small `✦` star by the "Projects" title + an italic end-of-list line "That's all of them — for now ✦" — echoes the 4-point stars in the logo/wordmark. Sage.
+
 ---
 
 ## Build progress
@@ -169,8 +178,8 @@ Still pending: real project images (placeholders for now).
 
 - `src/components/LeftRail.jsx` — composes the rail: typed greeting → portrait → "I'm Nataniella" → boarding-pass card. Wrapper is a flex column with `clamp()` gaps, `max-width: 440px`.
 - `src/components/TypedGreeting.jsx` — `typed.js` in a `useEffect` (destroy on cleanup, StrictMode-safe). Greeting list carried over from `legacy/js_files/script.js`. Renders into an `<h1>`.
-- `src/components/BoardingPass.jsx` + `.module.css` — mono card, white (`--bg-card`), dashed section rules. `<dl>` grid of the 6 fields; link row (EMAIL / LINKEDIN / GITHUB / RESUME). Email = **`nataniellaog@gmail.com`** (confirmed by El). Link hover → moss.
-- `src/components/styles/LeftRail.module.css` — `.stack` is full rail-content width (`align-items: stretch`, no max-width), so the boarding-pass card spans the rail (inside Home `.rail`'s `--rail-pad-x` padding). Greeting: Avenir-Next stack, 700, muted cabernet (`color-mix` 52%), cursor tinted mauve. Portrait: `width: min(78%, 280px)`, `aspect-ratio 4/5`, `max-height 38vh`, rounded 14px, `object-fit: cover` on `headshot.jpeg`. Name: Giza, cabernet.
+- `src/components/BoardingPass.jsx` + `.module.css` — mono card, white (`--bg-card`), dashed section rules. `<dl>` grid of the 6 fields; link row (EMAIL / LINKEDIN / GITHUB / RESUME). Email = **`nataniellaog@gmail.com`** (confirmed by El). Link hover → sage.
+- `src/components/styles/LeftRail.module.css` — `.stack` is full rail-content width (`align-items: stretch`, no max-width), so the boarding-pass card spans the rail (inside Home `.rail`'s `--rail-pad-x` padding). Greeting: Avenir-Next stack, 700, muted burgundy (`color-mix` 52%), cursor tinted mauve. Portrait: `width: min(78%, 280px)`, `aspect-ratio 4/5`, `max-height 38vh`, rounded 14px, `object-fit: cover` on `headshot.jpeg`. Name: Giza, burgundy.
 - **Header colour → mauve** (El's call; deviates from the prototype which had the header match the columns). `--bg-header: var(--mauve)` token. **No vertical divider through the header** — the `::before` panel was removed entirely. The rail↔column divider still runs below the header (Home `.rail` border-right). Logged as a deliberate override.
 - New tokens: `--bg-header`, `--bg-card` (#fffdf9), `--rule-dash`.
 - Rail still `overflow: hidden` (non-scrolling per decision) — content sized conservatively to fit; portrait capped at 40vh.
@@ -207,7 +216,7 @@ Still pending: real project images (placeholders for now).
 
 ### Step 8 — Footer ✅ (done)
 
-- `src/components/Footer.jsx` + `styles/Footer.module.css` — inline at the end of the right column, top rule. Row: italic thank-you copy (left) + `long_logo.png` wordmark (right, `align-items: flex-end`); social row below (LinkedIn / GitHub / Email via `react-icons/fa`, hover lifts + goes moss).
+- `src/components/Footer.jsx` + `styles/Footer.module.css` — inline at the end of the right column, top rule. Row: italic thank-you copy (left) + `long_logo.png` wordmark (right, `align-items: flex-end`); social row below (LinkedIn / GitHub / Email via `react-icons/fa`, hover lifts + goes sage).
 - Social links match the boarding-pass card (linkedin `/in/nataniella-ogogo`, github `nataniella-o`, email `nataniellaog@gmail.com`).
 - **`long_logo.png` and `short_logo.png` both have alpha** (`sips hasAlpha: yes`) — the earlier transparency concern is resolved; they sit cleanly on their backgrounds.
 

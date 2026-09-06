@@ -4,7 +4,7 @@
 .card {
   width: 100%;
   font-family: var(--font-mono);
-  color: var(--cabernet);
+  color: var(--burgundy);
   background: var(--bg-card);
   border: 1px solid var(--rule);
   border-radius: 4px;
@@ -28,7 +28,7 @@
   font-weight: 400;
   letter-spacing: 0.06em;
   font-variant-numeric: tabular-nums;
-  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
 }
 
 .rows {
@@ -49,7 +49,7 @@
 .field dt {
   font-size: 0.65rem;
   letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--cabernet) 55%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 55%, transparent);
 }
 
 .field dd {
@@ -78,5 +78,5 @@
 }
 
 .links a:hover {
-  color: var(--moss);
+  color: var(--sage);
 }

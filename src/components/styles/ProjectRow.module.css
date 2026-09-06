@@ -4,7 +4,24 @@
   gap: 34px;
   align-items: start;
   padding: clamp(28px, 5vh, 48px) 0;
-  border-top: 1px solid var(--rule);
+  /* dashed rule — echoes the boarding-pass card's section dividers */
+  border-top: 1px dashed var(--rule-dash);
+}
+
+.meta {
+  min-width: 0;
+}
+
+/* oversized faint numeral — echoes the homepage "01 – …" section numbering */
+.index {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4.4vw, 3.7rem);
+  line-height: 1;
+  /* Giza's thin strokes get hard to read when very faint at small size */
+  color: color-mix(in srgb, var(--burgundy) 22%, transparent);
+  transition: color 0.18s ease;
 }
 
 .period {
@@ -13,14 +30,43 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
+}
+
+/* live dot on the "Ongoing" row — ties to the boarding-pass live clock */
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--sage);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
 }
 
 .media {
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--cabernet) 9%, transparent);
+  background: color-mix(in srgb, var(--burgundy) 9%, transparent);
 }
 
 .media img {
@@ -28,6 +74,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.25s ease;
 }
 
 .body {
@@ -40,7 +87,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
 }
 
 .caption .sep {
@@ -54,6 +101,35 @@
   font-weight: 700;
   font-size: clamp(1.35rem, 2vw, 1.7rem);
   color: var(--text);
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease;
+}
+
+/* row hover: name shifts + turns sage (echoes "MORE PROJECTS →"),
+   the image zooms in its frame, the index numeral firms up */
+.row:hover .name {
+  transform: translateX(8px);
+  color: var(--sage);
+}
+
+.row:hover .media img {
+  transform: scale(1.05);
+}
+
+.row:hover .index {
+  color: color-mix(in srgb, var(--burgundy) 42%, transparent);
+}
+
+@media (hover: none) {
+  .row:hover .name {
+    transform: none;
+    color: var(--text);
+  }
+
+  .row:hover .media img {
+    transform: none;
+  }
 }
 
 .desc {
@@ -76,7 +152,7 @@
 .tools li {
   padding: 5px 12px;
   border-radius: 999px;
-  background: var(--cabernet);
+  background: var(--burgundy);
   color: var(--offwhite);
   font-size: 0.72rem;
   letter-spacing: 0.02em;
@@ -88,9 +164,14 @@
     gap: 16px;
   }
 
+  .index {
+    font-size: 2.6rem;
+    margin-bottom: 4px;
+  }
+
   .media {
-    aspect-ratio: 16 / 10;
-    max-width: 420px;
+    /* full column width; ~15% shorter than 16/10 via a flatter ratio */
+    aspect-ratio: 16 / 8.5;
   }
 
   .desc {

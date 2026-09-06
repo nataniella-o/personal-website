@@ -2,7 +2,7 @@
   display: block;
   padding: 14px;
   border-radius: 14px;
-  background: color-mix(in srgb, var(--cabernet) 10%, transparent);
+  background: color-mix(in srgb, var(--burgundy) 10%, transparent);
   text-decoration: none;
   color: inherit;
   transition:
@@ -12,7 +12,7 @@
 
 .card:hover {
   transform: translateY(-3px);
-  background: color-mix(in srgb, var(--moss) 20%, transparent);
+  background: color-mix(in srgb, var(--sage) 20%, transparent);
 }
 
 .thumb {
@@ -20,7 +20,7 @@
   border-radius: 9px;
   margin-bottom: 14px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--cabernet) 9%, transparent);
+  background: color-mix(in srgb, var(--burgundy) 9%, transparent);
 }
 
 .thumb img {
@@ -69,7 +69,7 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
 }
 
 .title {
@@ -98,7 +98,7 @@
 
   .card:active {
     transform: none;
-    background: color-mix(in srgb, var(--cabernet) 16%, transparent);
+    background: color-mix(in srgb, var(--burgundy) 16%, transparent);
   }
 }
 

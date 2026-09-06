@@ -2,6 +2,7 @@ import styles from './styles/ProjectRow.module.css'
 
 // One project entry on the /projects page. See design/projects-prototype.png.
 export default function ProjectRow({
+  index,
   name,
   timePeriod,
   role,
@@ -10,9 +11,19 @@ export default function ProjectRow({
   tools = [],
   image,
 }) {
+  const isLive = /ongoing/i.test(timePeriod)
+
   return (
     <li className={styles.row}>
-      <p className={styles.period}>{timePeriod}</p>
+      <div className={styles.meta}>
+        <span className={styles.index} aria-hidden="true">
+          {String(index).padStart(2, '0')}
+        </span>
+        <p className={styles.period}>
+          {isLive && <span className={styles.pulse} aria-hidden="true" />}
+          {timePeriod}
+        </p>
+      </div>
 
       <div className={styles.media}>
         {image ? <img src={image} alt="" /> : null}
