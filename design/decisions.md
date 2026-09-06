@@ -139,6 +139,10 @@ Still pending: real project images (placeholders for now).
 - Oversized faint Giza numerals `01`–`05` in the time-period column — echoes the homepage `01 – …` section numbering.
 - Small `✦` star by the "Projects" title + an italic end-of-list line "That's all of them — for now ✦" — echoes the 4-point stars in the logo/wordmark. Sage.
 
+### Custom cursor
+
+- Site-wide mouse cursor is a **`✦` star** (`public/assets/cursor-star.svg`, burgundy fill + off-white halo so it shows on any background, 22px, hotspot 11,11). Set on `html` (`, auto` fallback) and on `a/button/summary/label/[role=button]` (`, pointer` fallback). El's call — accepted the usual custom-cursor UX trade-off.
+
 ---
 
 ## Build progress

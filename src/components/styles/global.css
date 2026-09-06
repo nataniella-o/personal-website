@@ -72,6 +72,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* custom ✦ pointer — hotspot at the star's centre (11,11 of 22) */
+  cursor: url('/assets/cursor-star.svg') 11.5 11.5, auto;
 }
 
 body {
@@ -84,6 +86,14 @@ body {
 
 a {
   color: var(--link);
+}
+
+a,
+button,
+summary,
+label,
+[role='button'] {
+  cursor: url('/assets/cursor-star.svg') 11.5 11.5, pointer;
 }
 
 img {
