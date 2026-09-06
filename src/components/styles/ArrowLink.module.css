@@ -15,6 +15,11 @@
   transition: transform 0.18s ease;
 }
 
+.link:hover{
+  color: var(--link-hover);
+}
+
 .link:hover .arrow {
   transform: translateX(3px);
+  color: var(--link-hover);
 }
