@@ -79,6 +79,7 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
   - `FIELD CS + DESIGN` · `SEAT 1A` · `GATE NOW`
   - Link row: `EMAIL · LINKEDIN · GITHUB · RESUME`
   - This is the deliberate "whimsical" moment — kept restrained.
+  - **Local time**: `.head` row now shows `YWG HH:MM` top-right (opposite `OGOGO/NATANIELLA`). Live clock via `Intl.DateTimeFormat` fixed to `America/Winnipeg` (El's time, not the visitor's), 24h, refreshed every 30s. `useLocalTime` hook in `BoardingPass.jsx`.
 
 ## Right column content
 

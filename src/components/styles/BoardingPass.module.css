@@ -12,11 +12,23 @@
 }
 
 .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   padding-bottom: 10px;
   border-bottom: 1px dashed var(--rule-dash);
+}
+
+.time {
+  flex-shrink: 0;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--cabernet) 60%, transparent);
 }
 
 .rows {
