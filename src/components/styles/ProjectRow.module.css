@@ -118,7 +118,7 @@
 }
 
 .row:hover .index {
-  color: color-mix(in srgb, var(--burgundy) 42%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
 }
 
 @media (hover: none) {

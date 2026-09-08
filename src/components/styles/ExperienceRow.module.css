@@ -1,0 +1,64 @@
+.row {
+  display: grid;
+  grid-template-columns: minmax(96px, 172px) 1fr;
+  gap: clamp(32px, 12vw, 170px);
+  align-items: start;
+  padding: clamp(26px, 5vh, 44px) 0;
+  border-top: 1px dashed var(--rule-dash);
+}
+
+/* the page's intro rule / the "Volunteering" rule already sits above the first
+   row of each list — don't stack a second line on top of it */
+.row:first-child {
+  border-top: none;
+}
+
+.period {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
+}
+
+.body {
+  min-width: 0;
+  max-width: 68ch;
+}
+
+.name {
+  margin: 0 0 3px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.org {
+  margin: 0 0 12px;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--text);
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+  }
+}

@@ -51,8 +51,9 @@ export default function ActivityScroller() {
     if (!el) return
     const card = el.querySelector('li')
     const gap = parseFloat(getComputedStyle(el).columnGap) || 20
+    const perPress = window.innerWidth < 768 ? 1 : 2 // one card at a time on mobile
     const by = card
-      ? (card.getBoundingClientRect().width + gap) * 2 // ~2 cards per press
+      ? (card.getBoundingClientRect().width + gap) * perPress
       : el.clientWidth * 0.7
     const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
     el.scrollBy({ left: dir * by, behavior: smooth ? 'smooth' : 'auto' })

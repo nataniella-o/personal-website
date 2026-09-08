@@ -1,7 +1,7 @@
 .heading {
   margin: 0 0 clamp(20px, 3vh, 32px);
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px dashed var(--rule-dash);
   font-family: var(--font-body);
   font-weight: var(--fw-section);
   font-size: var(--fs-section);

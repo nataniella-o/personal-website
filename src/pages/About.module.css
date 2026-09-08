@@ -16,7 +16,7 @@
 .intro {
   text-align: center;
   padding-bottom: clamp(28px, 5vh, 48px);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px dashed var(--rule-dash);
   margin-bottom: clamp(44px, 8vh, 84px);
 }
 
@@ -122,7 +122,7 @@
 .blockHeading {
   margin: 0 0 clamp(24px, 4vh, 40px);
   padding-bottom: 14px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px dashed var(--rule-dash);
   font-family: var(--font-body);
   font-weight: var(--fw-section);
   font-size: var(--fs-section);
@@ -142,7 +142,7 @@
 
 .reason {
   padding-left: clamp(16px, 2vw, 28px);
-  border-left: 1px solid var(--rule);
+  border-left: 1px dashed var(--rule-dash);
 }
 
 .reason:first-child {
@@ -186,7 +186,11 @@
     order: -1;
     width: 100%;
     max-width: 272px;
-    justify-self: start;
+    justify-self: center;
+  }
+
+  .portrait figcaption {
+    justify-content: center;
   }
 
   .bioText p,
@@ -202,6 +206,6 @@
   .reason,
   .reason:first-child {
     padding-left: 16px;
-    border-left: 1px solid var(--rule);
+    border-left: 1px dashed var(--rule-dash);
   }
 }

@@ -25,7 +25,7 @@ Every entry: what was decided + any context needed to act on it later.
   - **Left of header:** the monogram logo — `assets/short_logo.png` (the "NO" mark: N + O with star accents, black), links to `/`. **Confirmed.** *(verify the PNG has a transparent background so it sits cleanly on the champagne header; if not, get a transparent export.)*
   - **Right of header:** the nav — `About · Experience · Projects · Resume`. This is the *only* nav area; the previously-planned "nav pinned top-right inside the right column" is dropped in favour of this header.
   - The old hamburger `.side-nav` + `showSidebar()` are still removed.
-- **`Experience` link → 404 for now** (route renders `<NotFound>`; no Experience page yet).
+- ~~**`Experience` link → 404 for now**~~ — `/experience` now renders `<Experience>` (see the /experience build entry below).
 
 ## Responsive (< ~768px)
 
@@ -244,6 +244,7 @@ Still pending: real project images (placeholders for now).
 - **Footer mobile layout**: under 768 the footer centers (`text-align: center`), `.top` stacks column with the wordmark first (`order: -1`) then the note, socials centered. Note drops to `0.85rem` on mobile only (matches `ProjectCard .desc` — no type-scale token exists; El chose inline reuse over adding `--text-sm`). Social `<a>`s given `width: 1.4em` + centered (all viewports) so the gaps read evenly despite the three icons' differing glyph widths.
 - **Section headings tokenized**: added `--fs-section` (`clamp(1.3rem, 2vw, 1.55rem)`) + `--fw-section` (700) to `global.css`; `Section.module.css .heading` uses them. Was `clamp(1rem, 1.4vw, 1.2rem)` / 600 — barely larger than body copy, so §01/§02/§03 headings now read as a clear step above the paragraphs.
 - **About-section paragraphs** step down to `0.9rem` under 768px.
+- **Mobile side gutter** (`< 768`): `--col-pad-x` is now `max(24px, 8vw)` (was flat `24px`) in `global.css` — applies site-wide (`/`, `/projects`, `/about`, detail, 404). Uses `vw`, not `%`: Footer's full-bleed negative margin (`-1 * --col-pad-x`) must cancel `.page`'s padding exactly, and `%` resolves against a different containing block for each (leaves a sliver of space on the Footer's sides).
 - **Footer colour**: `.footer` now full-bleed inside the right column (negative margins cancelling `--col-pad-x` / new `--col-pad-bottom` token, both with mobile overrides in `global.css`), so the background reaches the column edges instead of sitting inset in a box. Colour is `--bg-footer` = `color-mix(babyblue 85%, transparent)` (El wanted babyblue ~85%). Kept the `border-top` as the separator. Header still carries El's experimental `background: var(--bg-header, 90%)` — that's a no-op (2nd `var()` arg is a fallback, not opacity); left as-is pending El's call on whether the header should also be translucent.
 
 ### /about page ✅ (built)
@@ -254,12 +255,30 @@ Per `design/about-prototype.png`: shared `<Header>` → centered "About" title (
 - **Copy is verbatim from the prototype sketch** — confirmed final by El, including the bio (the AI4Good Lab / UMWICS / retail paragraph) and the 01–03 reasons. Kept casing/wording as sketched ("peoples lives", "arguing myself about the spacing").
 - `src/components/ActivityScroller.jsx` + `styles/ActivityScroller.module.css` — activity cards (image-top square placeholder + title + blurb), **4 visible**. This is the page's one whimsy beat.
   - **`.track` is a plain `overflow-x: auto` strip** (snap + thin custom scrollbar + `tabIndex=0` for keyboard). Driven by **prev / next arrow buttons** (`.controls`, centered below the strip): each press does `scrollBy` ≈ 2 card widths, `behavior: smooth` (→ `auto` under `prefers-reduced-motion`). A `scroll` listener keeps `atStart` / `atEnd` in sync to disable each arrow at its end; the whole `.controls` row hides when nothing overflows. Swipe / scrollbar / arrow-keys still work.
-  - Card counts: 4 visible, 3 `< 1024`, 2 `< 768`, ~1.25 `< 520`. Card hover: `-3px` lift + sage border (removed under `hover: none`).
+  - Card counts: 4 visible, 3 `< 1024`, 1 (`flex-basis: 70%`, ~30% down — smaller padding/type + `4/3` thumb) `< 768`. Arrow press = 2 cards on desktop, **1 card `< 768`**. Card hover: `-3px` lift + sage border (removed under `hover: none`).
   - History: sketch had a static 4-up row → briefly a vertical auto-scroll loop → El: horizontal, no autoplay → El: "page scroll should scroll it" → tried a tall sticky-pinned block (scroll runway left a visual void) → tried hover-wheel-to-scrollLeft (El: lost the smooth feel) → **prev/next arrows** (current).
   - 6 activities from El: Building Lego / Reading / Watching movies / Drawing & painting (no blurb) / Sleeping / Logic puzzles.
 - **Every subsection heading gets a leading `✦`** (`.headingStar`, sage) — "Hello again!", "Things I Enjoy Off The Clock", "Why This Website Exists". Echoes the logo/wordmark stars + the trailing star on the "About" title.
 - **"Why This Website Exists" numerals → Giza** (`--font-display`), oversized + faint (`color-mix(burgundy 32%)`) — same treatment as the `/projects` row numbers (was small mono).
-  - Bio → 1 col (portrait first) `< 768`. "Why" → 1 col, left rules become per-item.
+  - Bio → 1 col (portrait first, centered, centered caption) `< 768`. "Why" → 1 col, left rules become per-item.
 - Activity card images are **empty tinted placeholders** for now (same treatment as project thumbs) — real art later.
 - **Portrait**: `/assets/profile-pic.svg` (~1 MB traced SVG), shown raw — **no frame** (no border-radius / tint / crop), `width: 100%` of its column. Root `viewBox` tightened from `0 0 1800 1800` to `252.351562 89 1333.5 1585` (the artwork's outer clip box) to crop the empty margin; `width`/`height` attrs updated to match so the `<img>` intrinsic ratio is right. Caption below is right-aligned to the image's right edge, `700`, with a sage `FaMapMarkerAlt` pin before "Winnipeg, MB (usually)".
 - Route was already wired (`/about` in `App.jsx`); this replaces the `About` placeholder.
+
+### /experience page ✅ (built)
+
+Per `design/experience-prototype.png`: shared `<Header>` → centered "Experience" title (Giza, `✦`) + lede ("Where I have been. Newest first, as is tradition.") + full-width rule → a stack of rows → a **"Volunteering"** subsection (`✦` + full-width rule) → more rows → shared `<Footer>`.
+
+- `src/data/experience.js` — `EXPERIENCE` (2) + `VOLUNTEERING` (5), from `design/experience.md`, newest-first (source order). `{ title, org, date, description }`. Hyphen date ranges → en dashes.
+- `src/components/ExperienceRow.jsx` + `styles/ExperienceRow.module.css` — grid `minmax(96px,172px) 1fr`, big `clamp(32px,12vw,170px)` gap; period column is the small uppercase meta style (same as `ProjectRow .period`), then `title` (h2, bold), `org` (bold, body size), `description` (muted, `max-width: 68ch`). Solid `border-top: 1px var(--rule)` per row (sketch shows solid, not the dashed `/projects` rules), except `.row:first-child` in each list — the intro rule / "Volunteering" rule already sits there. `< 768`: stacks to 1 col.
+- `src/pages/Experience.jsx` + `Experience.module.css` — same `.page` / `.inner` shell as `/projects` + `/about` (Footer full-bleed). `.groupHeading` reuses the `--fs-section` tokens + leading `✦` (`.headingStar`, matching `/about`).
+- `App.jsx` — `/experience` route added; the old `{/* No Experience page yet */}` comment + NotFound fallback removed. Header nav link already pointed here.
+- Rows are unlinked (no per-experience detail pages).
+- `org` is italic (`font-style: italic`, weight 600). Last list gets `margin-bottom: clamp(64px, 13vh, 132px)` so the gap before the footer matches `/about` + `/projects`.
+
+### Divider lines → dashed (site-wide)
+
+Every content divider rule — vertical and horizontal — now uses `1px dashed var(--rule-dash)` (was `1px solid var(--rule)`), matching `/projects`:
+- Vertical: homepage rail `border-right` (`Home.module.css`); "Why This Website Exists" column rules on `/about` (desktop + `< 768`).
+- Horizontal: `<Footer>` top rule; homepage `<Section>` heading underlines (§01–§03); `<ExperienceRow>` row rules; homepage rail's mobile `border-bottom`; the `.intro` rule + subsection-heading rules on `/about` and `/experience`.
+- **Left solid:** the fixed `<Header>`'s bottom hairline + the mobile menu panel's border (nav chrome, not content dividers — dashed reads as broken there). The `<BoardingPass>` card outline and the activity-card / arrow-button outlines are component borders, also left solid.

@@ -60,7 +60,11 @@
 
 @media (max-width: 768px) {
   :root {
-    --col-pad-x: 24px;
+    /* side gutter grows with the viewport on mobile; 24px floor on small phones.
+       Must be a length (vw, not %): Footer's full-bleed negative margin has to
+       cancel .page's padding exactly, and % would resolve against different
+       containing blocks for each. */
+    --col-pad-x: max(24px, 8vw);
     --col-pad-bottom: 32px;
   }
 }

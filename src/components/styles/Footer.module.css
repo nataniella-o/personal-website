@@ -3,7 +3,7 @@
      background reaches the column edges instead of sitting in a box */
   margin: 0 calc(-1 * var(--col-pad-x)) calc(-1 * var(--col-pad-bottom));
   padding: 34px var(--col-pad-x) var(--col-pad-bottom);
-  border-top: 1px solid var(--rule);
+  border-top: 1px dashed var(--rule-dash);
   background-color: var(--bg-footer);
 }
 
