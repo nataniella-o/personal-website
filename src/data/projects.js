@@ -24,7 +24,7 @@ export const PROJECTS = [
     description:
       'A virtual veterinary app for remote pet care access — appointment details, prescriptions, vet notes, past logs, and a pet health tracker. Built for COMP 4350 (Software Engineering 2) as a team of five, finished and graded.',
     tools: ['Jira', 'Confluence', 'Figma', 'Jest', 'TypeScript', 'SCSS'],
-    image: null,
+    image: '/assets/project-cover-photos/qdog-cover.png',
   },
   {
     slug: 'outfitly',
@@ -35,7 +35,7 @@ export const PROJECTS = [
     description:
       'A wardrobe digitization app that eases daily outfit-decision fatigue and gives context-aware outfit recommendations. A research-heavy COMP 4020 (Human-Computer Interaction 2) project spanning a field study, prototyping, and a user study, finished and graded.',
     tools: ['Figma'],
-    image: null,
+    image: '/assets/project-cover-photos/closetly-cover.png',
   },
   {
     slug: 'ovatech-ai',
@@ -46,7 +46,7 @@ export const PROJECTS = [
     description:
       'An AI and computer-vision tool to aid PCOS diagnosis from symptoms and ultrasound images, plus condition-monitoring support for people already diagnosed. Built to support, not replace, medical professionals, during a three-week machine learning fellowship at the AI4Good Lab.',
     tools: ['Python', 'PyTorch', 'NumPy', 'React', 'Vite', 'TypeScript', 'Figma', 'Git'],
-    image: null,
+    image: '/assets/project-cover-photos/ovatech-ai-cover.png',
   },
   {
     slug: 'netflix-query-system',
@@ -57,6 +57,6 @@ export const PROJECTS = [
     description:
       'A database design and implementation project for COMP 3380 (Database Concepts & Usages): one modelled database built from five public Netflix-related datasets, queried through SQL and an interactive Java CLI, finished and graded.',
     tools: ['Java', 'SQL', 'Command Line'],
-    image: null,
+    image: '/assets/project-cover-photos/netflix-cover.png',
   },
 ]

@@ -12,15 +12,38 @@
 
 .card:hover {
   transform: translateY(-3px);
-  background: color-mix(in srgb, var(--sage) 20%, transparent);
+  background: color-mix(in srgb, var(--sage) 30%, transparent);
 }
 
 .thumb {
-  aspect-ratio: 4 / 3;
+  position: relative;
+  aspect-ratio: 16 / 10; /* ~15% shorter than the old 4/3 */
   border-radius: 9px;
   margin-bottom: 14px;
   overflow: hidden;
   background: color-mix(in srgb, var(--burgundy) 9%, transparent);
+}
+
+/* placeholder cover — "in progress" tile (no logo yet) */
+.fallbackMark {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  border: 1px dashed var(--rule-dash);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--burgundy) 8%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 72%, transparent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1.5vw, 0.82rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fallbackStar {
+  color: var(--sage);
 }
 
 .thumb img {
@@ -28,6 +51,40 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  /* covers come from all over — unify them to the page's burgundy so the
+     grid reads as one palette. The real colour returns on card hover. */
+  filter: grayscale(1) contrast(1.03);
+  transition: filter 0.3s ease;
+}
+
+.thumb:has(img)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--burgundy);
+  mix-blend-mode: color;
+  opacity: 0.82;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card:hover .thumb img {
+  filter: grayscale(0) contrast(1);
+}
+
+.card:hover .thumb:has(img)::after {
+  opacity: 0;
+}
+
+@media (hover: none) {
+  /* no hover on touch — keep the unified treatment */
+  .card:hover .thumb img {
+    filter: grayscale(1) contrast(1.03);
+  }
+
+  .card:hover .thumb:has(img)::after {
+    opacity: 0.82;
+  }
 }
 
 /* caption+title and description are stacked in the same grid cell so the

@@ -26,7 +26,7 @@ export default function ProjectRow({
       </div>
 
       <div className={styles.media}>
-        {image ? <img src={image} alt="" /> : null}
+        {image ? <img src={image} alt={`${name} cover`} /> : null}
       </div>
 
       <div className={styles.body}>

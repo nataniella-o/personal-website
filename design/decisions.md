@@ -130,7 +130,9 @@ Resolved with El:
 - "Projects" heading → **Giza** (`--font-display`).
 - Rows stay unlinked — detail pages come later.
 
-Still pending: real project images (placeholders for now).
+Real cover images wired into `src/data/projects.js` (`image:` → `/assets/project-cover-photos/<slug>-cover.png`): qdog, outfitly (`closetly-cover.png`), ovatech-ai, netflix. KAHYAH has none (stays `null` → empty tinted `.media`). Folder renamed by El: `project cover photos/` → `project-cover-photos/` (no spaces). `ProjectRow` `<img alt>` now `"<name> cover"`. The homepage `ProjectsSection` / `ProjectCard` now use the same covers (qdog, outfitly→`closetly-cover.png`, ovatech-ai; KAHYAH none), `loading="lazy"`, `alt` = `"<title> cover"`.
+- **Homepage card covers are duotoned to the palette** (El: the mixed cover colours clashed with the landing page). `ProjectCard .thumb img` gets `filter: grayscale(1) contrast(1.03)` + a `.thumb:has(img)::after` burgundy overlay at `opacity: 0.82`, `mix-blend-mode: color` — so every cover reads as one burgundy monochrome. On `.card:hover` the filter/overlay fade to reveal the real photo (`0.3s`); `@media (hover: none)` keeps the duotone. Not applied to `/projects` (`ProjectRow`) — could add there too if wanted.
+- **KAHYAH has no cover** (logo undecided). `ProjectCard` renders a placeholder when `image` is null (`.fallbackMark`): "IN PROGRESS ✦" in Space Mono, uppercase, muted burgundy on the faint tint, inside a floating dashed border (`inset: 12px`) — echoes the boarding-pass mono + the site-wide dashed rules, and leans into KAHYAH being the only *Ongoing* project. Chosen from 4 options (Giza wordmark / this / ✦ pattern / big faint ✦). Swap for a real cover later. `/projects` `ProjectRow` still shows the empty tinted block for KAHYAH.
 
 **Whimsy accents added to /projects** (each ties to an existing motif, kept small):
 - Pulsing `●` dot on the "Ongoing" row's time period — echoes the boarding-pass live clock. Sage. Guarded by `prefers-reduced-motion`.
@@ -201,7 +203,7 @@ Still pending: real project images (placeholders for now).
 
 ### Step 6 — Right column §02 "My Projects" ✅ (done)
 
-- `src/components/ProjectCard.jsx` + `.module.css` — a card = tinted rounded panel → 4:3 thumb (empty tinted block until real images are added) → uppercase caption → bold title. Whole card is a `<Link>`; hover lifts it slightly.
+- `src/components/ProjectCard.jsx` + `.module.css` — a card = tinted rounded panel → 16:10 thumb (was 4:3 — dropped ~15% shorter; empty tinted block when no image) → uppercase caption → bold title. Whole card is a `<Link>`; hover lifts it slightly.
   - **Hover crossfades caption+title → a short description** (per `design/project-card-hover.png`). Both layers are stacked in one CSS-grid cell so card height stays put and there's no jump. `@media (hover: none)` keeps caption+title on touch. Descriptions trimmed from the "what it is" notes in `design/portfolio-projects.md` (in `ProjectsSection.jsx`) — **draft copy, confirm wording with El**.
 - `src/components/ProjectsSection.jsx` + `.module.css` — §02: 2×2 grid (1-col under 768px) of the 4 featured projects + `ArrowLink` → `/projects`.
   - Cards link to `/project/<slug>` (`kahyah`, `qdog`, `outfitly`, `ovatech-ai`) — the route resolves to the placeholder `ProjectDetail` for now; real case-study pages are a later content-dependent phase.
@@ -282,7 +284,7 @@ Per `design/about-prototype.png`: shared `<Header>` → centered "About" title (
 - **Every subsection heading gets a leading `✦`** (`.headingStar`, sage) — "Hello again!", "Things I Enjoy Off The Clock", "Why This Website Exists". Echoes the logo/wordmark stars + the trailing star on the "About" title.
 - **"Why This Website Exists" numerals → Giza** (`--font-display`), oversized + faint (`color-mix(burgundy 32%)`) — same treatment as the `/projects` row numbers (was small mono).
   - Bio → 1 col (portrait first, centered, centered caption) `< 768`. "Why" → 1 col, left rules become per-item.
-- Activity card images are **empty tinted placeholders** for now (same treatment as project thumbs) — real art later.
+- Activity card images: real photos in `/assets/activities-photos/` (`lego.png`, `reading.jpeg`, `movies.png`, `creative.jpeg`, `sleeping.jpeg`, `puzzles.jpeg`), 1:1 `object-fit: cover` in `.thumb`, `loading="lazy"`, `alt` = the activity title. **Source files are large (creative/reading ~3 MB each) — should be resized/compressed for web.**
 - **Portrait**: `/assets/profile-pic.svg` (~1 MB traced SVG), shown raw — **no frame** (no border-radius / tint / crop), `width: 100%` of its column. Root `viewBox` tightened from `0 0 1800 1800` to `252.351562 89 1333.5 1585` (the artwork's outer clip box) to crop the empty margin; `width`/`height` attrs updated to match so the `<img>` intrinsic ratio is right. Caption below is right-aligned to the image's right edge, `700`, with a sage `FaMapMarkerAlt` pin before "Winnipeg, MB (usually)".
 - Route was already wired (`/about` in `App.jsx`); this replaces the `About` placeholder.
 

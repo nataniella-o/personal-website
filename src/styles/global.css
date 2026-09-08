@@ -23,7 +23,7 @@
   --mauve: #ca9baa;
   --sage: #98A869;
   --burgundy: #6b3f52;
-  --offwhite: #f7f3ec;
+  --offwhite: #faf6ef;
 
   /* --- Roles --- */
   --bg-rail: color-mix(in srgb, var(--mauve) 40%, transparent);

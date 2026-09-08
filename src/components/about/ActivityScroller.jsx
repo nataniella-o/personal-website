@@ -4,19 +4,38 @@ import styles from './ActivityScroller.module.css'
 // "Things I Enjoy Off The Clock" — a horizontal strip of activity cards, 4
 // visible. Driven by prev / next arrows (also swipe, scrollbar, arrow-keys
 // when focused). No autoplay. Activity copy is from El, kept close to verbatim.
+const PHOTOS = '/assets/activities-photos'
 const ACTIVITIES = [
   {
-    title: 'Building Lego',
-    blurb: 'The instructions are just documentation with better typography.',
+    title: 'Creative Outlets',
+    blurb: 'A nice way to reflect, express & decompress.',
+    img: `${PHOTOS}/creative.jpeg`,
   },
-  { title: 'Reading', blurb: 'Recommended far too aggressively.' },
   {
-    title: 'Watching movies',
+    title: 'Watching Movies',
     blurb: 'My fave genres are the MCU and high-stakes drama shows.',
+    img: `${PHOTOS}/movies.png`,
   },
-  { title: 'Drawing & painting', blurb: '' },
-  { title: 'Sleeping', blurb: 'Competitively.' },
-  { title: 'Logic puzzles', blurb: 'A rekindled hobby of mine.' },
+  {
+    title: 'Building Lego',
+    blurb: 'The instructions are just documentation with pictures.',
+    img: `${PHOTOS}/lego.png`,
+  },
+  {
+    title: 'Reading',
+    blurb: 'My most recent haul from the public library.',
+    img: `${PHOTOS}/reading.jpeg`,
+  },
+  {
+    title: 'Sleeping',
+    blurb: 'Competitively. Although life has cut into my training time lately.',
+    img: `${PHOTOS}/sleeping.jpeg`,
+  },
+  {
+    title: 'Logic & Regular Puzzles',
+    blurb: 'A rekindled childhood hobby of mine.',
+    img: `${PHOTOS}/puzzles.jpeg`,
+  },
 ]
 
 export default function ActivityScroller() {
@@ -68,9 +87,11 @@ export default function ActivityScroller() {
         role="group"
         aria-label="Things I enjoy off the clock"
       >
-        {ACTIVITIES.map(({ title, blurb }) => (
+        {ACTIVITIES.map(({ title, blurb, img }) => (
           <li key={title} className={styles.card}>
-            <div className={styles.thumb} />
+            <div className={styles.thumb}>
+              <img src={img} alt={title} loading="lazy" />
+            </div>
             <h3 className={styles.cardTitle}>{title}</h3>
             {blurb && <p className={styles.blurb}>{blurb}</p>}
           </li>
