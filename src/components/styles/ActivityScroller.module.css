@@ -1,0 +1,130 @@
+/* Seamless vertical auto-scroll (marquee) for the activity cards.
+   Loop math: each .set carries its own trailing gap (padding-bottom == the
+   grid gap), so the two stacked sets tile perfectly and translateY(-50%)
+   lands set B exactly where set A started — no jump. */
+
+.viewport {
+  position: relative;
+  height: clamp(400px, 60vh, 540px);
+  overflow: hidden;
+  /* soften the top + bottom edges so cards fade rather than clip */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 48px,
+    #000 calc(100% - 48px),
+    transparent 100%
+  );
+}
+
+.track {
+  animation: drift 34s linear infinite;
+}
+
+.viewport:hover .track,
+.viewport:focus-within .track {
+  animation-play-state: paused;
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.set {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 clamp(16px, 2vw, 24px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 1.6vw, 20px);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage);
+}
+
+.thumb {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--burgundy) 9%, transparent);
+}
+
+.cardTitle {
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--text);
+}
+
+.blurb {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    border-color: var(--rule);
+  }
+}
+
+@media (max-width: 768px) {
+  .viewport {
+    height: clamp(340px, 68vh, 460px);
+  }
+
+  .set {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* No motion: drop the loop entirely — one static grid of all six. */
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    height: auto;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .set {
+    padding-bottom: 0;
+  }
+
+  .set + .set {
+    display: none;
+  }
+}

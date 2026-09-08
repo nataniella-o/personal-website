@@ -245,3 +245,16 @@ Still pending: real project images (placeholders for now).
 - **Section headings tokenized**: added `--fs-section` (`clamp(1.3rem, 2vw, 1.55rem)`) + `--fw-section` (700) to `global.css`; `Section.module.css .heading` uses them. Was `clamp(1rem, 1.4vw, 1.2rem)` / 600 — barely larger than body copy, so §01/§02/§03 headings now read as a clear step above the paragraphs.
 - **About-section paragraphs** step down to `0.9rem` under 768px.
 - **Footer colour**: `.footer` now full-bleed inside the right column (negative margins cancelling `--col-pad-x` / new `--col-pad-bottom` token, both with mobile overrides in `global.css`), so the background reaches the column edges instead of sitting inset in a box. Colour is `--bg-footer` = `color-mix(babyblue 85%, transparent)` (El wanted babyblue ~85%). Kept the `border-top` as the separator. Header still carries El's experimental `background: var(--bg-header, 90%)` — that's a no-op (2nd `var()` arg is a fallback, not opacity); left as-is pending El's call on whether the header should also be translucent.
+
+### /about page ✅ (built)
+
+Per `design/about-prototype.png`: shared `<Header>` → centered "About" title (Giza, `✦` accent) + lede + full-width rule → two-column bio ("Hello again!" + 3 paragraphs | portrait placeholder with "Winnipeg, MB (usually)" caption) → "Things I Enjoy Off The Clock" (`<ActivityScroller>`) → "Why This Website Exists" (3 numbered columns, vertical rules) → shared `<Footer>`.
+
+- `src/pages/About.jsx` + `About.module.css` — mirrors `/projects` page shell (`.page` padding + `.inner` max-width `1180`) so `<Footer>`'s full-bleed margins work. Sub-section headings reuse the `--fs-section` / `--fw-section` tokens + full-width bottom rule (same look as the homepage `<Section>` heading, minus the number).
+- **Copy is verbatim from the prototype sketch** — confirmed final by El, including the bio (the AI4Good Lab / UMWICS / retail paragraph) and the 01–03 reasons. Kept casing/wording as sketched ("peoples lives", "arguing myself about the spacing").
+- `src/components/ActivityScroller.jsx` + `styles/ActivityScroller.module.css` — the whimsy moment (one deliberate beat, like the `/projects` pulse). Fixed-height viewport, 2-col grid of activity cards (image-top placeholder + title + blurb) that **auto-scrolls upward in a seamless loop** (ref: allisonqiu.com/about). Cards rendered twice; the 2nd set is `aria-hidden` and exists only to scroll into. Loop is jump-free because each `.set` carries its own trailing gap (`padding-bottom` == grid `gap`), so `translateY(-50%)` tiles exactly. Pauses on `:hover` / `:focus-within`. Card hover: `-3px` lift + sage border (removed under `hover: none`).
+  - **`prefers-reduced-motion`**: loop is dropped entirely — viewport goes `height: auto` / `overflow: visible`, the duplicate set is `display: none`, leaving one plain static grid of the six.
+  - 6 activities from El: Building Lego / Reading / Watching movies / Drawing & painting (no blurb) / Sleeping / Logic puzzles.
+  - Mobile (`< 768`): grid → 1 col, shorter viewport. Bio → 1 col (portrait first). "Why" → 1 col, left rules become per-item.
+- Activity card images are **empty tinted placeholders** for now (same treatment as project thumbs) — real art later.
+- Route was already wired (`/about` in `App.jsx`); this replaces the `About` placeholder.
