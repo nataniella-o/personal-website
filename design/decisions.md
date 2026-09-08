@@ -226,7 +226,28 @@ Still pending: real project images (placeholders for now).
 
 ### Component styles folder
 
-- All component CSS modules live in `src/components/styles/` (moved after step 7). `src/pages/Home.module.css` and `src/styles/global.css` unchanged.
+- ~~All component CSS modules live in `src/components/styles/`~~ — superseded by the folder reorg below.
+
+### Components folder reorg
+
+`src/components/` was a flat 15-file folder + a `styles/` subfolder. Now grouped by where a component is used, with each `*.module.css` **co-located** next to its `.jsx` (the `components/styles/` folder is gone):
+
+```
+src/
+  styles/global.css            ← moved out of components/styles/
+  components/
+    layout/     Header, Footer, ScrollToTop            (app shell, every page)
+    common/     ArrowLink, Section                     (reusable primitives)
+    home/       LeftRail, TypedGreeting, BoardingPass,
+                AboutSection, ProjectsSection, ProjectCard, ToolkitSection
+    about/      ActivityScroller
+    projects/   ProjectRow
+    experience/ ExperienceRow
+```
+
+- All moves done with `git mv` (history preserved). Import paths updated: pages now import `../components/<area>/X.jsx`; `home/` section components import `../common/Section.jsx` / `../common/ArrowLink.jsx`; `main.jsx` imports `./styles/global.css`.
+- `common/` holds the two components built to be reused even though today only `home/` consumes them — kept separate to signal intent.
+- `AboutSection` (home §01) is unrelated to the `/about` page / the `about/` folder — the name predates this split; not renamed.
 
 ### Step 9 — Responsive ✅ (done)
 
@@ -282,3 +303,7 @@ Every content divider rule — vertical and horizontal — now uses `1px dashed 
 - Vertical: homepage rail `border-right` (`Home.module.css`); "Why This Website Exists" column rules on `/about` (desktop + `< 768`).
 - Horizontal: `<Footer>` top rule; homepage `<Section>` heading underlines (§01–§03); `<ExperienceRow>` row rules; homepage rail's mobile `border-bottom`; the `.intro` rule + subsection-heading rules on `/about` and `/experience`.
 - **Left solid:** the fixed `<Header>`'s bottom hairline + the mobile menu panel's border (nav chrome, not content dividers — dashed reads as broken there). The `<BoardingPass>` card outline and the activity-card / arrow-button outlines are component borders, also left solid.
+
+### Favicon
+
+- `index.html` `<link rel="icon">` was pointing at `/assets/4.svg` (deleted in the asset cleanup — broken). Now `/assets/favicon.svg`: a copy of `short-logo.svg` with an embedded `<style>` — `path { fill: #6b3f52 }` + `@media (prefers-color-scheme: dark) { path { fill: #f7f3ec } }`. The CSS rule overrides the SVG's `fill="#6b3f52"` presentation attrs, so the tab icon is burgundy on light tabs, off-white on dark. Kept **separate** from `short-logo.svg` (the header `<img>` uses that one, and the site is light-only — a dark-OS visitor would otherwise get a near-white logo on the light header).

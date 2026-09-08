@@ -1,7 +1,7 @@
 import { FaMapMarkerAlt } from 'react-icons/fa'
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
-import ActivityScroller from '../components/ActivityScroller.jsx'
+import Header from '../components/layout/Header.jsx'
+import Footer from '../components/layout/Footer.jsx'
+import ActivityScroller from '../components/about/ActivityScroller.jsx'
 import styles from './About.module.css'
 
 // Copy transcribed verbatim from design/about-prototype.png (confirmed final).

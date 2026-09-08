@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './styles/ArrowLink.module.css'
+import styles from './ArrowLink.module.css'
 
 // "MORE ABOUT ME →" style link. Used at the end of §01 and §02.
 export default function ArrowLink({ to, children }) {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import styles from './styles/BoardingPass.module.css'
+import styles from './BoardingPass.module.css'
 
 // El's local time (Winnipeg / Central), shown to every visitor regardless
 // of where they are.

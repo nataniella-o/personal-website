@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import styles from './styles/ProjectCard.module.css'
+import styles from './ProjectCard.module.css'
 
 // image is optional — falls back to an empty tinted block (matches the
 // prototype; real images get added later). On hover the caption+title

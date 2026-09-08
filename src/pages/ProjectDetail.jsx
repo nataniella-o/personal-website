@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import Header from '../components/Header.jsx'
+import Header from '../components/layout/Header.jsx'
 
 export default function ProjectDetail() {
   const { id } = useParams()

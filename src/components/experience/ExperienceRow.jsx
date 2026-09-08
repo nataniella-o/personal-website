@@ -1,4 +1,4 @@
-import styles from './styles/ExperienceRow.module.css'
+import styles from './ExperienceRow.module.css'
 
 // One entry on the /experience page: time period | title / organization /
 // description. See design/experience-prototype.png.

@@ -1,6 +1,6 @@
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
-import ExperienceRow from '../components/ExperienceRow.jsx'
+import Header from '../components/layout/Header.jsx'
+import Footer from '../components/layout/Footer.jsx'
+import ExperienceRow from '../components/experience/ExperienceRow.jsx'
 import { EXPERIENCE, VOLUNTEERING } from '../data/experience.js'
 import styles from './Experience.module.css'
 

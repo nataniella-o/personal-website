@@ -1,6 +1,6 @@
-import Section from './Section.jsx'
-import ArrowLink from './ArrowLink.jsx'
-import styles from './styles/AboutSection.module.css'
+import Section from '../common/Section.jsx'
+import ArrowLink from '../common/ArrowLink.jsx'
+import styles from './AboutSection.module.css'
 
 // Copy is final, provided by El — kept verbatim (voice/casing intentional).
 const PARAGRAPHS = [

@@ -1,4 +1,4 @@
-import styles from './styles/ProjectRow.module.css'
+import styles from './ProjectRow.module.css'
 
 // One project entry on the /projects page. See design/projects-prototype.png.
 export default function ProjectRow({

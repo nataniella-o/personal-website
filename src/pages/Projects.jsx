@@ -1,6 +1,6 @@
-import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
-import ProjectRow from '../components/ProjectRow.jsx'
+import Header from '../components/layout/Header.jsx'
+import Footer from '../components/layout/Footer.jsx'
+import ProjectRow from '../components/projects/ProjectRow.jsx'
 import { PROJECTS } from '../data/projects.js'
 import styles from './Projects.module.css'
 

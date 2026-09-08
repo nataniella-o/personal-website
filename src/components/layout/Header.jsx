@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { FaBars, FaTimes } from 'react-icons/fa'
-import styles from './styles/Header.module.css'
+import styles from './Header.module.css'
 
 const NAV = [
   { label: 'About', to: '/about' },

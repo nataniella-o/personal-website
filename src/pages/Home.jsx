@@ -1,9 +1,9 @@
-import Header from '../components/Header.jsx'
-import LeftRail from '../components/LeftRail.jsx'
-import AboutSection from '../components/AboutSection.jsx'
-import ProjectsSection from '../components/ProjectsSection.jsx'
-import ToolkitSection from '../components/ToolkitSection.jsx'
-import Footer from '../components/Footer.jsx'
+import Header from '../components/layout/Header.jsx'
+import LeftRail from '../components/home/LeftRail.jsx'
+import AboutSection from '../components/home/AboutSection.jsx'
+import ProjectsSection from '../components/home/ProjectsSection.jsx'
+import ToolkitSection from '../components/home/ToolkitSection.jsx'
+import Footer from '../components/layout/Footer.jsx'
 import styles from './Home.module.css'
 
 export default function Home() {

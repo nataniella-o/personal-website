@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import styles from './styles/ActivityScroller.module.css'
+import styles from './ActivityScroller.module.css'
 
 // "Things I Enjoy Off The Clock" — a horizontal strip of activity cards, 4
 // visible. Driven by prev / next arrows (also swipe, scrollbar, arrow-keys
