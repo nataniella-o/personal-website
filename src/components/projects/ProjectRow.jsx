@@ -26,7 +26,14 @@ export default function ProjectRow({
       </div>
 
       <div className={styles.media}>
-        {image ? <img src={image} alt={`${name} cover`} /> : null}
+        {image ? (
+          <img src={image} alt={`${name} cover`} />
+        ) : (
+          <span className={styles.fallbackMark} aria-hidden="true">
+            In progress
+            <span className={styles.fallbackStar}>✦</span>
+          </span>
+        )}
       </div>
 
       <div className={styles.body}>

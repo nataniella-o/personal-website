@@ -6,7 +6,6 @@ export default function LeftRail() {
   return (
     <div className={styles.stack}>
       <div className={styles.portraitWrap}>
-        {/* <img className={styles.doodle} src="/assets/pic-doodle.jpeg" alt="" aria-hidden="true" /> */}
         <div className={styles.portrait}>
           <img src="/assets/notion-avatar.png" alt="Nataniella Ogogo" />
         </div>
