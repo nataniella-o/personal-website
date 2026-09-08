@@ -45,6 +45,11 @@ export default function Footer() {
           </a>
         ))}
       </div>
+
+      <p className={styles.colophon}>
+        Designed &amp; built by Nataniella Ogogo &middot;{' '}
+        {new Date().getFullYear()}
+      </p>
     </footer>
   )
 }

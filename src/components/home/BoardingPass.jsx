@@ -36,7 +36,7 @@ const LINKS = [
   { label: 'EMAIL', href: 'mailto:nataniellaog@gmail.com' },
   { label: 'LINKEDIN', href: 'https://www.linkedin.com/in/nataniella-ogogo' },
   { label: 'GITHUB', href: 'https://github.com/nataniella-o' },
-  { label: 'RESUME', href: '/assets/resume.pdf' },
+  { label: 'RESUME', href: '/assets/Nataniella_Ogogo_Resume.pdf' },
 ]
 
 export default function BoardingPass() {

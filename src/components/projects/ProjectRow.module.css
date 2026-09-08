@@ -63,10 +63,33 @@
 }
 
 .media {
+  position: relative;
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
   background: color-mix(in srgb, var(--burgundy) 9%, transparent);
+}
+
+/* no cover yet — "in progress" tile, matches the homepage ProjectCard */
+.fallbackMark {
+  position: absolute;
+  inset: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  border: 1px dashed var(--rule-dash);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--burgundy) 8%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 72%, transparent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 1vw, 0.82rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fallbackStar {
+  color: var(--sage);
 }
 
 .media img {

@@ -68,7 +68,7 @@ Source: `design/colour-palette.jpeg`. Prototype is greyscale; this mapping is th
 ## Left rail content — later edits
 
 - Portrait is now a **circle, centered** (all viewports): `aspect-ratio: 1/1`, `border-radius: 50-60%` (equivalent on a square), `align-self: center`. Width caps against `min(78%, 280px, 38vh)` on desktop (the `38vh` term keeps it perfectly square instead of a `max-height` that could stretch it into an oval); mobile drops the `vh` term since the rail isn't fixed-height there.
-- **Doodle accent** (`assets/pic-doodle.jpeg`, black line art on a white JPEG — no alpha): sits behind the circle in a new `.portraitWrap`, `mix-blend-mode: multiply` to drop the white against the champagne rail. First-pass placement (`width: 55%`, bottom-right, peeking from behind the circle) — flagged as needing a visual tuning pass from the browser, not a final position.
+- ~~**Doodle accent** (`assets/pic-doodle.jpeg`)~~ — never got past a rough first pass; the `<img>` sat commented-out behind the portrait. Dropped: image + `.doodle` CSS removed, `.portraitWrap` kept (it carries the square-sizing). Revive from git history if wanted.
 
 ## Left rail content
 
@@ -132,7 +132,7 @@ Resolved with El:
 
 Real cover images wired into `src/data/projects.js` (`image:` → `/assets/project-cover-photos/<slug>-cover.png`): qdog, outfitly (`closetly-cover.png`), ovatech-ai, netflix. KAHYAH has none (stays `null` → empty tinted `.media`). Folder renamed by El: `project cover photos/` → `project-cover-photos/` (no spaces). `ProjectRow` `<img alt>` now `"<name> cover"`. The homepage `ProjectsSection` / `ProjectCard` now use the same covers (qdog, outfitly→`closetly-cover.png`, ovatech-ai; KAHYAH none), `loading="lazy"`, `alt` = `"<title> cover"`.
 - **Homepage card covers are duotoned to the palette** (El: the mixed cover colours clashed with the landing page). `ProjectCard .thumb img` gets `filter: grayscale(1) contrast(1.03)` + a `.thumb:has(img)::after` burgundy overlay at `opacity: 0.82`, `mix-blend-mode: color` — so every cover reads as one burgundy monochrome. On `.card:hover` the filter/overlay fade to reveal the real photo (`0.3s`); `@media (hover: none)` keeps the duotone. Not applied to `/projects` (`ProjectRow`) — could add there too if wanted.
-- **KAHYAH has no cover** (logo undecided). `ProjectCard` renders a placeholder when `image` is null (`.fallbackMark`): "IN PROGRESS ✦" in Space Mono, uppercase, muted burgundy on the faint tint, inside a floating dashed border (`inset: 12px`) — echoes the boarding-pass mono + the site-wide dashed rules, and leans into KAHYAH being the only *Ongoing* project. Chosen from 4 options (Giza wordmark / this / ✦ pattern / big faint ✦). Swap for a real cover later. `/projects` `ProjectRow` still shows the empty tinted block for KAHYAH.
+- **KAHYAH has no cover** (logo undecided). `ProjectCard` renders a placeholder when `image` is null (`.fallbackMark`): "IN PROGRESS ✦" in Space Mono, uppercase, muted burgundy on the faint tint, inside a floating dashed border (`inset: 12px`) — echoes the boarding-pass mono + the site-wide dashed rules, and leans into KAHYAH being the only *Ongoing* project. Chosen from 4 options (Giza wordmark / this / ✦ pattern / big faint ✦). Swap for a real cover later. `/projects` `ProjectRow` shows the **same** "IN PROGRESS ✦" tile for KAHYAH (`.fallbackMark` duplicated in `ProjectRow.module.css`).
 
 **Whimsy accents added to /projects** (each ties to an existing motif, kept small):
 - Pulsing `●` dot on the "Ongoing" row's time period — echoes the boarding-pass live clock. Sage. Guarded by `prefers-reduced-motion`.
@@ -218,12 +218,13 @@ Real cover images wired into `src/data/projects.js` (`image:` → `/assets/proje
   - Simple Icons (`Si*`): JS, Python, Notion, Git, Figma, Prettier, C, C++
   - Font Awesome (`Fa*`): Java, HTML5, CSS (`FaCss3Alt` — Simple Icons has no `SiCss3`)
   - Tabler (`Tb*`): **SQL** (`TbSql`, a text mark — SQL isn't a brand), **VS Code** (`TbBrandVscode`), **Office** (`TbBrandOffice`) — Simple Icons dropped the latter two over trademark.
-  - Legacy colored PNGs in `public/assets/icons/` are now unused (cleanup later).
+  - Legacy colored PNGs in `public/assets/icons/` are now unused. **(deleted — see Asset cleanup below.)**
 
 ### Step 8 — Footer ✅ (done)
 
 - `src/components/Footer.jsx` + `styles/Footer.module.css` — inline at the end of the right column, top rule. Row: italic thank-you copy (left) + `long_logo.png` wordmark (right, `align-items: flex-end`); social row below (LinkedIn / GitHub / Email via `react-icons/fa`, hover lifts + goes sage).
 - Social links match the boarding-pass card (linkedin `/in/nataniella-ogogo`, github `nataniella-o`, email `nataniellaog@gmail.com`).
+- **Colophon line** under the socials: "Designed & built by Nataniella Ogogo · {year}", Space Mono, small, muted. Year is `new Date().getFullYear()` (auto, no range — El's call). No AI-use disclaimer (discussed: not a footer concern; keep any tooling note to a project write-up).
 - **`long_logo.png` and `short_logo.png` both have alpha** (`sips hasAlpha: yes`) — the earlier transparency concern is resolved; they sit cleanly on their backgrounds.
 
 ### Component styles folder
@@ -309,3 +310,7 @@ Every content divider rule — vertical and horizontal — now uses `1px dashed 
 ### Favicon
 
 - `index.html` `<link rel="icon">` was pointing at `/assets/4.svg` (deleted in the asset cleanup — broken). Now `/assets/favicon.svg`: a copy of `short-logo.svg` with an embedded `<style>` — `path { fill: #6b3f52 }` + `@media (prefers-color-scheme: dark) { path { fill: #f7f3ec } }`. The CSS rule overrides the SVG's `fill="#6b3f52"` presentation attrs, so the tab icon is burgundy on light tabs, off-white on dark. Kept **separate** from `short-logo.svg` (the header `<img>` uses that one, and the site is light-only — a dark-OS visitor would otherwise get a near-white logo on the light header).
+
+### Asset cleanup
+
+Deleted from `public/assets/` (nothing referenced them): `icons/` (old colored toolkit PNGs + old hamburger SVGs — replaced by `react-icons`), `giza_fonts/{demo.html,stylesheet.css,GizaStencil.*}` (foundry leftovers; only `Giza.woff2`/`Giza.otf` are used), `pic-doodle.jpeg` (see Doodle accent above), and stray `.DS_Store` files. **Kept** as still-wanted: `3020 pic.png`, `3380 pic2.png`, `project-cover-photos/UMWICS Logo.png`.

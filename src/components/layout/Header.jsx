@@ -7,7 +7,7 @@ const NAV = [
   { label: 'About', to: '/about' },
   { label: 'Experience', to: '/experience' },
   { label: 'Projects', to: '/projects' },
-  { label: 'Resume', to: '/assets/resume.pdf', external: true },
+  { label: 'Resume', to: '/assets/Nataniella_Ogogo_Resume.pdf', external: true },
 ]
 
 function NavItems({ onNavigate }) {
