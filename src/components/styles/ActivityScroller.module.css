@@ -1,60 +1,80 @@
-/* Seamless vertical auto-scroll (marquee) for the activity cards.
-   Loop math: each .set carries its own trailing gap (padding-bottom == the
-   grid gap), so the two stacked sets tile perfectly and translateY(-50%)
-   lands set B exactly where set A started — no jump. */
+/* Horizontal strip of activity cards — 4 visible, card 5 peeks to signal more.
+   Moved with the prev / next arrows (also swipe, scrollbar, arrow-keys when
+   focused). No autoplay. */
 
-.viewport {
-  position: relative;
-  height: clamp(400px, 60vh, 540px);
-  overflow: hidden;
-  /* soften the top + bottom edges so cards fade rather than clip */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 48px,
-    #000 calc(100% - 48px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0,
-    #000 48px,
-    #000 calc(100% - 48px),
-    transparent 100%
-  );
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--link);
+  font-size: 1rem;
+  line-height: 1;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  color: var(--link-hover);
+  border-color: var(--sage);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
 
 .track {
-  animation: drift 34s linear infinite;
-}
-
-.viewport:hover .track,
-.viewport:focus-within .track {
-  animation-play-state: paused;
-}
-
-@keyframes drift {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
-  }
-}
-
-.set {
+  --gap: clamp(16px, 2vw, 24px);
   list-style: none;
   margin: 0;
-  padding: 0 0 clamp(16px, 2vw, 24px);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(16px, 2vw, 24px);
+  /* top/bottom room for the card hover lift + the scrollbar */
+  padding: 6px 0 14px;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--burgundy) 30%, transparent) transparent;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 4px;
+}
+
+.track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--burgundy) 25%, transparent);
+  border-radius: 999px;
 }
 
 .card {
+  flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  padding: clamp(14px, 1.6vw, 20px);
+  padding: clamp(14px, 1.4vw, 18px);
   background: var(--bg-card);
   border: 1px solid var(--rule);
   border-radius: 14px;
@@ -69,7 +89,7 @@
 }
 
 .thumb {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   margin-bottom: 14px;
   border-radius: 8px;
   background: color-mix(in srgb, var(--burgundy) 9%, transparent);
@@ -79,7 +99,7 @@
   margin: 0 0 6px;
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
   color: var(--text);
 }
 
@@ -97,34 +117,21 @@
   }
 }
 
-@media (max-width: 768px) {
-  .viewport {
-    height: clamp(340px, 68vh, 460px);
-  }
-
-  .set {
-    grid-template-columns: 1fr;
+/* fewer cards visible as the viewport narrows */
+@media (max-width: 1024px) {
+  .card {
+    flex-basis: calc((100% - 2 * var(--gap)) / 3);
   }
 }
 
-/* No motion: drop the loop entirely — one static grid of all six. */
-@media (prefers-reduced-motion: reduce) {
-  .viewport {
-    height: auto;
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
+@media (max-width: 768px) {
+  .card {
+    flex-basis: calc((100% - 1 * var(--gap)) / 2);
   }
+}
 
-  .track {
-    animation: none;
-  }
-
-  .set {
-    padding-bottom: 0;
-  }
-
-  .set + .set {
-    display: none;
+@media (max-width: 520px) {
+  .card {
+    flex-basis: 80%;
   }
 }

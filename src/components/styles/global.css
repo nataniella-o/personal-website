@@ -33,7 +33,7 @@
   --text: var(--burgundy);
   --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted burgundy */
   --link: var(--burgundy);
-   --link-hover: var(--sage);
+  --link-hover: var(--sage);
   --rule: rgba(91, 60, 69, 0.25);
   --rule-dash: rgba(91, 60, 69, 0.35);
   --bg-footer: color-mix(in srgb, var(--sage) 50%, transparent); /* sage at 85% */

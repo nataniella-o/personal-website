@@ -1,3 +1,4 @@
+import { FaMapMarkerAlt } from 'react-icons/fa'
 import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import ActivityScroller from '../components/ActivityScroller.jsx'
@@ -10,6 +11,15 @@ const BIO = [
   'These days it shows up as a habit that I am yet to shake: building the thing & then spending an hour arguing myself about the spacing around the button.',
 ]
 
+// leading ✦ before each subsection heading — echoes the logo / wordmark stars
+function Star() {
+  return (
+    <span className={styles.headingStar} aria-hidden="true">
+      ✦
+    </span>
+  )
+}
+
 const REASONS = [
   {
     n: '01',
@@ -17,7 +27,12 @@ const REASONS = [
   },
   {
     n: '02',
-    text: "To keep the projects I'm proud of somewhere better than a folder called final_v3.",
+    text: (
+      <>
+        To keep the projects I&rsquo;m proud of somewhere better than a folder
+        called <code>final_v3</code>.
+      </>
+    ),
   },
   { n: '03', text: 'To get me hired. (Or money, broadly)' },
 ]
@@ -42,24 +57,40 @@ export default function About() {
 
           <section className={styles.bio}>
             <div className={styles.bioText}>
-              <h2 className={styles.hello}>Hello again!</h2>
+              <h2 className={styles.hello}>
+                <Star />
+                Hello again!
+              </h2>
               {BIO.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
             </div>
             <figure className={styles.portrait}>
-              <div className={styles.portraitFrame} />
-              <figcaption>Winnipeg, MB (usually)</figcaption>
+              <img
+                className={styles.portraitImg}
+                src="/assets/profile-pic.svg"
+                alt="Nataniella Ogogo"
+              />
+              <figcaption>
+                <FaMapMarkerAlt aria-hidden="true" />
+                Winnipeg, MB (usually)
+              </figcaption>
             </figure>
           </section>
 
           <section className={styles.block}>
-            <h2 className={styles.blockHeading}>Things I Enjoy Off The Clock</h2>
+            <h2 className={styles.blockHeading}>
+              <Star />
+              Things I Enjoy Off The Clock
+            </h2>
             <ActivityScroller />
           </section>
 
           <section className={styles.block}>
-            <h2 className={styles.blockHeading}>Why This Website Exists</h2>
+            <h2 className={styles.blockHeading}>
+              <Star />
+              Why This Website Exists
+            </h2>
             <ol className={styles.reasons}>
               {REASONS.map(({ n, text }) => (
                 <li key={n} className={styles.reason}>

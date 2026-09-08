@@ -1,10 +1,9 @@
+import { useCallback, useEffect, useRef, useState } from 'react'
 import styles from './styles/ActivityScroller.module.css'
 
-// "Things I Enjoy Off The Clock" — a fixed-height panel whose cards drift
-// upward in a seamless loop (pauses on hover / focus; falls back to a plain
-// static grid under prefers-reduced-motion). This is the whimsical accent on
-// the About page — kept to one deliberate moment, like the /projects pulse.
-// Activity copy is from El, kept close to verbatim.
+// "Things I Enjoy Off The Clock" — a horizontal strip of activity cards, 4
+// visible. Driven by prev / next arrows (also swipe, scrollbar, arrow-keys
+// when focused). No autoplay. Activity copy is from El, kept close to verbatim.
 const ACTIVITIES = [
   {
     title: 'Building Lego',
@@ -20,29 +19,85 @@ const ACTIVITIES = [
   { title: 'Logic puzzles', blurb: 'A rekindled hobby of mine.' },
 ]
 
-// One full pass of the cards. Rendered twice inside .track; the second copy is
-// aria-hidden and exists only so the loop has something to scroll into.
-function ActivitySet({ hidden }) {
-  return (
-    <ul className={styles.set} aria-hidden={hidden || undefined}>
-      {ACTIVITIES.map(({ title, blurb }) => (
-        <li key={title} className={styles.card}>
-          <div className={styles.thumb} />
-          <h3 className={styles.cardTitle}>{title}</h3>
-          {blurb && <p className={styles.blurb}>{blurb}</p>}
-        </li>
-      ))}
-    </ul>
-  )
-}
-
 export default function ActivityScroller() {
+  const trackRef = useRef(null)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
+  const [overflowing, setOverflowing] = useState(true)
+
+  const sync = useCallback(() => {
+    const el = trackRef.current
+    if (!el) return
+    const max = el.scrollWidth - el.clientWidth
+    setAtStart(el.scrollLeft <= 1)
+    setAtEnd(el.scrollLeft >= max - 1)
+    setOverflowing(max > 1)
+  }, [])
+
+  useEffect(() => {
+    sync()
+    const el = trackRef.current
+    if (!el) return
+    el.addEventListener('scroll', sync, { passive: true })
+    window.addEventListener('resize', sync)
+    return () => {
+      el.removeEventListener('scroll', sync)
+      window.removeEventListener('resize', sync)
+    }
+  }, [sync])
+
+  const step = (dir) => {
+    const el = trackRef.current
+    if (!el) return
+    const card = el.querySelector('li')
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 20
+    const by = card
+      ? (card.getBoundingClientRect().width + gap) * 2 // ~2 cards per press
+      : el.clientWidth * 0.7
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    el.scrollBy({ left: dir * by, behavior: smooth ? 'smooth' : 'auto' })
+  }
+
   return (
-    <div className={styles.viewport}>
-      <div className={styles.track}>
-        <ActivitySet />
-        <ActivitySet hidden />
-      </div>
+    <div className={styles.wrap}>
+      <ul
+        className={styles.track}
+        ref={trackRef}
+        tabIndex={0}
+        role="group"
+        aria-label="Things I enjoy off the clock"
+      >
+        {ACTIVITIES.map(({ title, blurb }) => (
+          <li key={title} className={styles.card}>
+            <div className={styles.thumb} />
+            <h3 className={styles.cardTitle}>{title}</h3>
+            {blurb && <p className={styles.blurb}>{blurb}</p>}
+          </li>
+        ))}
+      </ul>
+
+      {overflowing && (
+        <div className={styles.controls}>
+          <button
+            type="button"
+            className={styles.arrow}
+            aria-label="Previous activities"
+            disabled={atStart}
+            onClick={() => step(-1)}
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            className={styles.arrow}
+            aria-label="Next activities"
+            disabled={atEnd}
+            onClick={() => step(1)}
+          >
+            →
+          </button>
+        </div>
+      )}
     </div>
   )
 }
