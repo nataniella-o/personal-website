@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
         <img
           className={styles.wordmark}
-          src="/assets/long_logo.png"
+          src="/assets/long-logo.svg"
           alt="Nataniella Ogogo"
         />
       </div>

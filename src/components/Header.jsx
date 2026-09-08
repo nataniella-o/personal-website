@@ -62,7 +62,7 @@ export default function Header() {
         aria-label="Home"
         onClick={handleLogoClick}
       >
-        <img src="/assets/short_logo.png" alt="Nataniella Ogogo" />
+        <img src="/assets/short-logo.svg" alt="Nataniella Ogogo" />
       </Link>
 
       <nav className={styles.nav}>

@@ -55,7 +55,7 @@
 }
 
 .socials a:hover {
-  color: var(--sage);
+  color: var(--mauve);
   transform: translateY(-2px);
 }
 

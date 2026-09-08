@@ -28,7 +28,7 @@
   /* --- Roles --- */
   --bg-rail: color-mix(in srgb, var(--mauve) 40%, transparent);
   --bg-column: var(--offwhite);
-  --bg-header: color-mix(in srgb, var(--mauve) 85%, transparent); /* mauve at 85% */
+  --bg-header: color-mix(in srgb, var(--sage) 50%, transparent); /* mauve at 85% */
   --bg-card: #fffdf9;
   --text: var(--burgundy);
   --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted burgundy */
