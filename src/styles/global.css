@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Global tokens + base styles
+   Palette + type decisions: design/decisions.md
+   ========================================================================== */
+
+@font-face {
+  font-family: 'Giza';
+  src:
+    url('/assets/giza_fonts/Giza.woff2') format('woff2'),
+    url('/assets/giza_fonts/Giza.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Avenir Next is not a free/licensable webfont. It ships with macOS/iOS, so
+   Apple visitors get the real thing; everyone else falls back down the stack
+   (Segoe UI on Windows, then a generic geometric sans). Revisit only if El
+   licenses a hosted webfont — see design/decisions.md. */
+
+:root {
+  /* --- Palette (design/colour-palette.jpeg) --- */
+  --mauve: #ca9baa;
+  --sage: #98A869;
+  --burgundy: #6b3f52;
+  --offwhite: #faf6ef;
+
+  /* --- Roles --- */
+  --bg-rail: color-mix(in srgb, var(--mauve) 40%, transparent);
+  --bg-column: var(--offwhite);
+  --bg-header: color-mix(in srgb, var(--sage) 50%, transparent); /* mauve at 85% */
+  --bg-card: #fffdf9;
+  --text: var(--burgundy);
+  --text-body: rgba(91, 60, 69, 0.9); /* body copy — slightly lifted burgundy */
+  --link: var(--burgundy);
+  --link-hover: var(--sage);
+  --rule: rgba(91, 60, 69, 0.25);
+  --rule-dash: rgba(91, 60, 69, 0.35);
+  --bg-footer: color-mix(in srgb, var(--sage) 50%, transparent); /* sage at 85% */
+
+  /* --- Type --- */
+  --font-hello: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Avenir Next', 'Avenir', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Giza', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* type scale */
+  --fs-section: clamp(1.3rem, 2vw, 1.55rem); /* numbered section headings (§01–§03) */
+  --fw-section: 700;
+
+  /* --- Layout --- */
+  --header-h: 64px;
+  --rail-w: 30%;
+  --rail-pad-x: 40px;
+  --col-pad-x: 64px;
+  --col-pad-bottom: 80px;
+  --measure: 100ch; /* max line length for body copy in the right column */
+  --bp-stack: 768px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    /* side gutter grows with the viewport on mobile; 24px floor on small phones.
+       Must be a length (vw, not %): Footer's full-bleed negative margin has to
+       cancel .page's padding exactly, and % would resolve against different
+       containing blocks for each. */
+    --col-pad-x: max(24px, 8vw);
+    --col-pad-bottom: 32px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* custom ✦ pointer — hotspot at the star's centre (11,11 of 22) */
+  cursor: url('/assets/cursor-star.svg') 11.5 11.5, auto;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background-color: var(--bg-column);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+}
+
+a,
+button,
+summary,
+label,
+[role='button'] {
+  cursor: url('/assets/cursor-star.svg') 11.5 11.5, pointer;
+}
+
+img {
+  max-width: 100%;
+}

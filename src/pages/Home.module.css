@@ -1,0 +1,55 @@
+/* Split-screen shell — see design/decisions.md (Layout).
+   Left rail is fixed and does not scroll; the right column is the only
+   scrolling region. Rail content (step 4) and right-column sections
+   (steps 5–8) fill the placeholders below. */
+
+.split {
+  display: flex;
+  min-height: calc(100vh - var(--header-h));
+  padding-top: var(--header-h);
+}
+
+.rail {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  width: var(--rail-w);
+  height: calc(100vh - var(--header-h));
+  overflow: hidden;
+  background: var(--bg-rail);
+  border-right: 1px dashed var(--rule-dash);
+  padding: 56px var(--rail-pad-x);
+}
+
+.column {
+  margin-left: var(--rail-w);
+  width: calc(100% - var(--rail-w));
+  min-height: calc(100vh - var(--header-h));
+  background: var(--bg-column);
+  padding: 56px var(--col-pad-x) var(--col-pad-bottom);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(48px, 8vh, 84px);
+}
+
+@media (max-width: 768px) {
+  .split {
+    flex-direction: column;
+  }
+
+  .rail {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border-right: none;
+    border-bottom: 1px dashed var(--rule-dash);
+    padding: 32px 24px;
+  }
+
+  .column {
+    margin-left: 0;
+    width: 100%;
+    padding: 32px var(--col-pad-x) var(--col-pad-bottom);
+  }
+}

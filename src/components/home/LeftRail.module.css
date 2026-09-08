@@ -1,0 +1,112 @@
+/* Left-rail content flow. The fixed/positioned shell (bg, size, overflow,
+   outer padding) is Home.module.css .rail — this file owns the stack of
+   pieces inside it. See design/decisions.md (Left rail content). */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(16px, 3.2vh, 30px);
+  /* fills the rail's content box (Home .rail padding = --rail-pad-x) */
+  width: 100%;
+}
+
+/* --- typed "Hello," --- */
+.greeting {
+  margin: 0;
+  font-family: var(--font-hello);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  color: color-mix(in srgb, var(--burgundy) 80%, transparent);
+}
+
+.greeting :global(.typed-cursor) {
+  color: var(--mauve);
+  font-weight: 400;
+}
+
+/* --- portrait ---
+   width also caps against vh (not just max-height) so the box stays
+   perfectly square — max-height alone would let width and height
+   diverge and turn the circle into an oval. Sizing lives on the wrap;
+   .portrait itself just fills it. */
+.portraitWrap {
+  position: relative;
+  width: min(78%, 300px, 38vh);
+  align-self: center;
+}
+
+/* pic-doodle.jpeg is black line art on a white JPEG background (no
+   alpha) — multiply drops the white out against the champagne rail,
+   leaving just the line art. Sits behind the circle, peeking out from
+   one edge. First-pass placement — tune from the browser. */
+.doodle {
+  position: absolute;
+  z-index: 0;
+  width: 55%;
+  bottom: -5%;
+  right: -10%;
+  /* mirror the artwork so its weight sits on the right half, then keep
+     the same -15deg tilt as before */
+  transform: scaleX(-1) rotate(-15deg);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  user-select: none;
+}
+
+.portrait {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 60%;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--burgundy) 8%, transparent);
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- "I'm Nataniella" --- */
+.name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* min / scales-with-viewport / max — raise the last number to go bigger */
+  font-size: clamp(3.2rem, 8vw, 5rem);
+  line-height: 1.02;
+  overflow-wrap: break-word;
+  color: var(--burgundy);
+}
+
+/* --- boarding-pass wrapper (hidden on mobile) --- */
+.pass {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .stack {
+    max-width: none;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .portraitWrap {
+    /* rail isn't fixed-height on mobile, so no vh cap needed here */
+    width: min(62%, 260px);
+  }
+
+  .name {
+    font-size: clamp(2.4rem, 12vw, 3.4rem);
+  }
+
+  .pass {
+    display: none;
+  }
+}

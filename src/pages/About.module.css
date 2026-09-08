@@ -1,0 +1,211 @@
+/* /about — full-width single column (mirrors /projects, not the homepage
+   split). The side + bottom padding on .page give <Footer>'s full-bleed
+   negative margins their context. See design/about-prototype.png. */
+
+.page {
+  padding: 0 var(--col-pad-x) var(--col-pad-bottom);
+}
+
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-top: calc(var(--header-h) + clamp(36px, 7vh, 72px));
+}
+
+/* --- intro --- */
+.intro {
+  text-align: center;
+  padding-bottom: clamp(28px, 5vh, 48px);
+  border-bottom: 1px dashed var(--rule-dash);
+  margin-bottom: clamp(44px, 8vh, 84px);
+}
+
+.title {
+  margin: 0 0 16px;
+  font-family: var(--font-display); /* Giza */
+  font-weight: 400;
+  font-size: clamp(2.8rem, 6.5vw, 4.6rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+/* small star accent — echoes the 4-point stars in the logo + wordmark */
+.star {
+  display: inline-block;
+  margin-left: 0.18em;
+  font-size: 0.32em;
+  vertical-align: super;
+  color: var(--sage);
+}
+
+.lede {
+  margin: 0 auto;
+  max-width: 58ch;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--text-body);
+}
+
+/* --- bio --- */
+.bio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+  margin-bottom: clamp(56px, 11vh, 120px);
+}
+
+.hello {
+  margin: 0 0 1.1em;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--text);
+}
+
+/* leading star on each subsection heading */
+.headingStar {
+  margin-right: 0.45em;
+  font-size: 0.72em;
+  vertical-align: middle;
+  color: var(--sage);
+}
+
+.bioText p {
+  margin: 0 0 1.15em;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.bioText p:last-child {
+  margin-bottom: 0;
+}
+
+.portrait {
+  margin: 0;
+  width: 85%;
+  justify-self: end;
+}
+
+.portraitImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.portrait figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.portrait figcaption svg {
+  flex-shrink: 0;
+  color: var(--sage);
+}
+
+/* --- generic sub-section (heading + full-width rule) --- */
+.block {
+  margin-bottom: clamp(56px, 11vh, 120px);
+}
+
+.block:last-of-type {
+  margin-bottom: clamp(64px, 13vh, 132px);
+}
+
+.blockHeading {
+  margin: 0 0 clamp(24px, 4vh, 40px);
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--rule-dash);
+  font-family: var(--font-body);
+  font-weight: var(--fw-section);
+  font-size: var(--fs-section);
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+/* --- why this website exists --- */
+.reasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 5vw, 64px);
+}
+
+.reason {
+  padding-left: clamp(16px, 2vw, 28px);
+  border-left: 1px dashed var(--rule-dash);
+}
+
+.reason:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+/* oversized faint Giza numerals — echoes the /projects row numbering */
+.reasonNum {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 3.6vw, 3rem);
+  line-height: 1;
+  color: color-mix(in srgb, var(--burgundy) 32%, transparent);
+}
+
+.reason p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+.reason code {
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--burgundy) 10%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .bio {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .portrait {
+    order: -1;
+    width: 100%;
+    max-width: 272px;
+    justify-self: center;
+  }
+
+  .portrait figcaption {
+    justify-content: center;
+  }
+
+  .bioText p,
+  .reason p {
+    font-size: 0.9rem;
+  }
+
+  .reasons {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .reason,
+  .reason:first-child {
+    padding-left: 16px;
+    border-left: 1px dashed var(--rule-dash);
+  }
+}

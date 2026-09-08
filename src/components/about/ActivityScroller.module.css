@@ -1,0 +1,154 @@
+/* Horizontal strip of activity cards — 4 visible, card 5 peeks to signal more.
+   Moved with the prev / next arrows (also swipe, scrollbar, arrow-keys when
+   focused). No autoplay. */
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--link);
+  font-size: 1rem;
+  line-height: 1;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  color: var(--link-hover);
+  border-color: var(--sage);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.track {
+  --gap: clamp(16px, 2vw, 24px);
+  list-style: none;
+  margin: 0;
+  /* top/bottom room for the card hover lift + the scrollbar */
+  padding: 6px 0 14px;
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--burgundy) 30%, transparent) transparent;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 4px;
+}
+
+.track::-webkit-scrollbar {
+  height: 8px;
+}
+
+.track::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.track::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--burgundy) 25%, transparent);
+  border-radius: 999px;
+}
+
+.card {
+  flex: 0 0 calc((100% - 3 * var(--gap)) / 4);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(14px, 1.4vw, 18px);
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--sage);
+}
+
+.thumb {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--burgundy) 9%, transparent);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardTitle {
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  color: var(--text);
+}
+
+.blurb {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+@media (hover: none) {
+  .card:hover {
+    transform: none;
+    border-color: var(--rule);
+  }
+}
+
+/* fewer cards visible as the viewport narrows */
+@media (max-width: 1024px) {
+  .card {
+    flex-basis: calc((100% - 2 * var(--gap)) / 3);
+  }
+}
+
+/* mobile: one card on screen, scaled down ~30% */
+@media (max-width: 768px) {
+  .card {
+    flex-basis: 70%;
+    padding: 12px;
+  }
+
+  .thumb {
+    aspect-ratio: 4 / 3;
+    margin-bottom: 10px;
+  }
+
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .blurb {
+    font-size: 0.78rem;
+  }
+}
