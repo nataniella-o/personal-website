@@ -71,7 +71,9 @@
   flex-direction: column;
   gap: 4px;
   padding: 14px 20px 18px;
-  background: var(--bg-header);
+  /* opaque twin of --bg-header (same sage tint, mixed into the ground
+     instead of transparent) so page content can't show through */
+  background: color-mix(in srgb, var(--sage) 50%, var(--offwhite));
   border-bottom: 1px solid var(--rule);
 }
 

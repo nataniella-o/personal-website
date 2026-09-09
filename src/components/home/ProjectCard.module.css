@@ -10,14 +10,9 @@
     background-color 0.18s ease;
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  background: color-mix(in srgb, var(--sage) 30%, transparent);
-}
-
 .thumb {
   position: relative;
-  aspect-ratio: 16 / 10; /* ~15% shorter than the old 4/3 */
+  aspect-ratio: 4 / 3;
   border-radius: 9px;
   margin-bottom: 14px;
   overflow: hidden;
@@ -68,27 +63,8 @@
   pointer-events: none;
 }
 
-.card:hover .thumb img {
-  filter: grayscale(0) contrast(1);
-}
-
-.card:hover .thumb:has(img)::after {
-  opacity: 0;
-}
-
-@media (hover: none) {
-  /* no hover on touch — keep the unified treatment */
-  .card:hover .thumb img {
-    filter: grayscale(1) contrast(1.03);
-  }
-
-  .card:hover .thumb:has(img)::after {
-    opacity: 0.82;
-  }
-}
-
-/* caption+title and description are stacked in the same grid cell so the
-   card height is stable and the two crossfade on hover with no jump. */
+/* caption+title and description share one grid cell so the card height is
+   stable and the two crossfade on hover with no jump. */
 .text {
   display: grid;
 }
@@ -112,14 +88,6 @@
   color: var(--text-body);
 }
 
-.card:hover .meta {
-  opacity: 0;
-}
-
-.card:hover .desc {
-  opacity: 1;
-}
-
 .caption {
   margin: 0 0 5px;
   font-size: 0.66rem;
@@ -136,9 +104,34 @@
   color: var(--text);
 }
 
+/* every hover affordance lives here — only applied where hover actually
+   exists, so a sticky :hover from a tap on touch devices can't fire it */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-3px);
+    background: color-mix(in srgb, var(--sage) 30%, transparent);
+  }
+
+  .card:hover .thumb img {
+    filter: grayscale(0) contrast(1);
+  }
+
+  .card:hover .thumb:has(img)::after {
+    opacity: 0;
+  }
+
+  .card:hover .meta {
+    opacity: 0;
+  }
+
+  .card:hover .desc {
+    opacity: 1;
+  }
+}
+
+/* touch: no crossfade — un-stack the cell and show caption+title AND the
+   description together, statically. */
 @media (hover: none) {
-  /* No hover on touch, so the crossfade can't fire — un-stack the cell and
-     show caption+title AND the description together, statically. */
   .text {
     display: block;
   }

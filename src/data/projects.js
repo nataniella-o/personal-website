@@ -11,7 +11,7 @@ export const PROJECTS = [
     role: 'Full Stack Developer',
     type: 'Side Project',
     description:
-      'A real, ongoing continuation of the Outfitly concept. It’s a wardrobe app being built with a friend outside of coursework. We are still in the early stages, so there is no finished product yet.',
+      'An ongoing continuation of the Outfitly concept. It’s a wardrobe app being built with a friend outside of coursework. We are still in the early stages, so there is no finished product yet.',
     tools: ['In Development'],
     image: null,
   },

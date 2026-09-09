@@ -21,6 +21,11 @@
   max-width: var(--measure);
 }
 
+/* grids fill the column — the reading measure is only for prose (§01) */
+.body.wide {
+  max-width: none;
+}
+
 @media (max-width: 768px) {
   .body {
     max-width: none;

@@ -51,15 +51,25 @@
   display: block;
 }
 
-/* --- "I'm Nataniella" --- */
+/* --- "I'm Nataniella" ---
+   .nameBox is a size container; .name scales to ITS width (cqw), not the
+   viewport, and never wraps — so the line always fits the rail whatever
+   its width, instead of wrapping and getting clipped by .rail overflow. */
+.nameBox {
+  container-type: inline-size;
+  width: 100%;
+}
+
 .name {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 400;
-  /* min / scales-with-viewport / max — raise the last number to go bigger */
-  font-size: clamp(3.2rem, 8vw, 5rem);
+  white-space: nowrap;
+  /* "I'm Nataniella" is 5.92em wide in Giza, so ~16.9cqw would fill the box
+     exactly — 14cqw keeps ~17% headroom so it's always one line, never
+     clipped. Raise toward 16 to go bigger, the cap for large screens. */
+  font-size: min(5.3rem, 14cqw);
   line-height: 1.02;
-  overflow-wrap: break-word;
   color: var(--burgundy);
 }
 
@@ -82,7 +92,8 @@
   }
 
   .name {
-    font-size: clamp(2.4rem, 12vw, 3.4rem);
+    /* full-width rail on mobile — a smaller cap keeps it sensible */
+    font-size: min(3.8rem, 14cqw);
   }
 
   .pass {

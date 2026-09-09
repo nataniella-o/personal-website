@@ -3,10 +3,13 @@ import ArrowLink from '../common/ArrowLink.jsx'
 import ProjectCard from './ProjectCard.jsx'
 import styles from './ProjectsSection.module.css'
 
-// 4 featured projects — titles + captions per design/decisions.md.
+// Featured projects — titles + captions per design/decisions.md.
 // Descriptions trimmed from the "what it is" notes in
 // design/portfolio-projects.md; shown on card hover.
 // Cards link to /project/:slug (detail pages are a later phase).
+//
+// NOTE: KAHYAH is kept in the list but filtered out of the homepage grid for
+// now (previewing a 3-up row). Drop the `.filter(...)` below to bring it back.
 const COVERS = '/assets/project-cover-photos'
 const PROJECTS = [
   {
@@ -30,7 +33,7 @@ const PROJECTS = [
     title: 'Outfitly',
     caption: 'WINTER 2025  |  DESIGN LEAD & RESEARCHER',
     description:
-      'A research-driven wardrobe app that started with a field study and ended in a detailed Figma prototype. Its purpose is to ease daily outfit-decision fatigue with context-aware recommendations.',
+      'A research-driven wardrobe app that eases daily outfit-decision fatigue with context-aware recommendations, from field study to Figma prototype.',
     image: `${COVERS}/closetly-cover.png`,
   },
   {
@@ -45,20 +48,22 @@ const PROJECTS = [
 
 export default function ProjectsSection() {
   return (
-    <Section number="02" title="My Projects" id="projects">
+    <Section number="02" title="My Projects" id="projects" wide>
       <div className={styles.grid}>
-        {PROJECTS.map(({ slug, title, caption, description, image }) => (
-          <ProjectCard
-            key={slug}
-            to={`/project/${slug}`}
-            title={title}
-            caption={caption}
-            description={description}
-            image={image}
-          />
-        ))}
+        {PROJECTS.filter((p) => p.slug !== 'kahyah').map(
+          ({ slug, title, caption, description, image }) => (
+            <ProjectCard
+              key={slug}
+              to={`/project/${slug}`}
+              title={title}
+              caption={caption}
+              description={description}
+              image={image}
+            />
+          ),
+        )}
       </div>
-      <ArrowLink to="/projects">More projects</ArrowLink>
+      <ArrowLink to="/projects">All projects</ArrowLink>
     </Section>
   )
 }

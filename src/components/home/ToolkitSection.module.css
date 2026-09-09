@@ -6,7 +6,6 @@
   grid-template-columns: repeat(8, 1fr);
   gap: 35px 25px;
   justify-items: center;
-  max-width: 900px;
 }
 
 .item {

@@ -17,6 +17,10 @@ const GREETINGS = [
   'नमस्ते,',
   'שלום,',
   'Hej,',
+  'Kamusta',
+  'Hei',
+  'Olá',
+  'Bonjou',
 ]
 
 export default function TypedGreeting({ className }) {
@@ -30,6 +34,7 @@ export default function TypedGreeting({ className }) {
       backDelay: 1900,
       startDelay: 300,
       loop: true,
+      shuffle: true, // random greeting order each visit
       smartBackspace: false,
     })
     return () => typed.destroy()

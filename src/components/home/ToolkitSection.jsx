@@ -35,7 +35,7 @@ const TOOLS = [
 
 export default function ToolkitSection() {
   return (
-    <Section number="03" title="My Toolkit" id="toolkit">
+    <Section number="03" title="My Toolkit" id="toolkit" wide>
       <ul className={styles.grid}>
         {TOOLS.map(({ name, Icon }) => (
           <li key={name} className={styles.item}>

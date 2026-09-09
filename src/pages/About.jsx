@@ -8,7 +8,7 @@ import styles from './About.module.css'
 const BIO = [
   "My name is Nataniella & I'm a recent Computer Science graduate of the University of Manitoba. I've always loved building and assembling things & Computer Science is where that love turned into creating tools that make peoples lives better.",
   'That instinct is what carried me through a machine learning fellowship at the AI4Good Lab, a few years as the Treasurer of UMWICS & four years in retail that has taught me much more about people than any course could have.',
-  'These days it shows up as a habit that I am yet to shake: building the thing & then spending an hour arguing myself about the spacing around the button.',
+  'These days it shows up as a habit that I am yet to shake: building the thing & then spending an hour arguing with myself about the spacing around the button.',
 ]
 
 // leading ✦ before each subsection heading — echoes the logo / wordmark stars

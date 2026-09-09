@@ -13,7 +13,9 @@ export default function LeftRail() {
 
       <TypedGreeting className={styles.greeting} />
 
-      <p className={styles.name}>I&rsquo;m Nataniella</p>
+      <div className={styles.nameBox}>
+        <p className={styles.name}>I&rsquo;m Nataniella</p>
+      </div>
 
       {/* hidden below --bp-stack — see design/decisions.md (Responsive) */}
       <div className={styles.pass}>
