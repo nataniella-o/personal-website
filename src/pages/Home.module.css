@@ -1,7 +1,9 @@
 /* Split-screen shell — see design/decisions.md (Layout).
-   Left rail is fixed and does not scroll; the right column is the only
-   scrolling region. Rail content (step 4) and right-column sections
-   (steps 5–8) fill the placeholders below. */
+   Left rail is fixed in position but scrolls its own content (vertically)
+   when it's taller than the viewport — e.g. the boarding pass stacking to
+   1 column on a narrow/short window. The right column scrolls the page
+   as normal. Rail content (step 4) and right-column sections (steps 5–8)
+   fill the placeholders below. */
 
 .split {
   display: flex;
@@ -15,10 +17,18 @@
   left: 0;
   width: var(--rail-w);
   height: calc(100vh - var(--header-h));
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: var(--bg-rail);
   border-right: 1px dashed var(--rule-dash);
   padding: 56px var(--rail-pad-x);
+  /* scrolls when content overflows, but the scrollbar itself stays hidden */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+}
+
+.rail::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .column {

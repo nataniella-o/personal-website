@@ -6,6 +6,8 @@
   padding: clamp(28px, 5vh, 48px) 0;
   /* dashed rule — echoes the boarding-pass card's section dividers */
   border-top: 1px dashed var(--rule-dash);
+  text-decoration: none;
+  color: inherit;
 }
 
 .meta {

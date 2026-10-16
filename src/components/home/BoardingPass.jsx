@@ -23,6 +23,16 @@ function useLocalTime() {
   return time
 }
 
+// Lets values like "WINNIPEG/YWG" wrap at the slash instead of mid-word
+// when the rail gets narrow — <wbr/> marks an allowed break point without
+// forcing one.
+function withSlashBreaks(value) {
+  const parts = value.split('/')
+  return parts.flatMap((part, i) =>
+    i === 0 ? [part] : [`/`, <wbr key={i} />, part],
+  )
+}
+
 const FIELDS = [
   { label: 'FROM', value: 'WINNIPEG/YWG' },
   { label: 'TO', value: 'WORLD/TBD' },
@@ -53,7 +63,7 @@ export default function BoardingPass() {
         {FIELDS.map(({ label, value }) => (
           <div key={label} className={styles.field}>
             <dt>{label}</dt>
-            <dd>{value}</dd>
+            <dd>{withSlashBreaks(value)}</dd>
           </div>
         ))}
       </dl>

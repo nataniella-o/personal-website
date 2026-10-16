@@ -315,3 +315,20 @@ Every content divider rule — vertical and horizontal — now uses `1px dashed 
 ### Asset cleanup
 
 Deleted from `public/assets/` (nothing referenced them): `icons/` (old colored toolkit PNGs + old hamburger SVGs — replaced by `react-icons`), `giza_fonts/{demo.html,stylesheet.css,GizaStencil.*}` (foundry leftovers; only `Giza.woff2`/`Giza.otf` are used), `pic-doodle.jpeg` (see Doodle accent above), and stray `.DS_Store` files. **Kept** as still-wanted: `3020 pic.png`, `3380 pic2.png`, `project-cover-photos/UMWICS Logo.png`.
+
+### /project/:id — case study template ✅ (built)
+
+**No Figma frame exists for this page** — El explicitly OK'd designing it in-code, following the visual language already established elsewhere (Giza titles, the `ROLE | TYPE` eyebrow + live-dot from `ProjectRow`, tool pills, dashed rules, leading `✦` on subsection headings) rather than waiting on a prototype. Flag for revisit if a Figma frame shows up later.
+
+- `src/pages/ProjectDetail.jsx` + `.module.css` — looks up the project by `useParams().id` against `PROJECTS`; unknown slug → a plain "couldn't find that project" message + link back (no dedicated 404 styling, low-traffic case). Sections render conditionally on the data actually having content:
+  1. `← All projects` back link
+  2. Hero — eyebrow (role | type), Giza `<h1>`, time period (+ pulse dot if "Ongoing")
+  3. Cover image, or the "IN PROGRESS ✦" placeholder tile (same treatment as `/projects` / homepage) when there's none
+  4. Lede paragraph (reuses the existing `description` field) + tool pills
+  5. **"What I did"** — bullet list (`whatSheDid`)
+  6. **"The interesting part"** — one callout, sage left-border + tinted background (the page's one whimsy beat)
+  7. Gallery grid — only renders if `gallery` has entries
+  8. Status line
+- `src/data/projects.js` extended with `whatSheDid`, `interestingPart`, `status`, `gallery` per project, drafted from `design/portfolio-projects.md`'s raw notes. Its "what it demonstrates" framing (e.g. OvaTech = confirmed both design *and* dev) is woven into the prose rather than a labelled block — El's call. **First-draft copy — hers to reword.** KAHYAH is the short "currently building" entry: no `whatSheDid`/`interestingPart`, just hero + lede + status.
+- `gallery: []` on every project for now — El has extra process/screenshot images for *some* projects but not all; template renders nothing when empty, add paths in per project as they're ready.
+- `ProjectRow` (`/projects`) is now a `<Link to="/project/:slug">` — rows were previously unlinked with nowhere to go; now that the detail page exists, wired it through. `slug` added to its props.

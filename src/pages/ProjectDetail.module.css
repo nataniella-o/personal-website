@@ -1,0 +1,374 @@
+/* /project/:id — full-width single column, same shell as /projects, /about,
+   /experience (Footer full-bleed relies on .page's padding matching
+   --col-pad-x / --col-pad-bottom). No Figma frame for this page — built
+   directly from the site's established patterns; see design/decisions.md. */
+
+.page {
+  padding: 0 var(--col-pad-x) var(--col-pad-bottom);
+}
+
+.inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: calc(var(--header-h) + clamp(28px, 6vh, 56px));
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: clamp(24px, 5vh, 44px);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--link);
+}
+
+.back:hover {
+  color: var(--link-hover);
+}
+
+.notFound {
+  padding-top: calc(var(--header-h) + 40px);
+  font-size: 1.05rem;
+  color: var(--text-body);
+}
+
+/* --- hero --- */
+.hero {
+  margin-bottom: clamp(28px, 5vh, 44px);
+}
+
+.title {
+  margin: 0 0 8px;
+  font-family: var(--font-display); /* Giza */
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.type {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
+}
+
+/* live dot — matches the "Ongoing" row on /projects */
+.pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--sage);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.65);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse {
+    animation: none;
+  }
+}
+
+/* --- cover --- */
+.cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: clamp(32px, 6vh, 56px);
+  border-radius: 12px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--burgundy) 9%, transparent);
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* placeholder cover — matches the homepage / /projects "no cover yet" tile */
+.fallbackMark {
+  position: absolute;
+  inset: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  border: 1px dashed var(--rule-dash);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--burgundy) 8%, transparent);
+  color: color-mix(in srgb, var(--burgundy) 72%, transparent);
+  font-family: var(--font-mono);
+  font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.fallbackStar {
+  color: var(--sage);
+}
+
+/* --- meta row (Timeline / Role / Tools[ / Links]), under the cover —
+   same column + dashed-rule pattern as the About page's "reasons" grid */
+.meta {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  gap: clamp(24px, 5vw, 48px);
+  margin-bottom: clamp(32px, 6vh, 56px);
+}
+
+/* only projects with a confirmed GitHub/live/prototype link get this 4th
+   column — swaps the ratio rather than squeezing a 4th slot into the 3-col one */
+.metaWithLinks {
+  grid-template-columns: 1fr 1.3fr 1.3fr 1fr;
+}
+
+.metaCol {
+  padding-left: clamp(16px, 2vw, 28px);
+  border-left: 1px dashed var(--rule-dash);
+}
+
+.metaCol:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+
+.metaLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--burgundy) 60%, transparent);
+}
+
+.metaValue {
+  margin: 0;
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.metaLinkAnchor {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.metaLinkAnchor:hover {
+  color: var(--link-hover);
+}
+
+/* --- body --- */
+.body {
+  margin-bottom: clamp(40px, 7vh, 64px);
+}
+
+.lede {
+  margin: 0 0 clamp(32px, 5vh, 48px);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.section {
+  margin-bottom: clamp(40px, 7vh, 64px);
+}
+
+.heading {
+  margin: 0 0 clamp(16px, 3vh, 24px);
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--rule-dash);
+  font-family: var(--font-body);
+  font-weight: var(--fw-section);
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--text);
+}
+
+.headingStar {
+  margin-right: 0.45em;
+  font-size: 0.78em;
+  vertical-align: middle;
+  color: var(--sage);
+}
+
+.whyItMatters {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+.list {
+  margin: 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list li {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+/* "the interesting part" — a small callout, the one whimsy beat on the page */
+.callout {
+  margin-bottom: clamp(40px, 7vh, 64px);
+  padding: 20px 22px;
+  border-left: 2px solid var(--sage);
+  background: color-mix(in srgb, var(--sage) 10%, transparent);
+  border-radius: 0 10px 10px 0;
+}
+
+.callout .heading {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 10px;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-body);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.galleryImg {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+}
+
+.status {
+  margin: 0;
+  padding-top: 20px;
+  border-top: 1px dashed var(--rule-dash);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-body);
+}
+
+/* --- prev/next project nav, bottom of page --- */
+.projectNav {
+  display: flex;
+  gap: 24px;
+  margin-bottom: clamp(40px, 7vh, 64px);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--link);
+}
+
+.navLink:hover {
+  color: var(--link-hover);
+}
+
+.navLinkNext {
+  margin-left: auto;
+  text-align: right;
+}
+
+.navArrow {
+  font-size: 1.1rem;
+}
+
+.navLabel {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.navName {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cover {
+    aspect-ratio: 4 / 3;
+  }
+
+  .meta {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .metaCol,
+  .metaCol:first-child {
+    padding-left: 16px;
+    border-left: 1px dashed var(--rule-dash);
+  }
+
+  .projectNav {
+    gap: 12px;
+  }
+
+  .navLink {
+    gap: 8px;
+    max-width: 46%;
+  }
+
+  .navArrow {
+    font-size: 0.95rem;
+  }
+
+  .navLabel {
+    font-size: 0.62rem;
+  }
+
+  .navName {
+    font-size: 0.85rem;
+  }
+
+  .lede,
+  .whyItMatters,
+  .list li,
+  .callout p {
+    font-size: 0.92rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+}

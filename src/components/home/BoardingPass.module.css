@@ -2,6 +2,7 @@
    Monospace, white panel on the champagne rail. See design/decisions.md. */
 
 .card {
+  container-type: inline-size;
   width: 100%;
   font-family: var(--font-mono);
   color: var(--burgundy);
@@ -13,9 +14,10 @@
 
 .head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 8px;
+  gap: 4px 8px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -39,6 +41,22 @@
   padding: 12px 0;
 }
 
+/* 3 equal columns get too narrow for values like "WINNIPEG/YWG" once the
+   rail (30vw) shrinks below ~1100px of window width — breaks mid-word
+   instead of at a natural space/slash. Drop to fewer columns before that
+   happens, keyed to the card's own width rather than the viewport. */
+@container (max-width: 260px) {
+  .rows {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@container (max-width: 160px) {
+  .rows {
+    grid-template-columns: 1fr;
+  }
+}
+
 .field {
   display: flex;
   flex-direction: column;
@@ -57,7 +75,7 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .links {
