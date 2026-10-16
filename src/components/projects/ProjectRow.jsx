@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom'
 import styles from './ProjectRow.module.css'
 
 // One project entry on the /projects page. See design/projects-prototype.png.
+// Links through to the /project/:slug case study.
 export default function ProjectRow({
+  slug,
   index,
   name,
   timePeriod,
@@ -14,43 +17,49 @@ export default function ProjectRow({
   const isLive = /ongoing/i.test(timePeriod)
 
   return (
-    <li className={styles.row}>
-      <div className={styles.meta}>
-        <span className={styles.index} aria-hidden="true">
-          {String(index).padStart(2, '0')}
-        </span>
-        <p className={styles.period}>
-          {isLive && <span className={styles.pulse} aria-hidden="true" />}
-          {timePeriod}
-        </p>
-      </div>
-
-      <div className={styles.media}>
-        {image ? (
-          <img src={image} alt={`${name} cover`} />
-        ) : (
-          <span className={styles.fallbackMark} aria-hidden="true">
-            In progress
-            <span className={styles.fallbackStar}>✦</span>
+    <li>
+      <Link to={`/project/${slug}`} className={styles.row}>
+        <div className={styles.meta}>
+          <span className={styles.index} aria-hidden="true">
+            {String(index).padStart(2, '0')}
           </span>
-        )}
-      </div>
+          <p className={styles.period}>
+            {isLive && <span className={styles.pulse} aria-hidden="true" />}
+            {timePeriod}
+          </p>
+        </div>
 
-      <div className={styles.body}>
-        <p className={styles.caption}>
-          {role} <span className={styles.sep} aria-hidden="true">|</span> {type}
-        </p>
-        <h2 className={styles.name}>{name}</h2>
-        <p className={styles.desc}>{description}</p>
+        <div className={styles.media}>
+          {image ? (
+            <img src={image} alt={`${name} cover`} />
+          ) : (
+            <span className={styles.fallbackMark} aria-hidden="true">
+              In progress
+              <span className={styles.fallbackStar}>✦</span>
+            </span>
+          )}
+        </div>
 
-        {tools.length > 0 && (
-          <ul className={styles.tools}>
-            {tools.map((tool) => (
-              <li key={tool}>{tool}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+        <div className={styles.body}>
+          <p className={styles.caption}>
+            {role}{' '}
+            <span className={styles.sep} aria-hidden="true">
+              |
+            </span>{' '}
+            {type}
+          </p>
+          <h2 className={styles.name}>{name}</h2>
+          <p className={styles.desc}>{description}</p>
+
+          {tools.length > 0 && (
+            <ul className={styles.tools}>
+              {tools.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </Link>
     </li>
   )
 }

@@ -29,12 +29,12 @@ export default function TypedGreeting({ className }) {
   useEffect(() => {
     const typed = new Typed(el.current, {
       strings: GREETINGS,
-      typeSpeed: 60,
+      typeSpeed: 45,
       backSpeed: 45,
       backDelay: 1900,
       startDelay: 300,
       loop: true,
-      shuffle: true, // random greeting order each visit
+      shuffle: true, // random greeting order for each visit
       smartBackspace: false,
     })
     return () => typed.destroy()

@@ -29,8 +29,8 @@ const PROJECTS = [
     image: `${COVERS}/qdog-cover.png`,
   },
   {
-    slug: 'outfitly',
-    title: 'Outfitly',
+    slug: 'closetly',
+    title: 'Closetly',
     caption: 'WINTER 2025  |  DESIGN LEAD & RESEARCHER',
     description:
       'A research-driven wardrobe app that eases daily outfit-decision fatigue with context-aware recommendations, from field study to Figma prototype.',
